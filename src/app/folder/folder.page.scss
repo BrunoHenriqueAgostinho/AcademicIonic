@@ -1,6 +1,135 @@
-ion-menu-button {
-  color: var(--ion-color-primary);
+
+// Barra de Ferramentas
+#barraDeFerramentas{
+  --background: white;
+  padding: 0;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.250);
+  width: 100%;
+  padding: 0% 12%;
 }
+
+ion-menu-button {
+  color: #2F77FF;
+  display: none;
+}
+
+#barraDeFerramentas ion-title {
+  color: #2F77FF;
+  font-weight: 900;
+  font-style:italic;
+  font-size: 24px;
+}
+
+#barraDeFerramentas ion-item {
+  color: #344057;
+  font-size: 18px;
+  box-shadow: none;
+}
+
+// Cabeçalho
+#cabecalho {
+  width: 100%;
+  padding: 2% 12%;
+  background-color: #2F77FF;
+  color: white;
+  text-align: center;
+}
+
+#cabecalho div {
+  max-width: 900px;
+  margin: auto;
+}
+
+#cabecalho ion-text h1 {
+  font-size: 80px;
+  font-weight: 900;
+}
+
+#cabecalho ion-text p {
+  font-size: 18px;
+  font-weight: 250;
+  text-align: justify;
+}
+
+#cabecalho ion-searchbar {
+  --background: white;
+  --border-radius: 5px;
+  --box-shadow: none;
+  --icon-color: #2F77FF;
+  --cancel-button-color: #2F77FF;
+  --clear-button-color: #2F77FF;
+  text-align: left;
+  --color: #344057;
+  --placeholder-color: #344057;
+  --placeholder-opacity: 100%;
+  --placeholder-font-weight: 300;
+}
+
+//instituições
+#instituicoes {
+  display: flex;
+  flex-direction: row;
+  margin: 2% 0 2% 0;
+  text-align: center;
+  color: #344057;
+}
+
+#instituicoes #desenho {
+  width: 50%;
+  height: 500px;
+  background-color: #0FCCBF;
+  border-radius:0px 10px 10px 0px;
+}
+
+#texto {
+  width: 50%;
+  height: 500px;
+  padding: 0% 6% 0% 6%;
+  display: table;
+}
+
+#texto div {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#texto ion-text h1 {
+  font-size: 100px;
+  font-weight: 900;
+}
+
+#texto ion-text p {
+  font-size: 18px;
+  font-weight: 300;
+  text-align: justify;
+}
+
+//estudantes
+#estudantes {
+  display: flex;
+  flex-direction: row;
+  margin: 2% 0 2% 0;
+  text-align: center;
+  color: #344057;
+}
+
+#estudantes #desenho {
+  width: 50%;
+  height: 500px;
+  background-color: #344057;
+  border-radius:10px 0px 0px 10px;
+}
+
+@media screen and (max-width: 950px) {
+  ion-menu-button {
+    color: #2F77FF;
+    display: block;
+  }
+}
+
+
+
 
 #container {
   text-align: center;
