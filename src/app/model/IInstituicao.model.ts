@@ -1,5 +1,5 @@
-export interface IUsuario {
-    cpf?: number;
+export interface IInstituicao {
+    cnpj?: number;
     nome: string;
     senha: string;
     email: string;

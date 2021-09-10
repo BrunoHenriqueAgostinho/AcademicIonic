@@ -10,31 +10,59 @@
 <ion-content> 
   <div>
     <div>
-      <h1>Cadastro</h1>
+      <h1>Cadastro Usuário</h1>
       <p>Faça o cadastro para acessar a sua conta no Academic.</p>
       <form>
         <ion-item> 
           <ion-label position="floating">CPF</ion-label> 
-          <ion-input type="text" placeholder="Digite seu CPF" name="cpf" [(ngModel)]="usuario.cpf"></ion-input>
+          <ion-input type="number" placeholder="Digite seu CPF" name="cpfUsuario" [(ngModel)]="usuario.cpf" required="true"></ion-input>
         </ion-item> 
         <ion-item> 
           <ion-label position="floating">Nome Completo</ion-label> 
-          <ion-input type="text" placeholder="Digite seu nome completo" name="nome" [(ngModel)]="usuario.nome"></ion-input>
+          <ion-input type="text" placeholder="Digite seu nome completo" name="nomeUsuario" [(ngModel)]="usuario.nome"></ion-input>
         </ion-item> 
         <ion-item> 
           <ion-label position="floating">E-mail</ion-label> 
-          <ion-input type="text" placeholder="Digite seu e-mail" name="email" [(ngModel)]="usuario.email"></ion-input>
+          <ion-input type="text" placeholder="Digite seu e-mail" name="emailUsuario" [(ngModel)]="usuario.email"></ion-input>
         </ion-item> 
         <ion-item> 
           <ion-label position="floating">Senha</ion-label> 
-          <ion-input type="text" placeholder="Digite sua senha" name="senha" [(ngModel)]="usuario.senha"></ion-input>
+          <ion-input type="password" placeholder="Digite sua senha" name="senhaUsuario" [(ngModel)]="usuario.senha"></ion-input>
         </ion-item> 
-        <ion-button (click)="cadastrar()"> 
+        <ion-button (click)="cadastrarUsuario()"> 
           Cadastrar-se
         </ion-button> 
       </form>
       <p>Já possui cadastro? Entrar</p>
     </div>
+
+    <div>
+      <h1>Cadastro Instituição</h1>
+      <p>Faça o cadastro para acessar a sua conta no Academic.</p>
+      <form>
+        <ion-item> 
+          <ion-label position="floating">CNPJ</ion-label> 
+          <ion-input type="number" placeholder="Digite seu CNPJ" name="cnpjInstituicao" [(ngModel)]="instituicao.cnpj"></ion-input>
+        </ion-item> 
+        <ion-item> 
+          <ion-label position="floating">Nome Completo</ion-label> 
+          <ion-input type="text" placeholder="Digite seu nome completo" name="nomeInstituicao" [(ngModel)]="instituicao.nome"></ion-input>
+        </ion-item> 
+        <ion-item> 
+          <ion-label position="floating">E-mail</ion-label> 
+          <ion-input type="text" placeholder="Digite seu e-mail" name="emailInstituicao" [(ngModel)]="instituicao.email"></ion-input>
+        </ion-item> 
+        <ion-item> 
+          <ion-label position="floating">Senha</ion-label> 
+          <ion-input type="password" placeholder="Digite sua senha" name="senhaInstituicao" [(ngModel)]="instituicao.senha"></ion-input>
+        </ion-item> 
+        <ion-button (click)="cadastrarInstituicao()"> 
+          Cadastrar-se
+        </ion-button> 
+      </form>
+      <p>Já possui cadastro? Entrar</p>
+    </div>
+
     <div class="img_cadastro">
       <img src="../assets/img_cadastro.png">
     </div>

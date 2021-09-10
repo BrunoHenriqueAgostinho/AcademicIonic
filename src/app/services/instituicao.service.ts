@@ -3,24 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { IUsuario } from '../model/IUsuario.model';
-
+import { IInstituicao } from '../model/IInstituicao.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class InstituicaoService {
 
-  URL: string = 'http://localhost/apiTCC/api_academic/tb_usuario';
-  
+  URL: string = 'http://localhost/apiTCC/api_academic/tb_instituicao';
   constructor(
     private http: HttpClient,
     private toastController: ToastController,
     private alertController: AlertController
   ) { }
 
-  inserir(usuario): Observable<any> {
-    return this.http.post(this.URL + "/inserirCad_usuario.php", usuario).pipe(
+  inserir(instituicao): Observable<any> {
+    return this.http.post(this.URL + "/inserirCad_instituicao.php", instituicao).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibeErro(erro)) 
     );
