@@ -9,7 +9,23 @@ import { InstituicaoService } from '../services/instituicao.service';
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss'],
 })
+
 export class CadastroPage implements OnInit {
+
+  displayU = 'none'
+  displayI = 'block'
+
+  segmentChanged(ev: any) {
+    if(ev.detail.value == 'usuario'){
+      this.displayU='block';
+      this.displayI='none';
+      console.log('Segment changed', ev);
+    }else{
+      this.displayU='none';
+      this.displayI='block';
+      console.log('Segment changed', ev);
+    }
+  }
 
   usuario: IUsuario = {
     cpf: null,
@@ -26,6 +42,7 @@ export class CadastroPage implements OnInit {
   } 
 
   constructor(
+    
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService
   ) { }

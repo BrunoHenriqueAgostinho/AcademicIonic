@@ -1,0 +1,115 @@
+// Sessão de dados - Cadastro
+#card_cadastro{
+    display: flex;
+    //align-items: center;
+    width: 80%;
+    height: 481px;
+    margin: 6% auto;
+    background-color: #344057;
+}
+
+#card_cadastro #item_cadastro{
+    display: flex;
+    width: 50%;
+    color: white;
+    --background: #344057;
+    --inner-padding-bottom: 0;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 0;
+}
+
+#item_cadastro h1{
+    font-weight: bold;
+    font-size: 80px;
+    //text-align: center;
+}
+
+#item_cadastro p{
+    font-size: 14px;
+    //text-align: center;
+}
+
+#card_cadastro #item_cadastro .cad_usuario .itemDoInput{
+    //height: 40px;
+    //margin: 20px 0;
+    //border-radius: 5px;
+    margin: 10px 0;
+    --border-radius: 5px;
+    --inner-padding-bottom: 0;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 0;
+}
+
+#card_cadastro #item_cadastro ion-button{
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    padding: 0;
+    border-radius: 5px;
+    --background: #2F77FF;
+}
+
+#card_cadastro ion-input{
+    --placeholder-color: #344057;
+    color: #344057;
+    --background: white;
+    --placeholder-opacity: 1;
+    //border: solid #EEE7E7 1px;
+    --padding-bottom: 12px;
+    --padding-start: 15px;
+    --padding-top: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#card_cadastro #item_cadastro .cad_usuario{
+    margin: auto auto;
+}
+
+#card_cadastro #item_cadastro .cad_instituicao{
+    margin: auto auto;
+}
+
+// Sessão de imagem - Cadastro
+#itemIMG{
+    width: 50%;
+    height: 100%;
+    --background: #344057;
+    --inner-padding-bottom: 0;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 0;
+}
+
+.img_cadastro{
+    width: 100%;
+    height: 100%;
+}
+
+// Barra de Ferramentas
+#barraDeFerramentas{
+    --background: white;
+    padding: 0;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.250);
+    width: 100%;
+    padding: 0% 12%;
+  }
+  
+  ion-menu-button {
+    color: #2F77FF;
+    display: none;
+  }
+  
+  #barraDeFerramentas ion-title {
+    color: #2F77FF;
+    font-weight: 900;
+    font-size: 20px;
+  }
+  
+  #barraDeFerramentas ion-item {
+    color: #344057;
+    font-size: 16px;
+    box-shadow: none;
+  }
