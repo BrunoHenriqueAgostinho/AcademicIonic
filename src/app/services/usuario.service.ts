@@ -5,12 +5,11 @@ import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { IUsuario } from '../model/IUsuario.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-
+  //Variáveis
   URL: string = 'http://localhost/apiTCC/api_academic/tb_usuario';
   
   constructor(
@@ -19,10 +18,11 @@ export class UsuarioService {
     private alertController: AlertController
   ) { }
 
+  //CRUD e outros métodos
   inserir(usuario): Observable<any> {
     return this.http.post(this.URL + "/inserirCad_usuario.php", usuario).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro)) 
+      catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
     );
   }
 

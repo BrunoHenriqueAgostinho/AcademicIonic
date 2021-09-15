@@ -11,21 +11,9 @@ import { InstituicaoService } from '../services/instituicao.service';
 })
 
 export class CadastroPage implements OnInit {
-
+  //Variáveis
   displayU = 'none'
   displayI = 'block'
-
-  segmentChanged(ev: any) {
-    if(ev.detail.value == 'usuario'){
-      this.displayU='block';
-      this.displayI='none';
-      console.log('Segment changed', ev);
-    }else{
-      this.displayU='none';
-      this.displayI='block';
-      console.log('Segment changed', ev);
-    }
-  }
 
   usuario: IUsuario = {
     cpf: null,
@@ -42,7 +30,6 @@ export class CadastroPage implements OnInit {
   } 
 
   constructor(
-    
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService
   ) { }
@@ -50,21 +37,60 @@ export class CadastroPage implements OnInit {
   ngOnInit() {
   }
 
+  //Segment
+  segmentChanged(ev: any) {
+    if(ev.detail.value == 'usuario'){
+      this.displayU='block';
+      this.displayI='none';
+      console.log('Segment changed', ev);
+    }else{
+      this.displayU='none';
+      this.displayI='block';
+      console.log('Segment changed', ev);
+    }
+  }
+  
+  //CadastrarUsuario
   cadastrarUsuario() { 
-    console.log(this.usuario);
-    this.usuarioService.inserir(this.usuario).subscribe( 
-      retorno => { 
-        this.usuarioService.exibirToast(retorno.mensagem,'medium');
-      } 
-    ); 
+    if(this.validarCamposUsuario()){
+      console.log(this.usuario);
+      this.usuarioService.inserir(this.usuario).subscribe( 
+        retorno => { 
+          this.usuarioService.exibirToast(retorno.mensagem,'medium');
+        } 
+      ); 
+    }
   }
 
+  //CadastrarInstituicao
   cadastrarInstituicao() { 
-    console.log(this.instituicao);
-    this.instituicaoService.inserir(this.instituicao).subscribe( 
-      retorno => { 
-        this.instituicaoService.exibirToast(retorno.mensagem,'medium');
-      } 
-    ); 
+    if(this.validarCamposInstituicao()){
+      console.log(this.instituicao);
+      this.instituicaoService.inserir(this.instituicao).subscribe( 
+        retorno => { 
+          this.instituicaoService.exibirToast(retorno.mensagem,'medium');
+        } 
+      ); 
+    }
+  }
+
+  //ValidarCamposUsuario
+  validarCamposUsuario(): boolean{
+    if (this.usuario.cpf == null || this.usuario.nome == '' || this.usuario.senha == '' || this.usuario.email == ''){
+      this.usuarioService.exibirToast("Todos os campos devem ser preenchidos para realizar o cadastro.", "danger");
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  //ValidarCamposInstituicao
+  validarCamposInstituicao(): boolean{
+    if (this.instituicao.cnpj == null || this.instituicao.nome == '' || this.instituicao.senha == '' || this.instituicao.email == ''){
+      this.instituicaoService.exibirToast("Todos os campos devem ser preenchidos para realizar o cadastro.", "danger");
+      return false;
+    } else {
+      return true;
+    }
   }
 }

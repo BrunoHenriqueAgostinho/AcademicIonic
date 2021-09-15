@@ -9,18 +9,20 @@ import { IInstituicao } from '../model/IInstituicao.model';
   providedIn: 'root'
 })
 export class InstituicaoService {
-
+  //Variáveis
   URL: string = 'http://localhost/apiTCC/api_academic/tb_instituicao';
+
   constructor(
     private http: HttpClient,
     private toastController: ToastController,
     private alertController: AlertController
   ) { }
-
+  
+  //CRUD e outros métodos
   inserir(instituicao): Observable<any> {
     return this.http.post(this.URL + "/inserirCad_instituicao.php", instituicao).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro)) 
+      catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
     );
   }
 
