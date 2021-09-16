@@ -35,12 +35,14 @@
 
         <p>Faça o cadastro para acessar a sua conta no Academic.</p>
         <form>
-            <ion-input mask="000.000.000.-00" type="text" required="true" placeholder="CPF" maxlength="11" name="cpfUsuario" [(ngModel)]="usuario.cpf"></ion-input>
+            <ion-input mask="000.000.000.-00" type="number" required="true" placeholder="CPF" maxlength="11" name="cpfUsuario" [(ngModel)]="usuario.cpf"></ion-input>
             <ion-input type="text" required="true" placeholder="Nome completo" name="nomeUsuario" clear-input="True" [(ngModel)]="usuario.nome"></ion-input>
 
             <ion-input type="email" required="true" placeholder="E-mail" name="emailUsuario" [(ngModel)]="usuario.email"></ion-input>
 
             <ion-input type="password" required="true" clear-on-edit="true" placeholder="Senha" name="senhaUsuario" [(ngModel)]="usuario.senha"></ion-input>
+
+            <ion-input type="password" required="true" clear-on-edit="true" placeholder="Confirmar senha" name="ConfirmarSenhaUsuario" [(ngModel)]="confirmarSenhaUsuario"></ion-input>
           <ion-button (click)="cadastrarUsuario()" >Cadastrar</ion-button> 
         </form>
         <p>Já possui cadastro? Entrar</p>
@@ -58,6 +60,8 @@
             <ion-input type="text" placeholder="E-mail" name="emailInstituicao" [(ngModel)]="instituicao.email"></ion-input>
       
             <ion-input type="password" placeholder="Senha" name="senhaInstituicao" [(ngModel)]="instituicao.senha"></ion-input>
+
+            <ion-input type="password" required="true" clear-on-edit="true" placeholder="Confirmar senha" name="ConfirmarSenhaInstituicao" [(ngModel)]="confirmarSenhaInstituicao"></ion-input>
           <ion-button (click)="cadastrarInstituicao()"> 
             Cadastrar
           </ion-button> 
