@@ -12,6 +12,9 @@ import { InstituicaoService } from '../services/instituicao.service';
 
 export class CadastroPage implements OnInit {
   //Variáveis
+  corUsuario = "white";
+  corInstituicao = "white";
+
   displayU = 'none'
   displayI = 'block'
 
@@ -102,6 +105,32 @@ export class CadastroPage implements OnInit {
       return false;
     } else {
       return true;
+    }
+  }
+
+  //Indicação da validade do confirmar senha do usuário por cores
+  corSenhaUsuario(){
+    if(this.usuario.senha != '' && this.confirmarSenhaUsuario != ''){
+      if(this.usuario.senha == this.confirmarSenhaUsuario){
+        this.corUsuario = "#2F77FF";
+      } else {
+        this.corUsuario = "red";
+      }
+    } else {
+      this.corUsuario = "white";
+    }
+  }
+
+  //Indicação da validade do confirmar senha do usuário por cores
+  corSenhaInstituicao(){
+    if(this.instituicao.senha != '' && this.confirmarSenhaInstituicao != ''){
+      if(this.instituicao.senha == this.confirmarSenhaInstituicao){
+        this.corInstituicao = "#2F77FF";
+      } else {
+        this.corInstituicao = "red";
+      }
+    } else {
+      this.corInstituicao = "white";
     }
   }
 }
