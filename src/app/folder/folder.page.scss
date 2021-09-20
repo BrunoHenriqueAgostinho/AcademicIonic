@@ -23,6 +23,10 @@ ion-menu-button {
   padding: 0% 12% 0% 0% ;
 }
 
+#barraDeFerramentas a{
+  text-decoration: none;
+}
+
 #barraDeFerramentas ion-item {
   color: #344057;
   font-size: 18px;
@@ -227,6 +231,7 @@ ion-menu-button {
 
   #rodape #barra01{
     height: 40px;
+    display: none;
   }
   
   #rodape #barra02{
@@ -235,7 +240,7 @@ ion-menu-button {
 
   #barra02 ion-text h1{
     font-size: 20px;
-    margin: 10px 20px 0 15px;
+    margin: 10px 0px 0 30px;
   }
 
   #instituicoes {
