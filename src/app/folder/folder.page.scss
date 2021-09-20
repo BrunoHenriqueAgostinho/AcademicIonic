@@ -1,12 +1,10 @@
-
-
 // Barra de Ferramentas
 #barraDeFerramentas{
   --background: white;
   padding: 0;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.250);
   width: 100%;
-  padding: 0% 12%;
+  padding: 0% 0% 0% 12%;
 }
 
 ion-menu-button {
@@ -21,6 +19,10 @@ ion-menu-button {
   font-size: 24px;
 }
 
+#barraDeFerramentas .opcoes{
+  padding: 0% 12% 0% 0% ;
+}
+
 #barraDeFerramentas ion-item {
   color: #344057;
   font-size: 18px;
@@ -30,29 +32,40 @@ ion-menu-button {
 // Cabeçalho
 #cabecalho {
   width: 100%;
-  padding: 2% 12%;
+  padding: 5% 12%;
   background-color: #2F77FF;
   color: white;
   text-align: center;
 }
 
-#cabecalho div {
-  max-width: 900px;
-  margin: auto;
-}
-
 #cabecalho ion-text h1 {
-  font-size: 80px;
+  font-size: 72px;
   font-weight: 900;
+  padding-bottom: 2%;
+  margin: 0;
 }
 
-#cabecalho ion-text p {
+#cabecalho ion-text div {
+  max-width: 700px;
+  margin: auto;
+  padding: 0;
+}
+
+#cabecalho ion-text div p {
   font-size: 18px;
   font-weight: 250;
   text-align: justify;
 }
 
-#cabecalho ion-searchbar {
+#cabecalho ion-text div .p_desk{
+  display: block;
+}
+
+#cabecalho ion-text div .p_mobile{
+  display: none;
+}
+
+#cabecalho ion-text div ion-searchbar {
   --background: white;
   --border-radius: 5px;
   --box-shadow: none;
@@ -64,10 +77,13 @@ ion-menu-button {
   --placeholder-color: #344057;
   --placeholder-opacity: 100%;
   --placeholder-font-weight: 300;
+  padding: 0;
+  margin: 0;
 }
 
 //instituições
 #instituicoes {
+  width: 100%;
   display: flex;
   flex-direction: row;
   margin: 2% 0 2% 0;
@@ -82,32 +98,9 @@ ion-menu-button {
   border-radius:0px 10px 10px 0px;
 }
 
-#texto {
-  width: 50%;
-  height: 500px;
-  padding: 0% 6% 0% 6%;
-  display: table;
-}
-
-#texto div {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-
-#texto ion-text h1 {
-  font-size: 100px;
-  font-weight: 900;
-}
-
-#texto ion-text p {
-  font-size: 18px;
-  font-weight: 300;
-  text-align: justify;
-}
-
 //estudantes
 #estudantes {
+  width: 100%;
   display: flex;
   flex-direction: row;
   margin: 2% 0 2% 0;
@@ -122,17 +115,163 @@ ion-menu-button {
   border-radius:10px 0px 0px 10px;
 }
 
-@media screen and (max-width: 950px) {
-  ion-menu-button {
-    color: #2F77FF;
-    display: block;
-  }
+#texto {
+  width: 50%;
+  height: 500px;
+  padding: 0% 6%;
+  display: table;
+}
+
+#texto div {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#texto ion-text h1 {
+  font-size: 78px;
+  font-weight: 900;
+}
+
+#texto ion-text p {
+  font-size: 18px;
+  font-weight: 300;
+  text-align: justify;
+}
+
+//Imagem
+#desenho img{
+  margin-top: 10%;
+}
+
+//Rodape
+#rodape{
+  width: 100%;
+  color: white;
+  padding: 0;
+}
+
+#rodape #barra01{
+  width: 100%;
+  height: 100px;
+  float: left;
+  background-color: #0FCCBF;
+  margin: 0;
+  padding: 0;
+}
+
+#rodape #barra02{
+  width: 100%;
+  height: 50px;
+  float: left;
+  background-color: #33323A;
+  margin: 0;
+  padding: 0;
+}
+
+#barra02 ion-text h1{
+  font-size: 24px;
+  font-weight: 900;
+  font-style:italic;
+  margin: 15px 15px;
 }
 
 
+@media screen and (max-width: 500px) {
+  #barraDeFerramentas{
+    padding: 7% 0% 0% 0%;
+  }
 
+  ion-menu-button {
+    display: block;
+  }
 
-#container {
+  #barraDeFerramentas .opcoes{
+    display: none;
+  }
+
+  #barraDeFerramentas ion-title {
+    font-size: 17px;
+  }
+
+  #cabecalho ion-text h1 {
+    font-size: 26px;
+    font-weight: 900;
+    padding-top: 4%;
+  }
+
+  #cabecalho ion-text div .p_desk{
+    display: none;
+  }
+  
+  #cabecalho ion-text div .p_mobile{
+    display: block;
+    font-size: 16px;
+  }
+
+  #cabecalho {
+    padding-bottom: 10%;
+  }
+
+  #texto ion-text h1 {
+    font-size: 20px;
+  }
+  
+  #texto ion-text p {
+    font-size: 16px;
+  }
+
+  #rodape{
+    margin-top: 20px
+  }
+
+  #rodape #barra01{
+    height: 40px;
+  }
+  
+  #rodape #barra02{
+    height: 40px;
+  }
+
+  #barra02 ion-text h1{
+    font-size: 20px;
+    margin: 10px 20px 0 15px;
+  }
+
+  #instituicoes {
+    flex-direction: column;
+  }
+
+  #instituicoes #desenho {
+    width: 100%;
+    height: 150px;
+    border-radius:0px 0px 0px 0px;
+  }
+
+  #estudantes {
+    flex-direction: column-reverse;
+    margin-top: 20%;
+    height: 250px;
+  }
+
+  #estudantes #desenho {
+    width: 100%;
+    height: 150px;
+    border-radius:0px 0px 0px 0px;
+  }
+
+  #desenho img{
+    width: 40%;
+    margin-top: 5%;
+  }
+
+  #texto {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/*#container {
   text-align: center;
   position: absolute;
   left: 0;
@@ -155,4 +294,4 @@ ion-menu-button {
 
 #container a {
   text-decoration: none;
-}
+}*/
