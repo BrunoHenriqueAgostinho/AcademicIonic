@@ -32,7 +32,7 @@
         <form>
             <ion-input type="email" required="true" placeholder="E-mail" name="emailUsuario" [(ngModel)]="login.email"></ion-input>
             <ion-input type="password" required="true" clear-on-edit="true" placeholder="Senha" name="senhaUsuario" [(ngModel)]="login.senha"></ion-input>
-            <a href="homepage-system"><ion-button>Entrar</ion-button></a>
+            <ion-button (click)="entrar()">Entrar</ion-button>
         </form>
         <p>Esqueceu a senha?</p>
         <p>Ainda não possui cadastro? Cadastrar</p>

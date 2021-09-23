@@ -11,7 +11,7 @@ import { ILogin } from '../model/ILogin.model';
 export class LoginService {
 
   //Variáveis
-  URL: string = 'http://localhost/apiTCC/api_academic/login/login';
+  URL: string = 'http://localhost/apiTCC/api_academic/login/login.php';
   
   constructor(
     private http: HttpClient,
@@ -21,9 +21,9 @@ export class LoginService {
 
   //Login
   consultar(login): Observable<any> {
-    return this.http.get(this.URL, login).pipe(
+    return this.http.post(this.URL, login).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
+      catchError(erro => this.exibeErro(erro)) 
     );
   }
 

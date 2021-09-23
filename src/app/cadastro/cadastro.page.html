@@ -48,7 +48,7 @@
 
             <ion-input type="password" required="true" clear-on-edit="true" placeholder="Confirmar senha" name="ConfirmarSenhaUsuario" [ionChange]="corSenhaUsuario()" [(ngModel)]="confirmarSenhaUsuario"  [style.background]="corUsuario"></ion-input>
           
-          <a href="homepage-system"><ion-button>Cadastrar</ion-button></a>
+          <ion-button (click)="cadastrarUsuario()">Cadastrar</ion-button>
         </form>
         <p>Já possui cadastro? Entrar</p>
       </div>
@@ -64,7 +64,7 @@
             <ion-input type="password" placeholder="Senha" name="senhaInstituicao" [(ngModel)]="instituicao.senha" [ionChange]="corSenhaInstituicao()"></ion-input>
             <ion-input type="password" required="true" clear-on-edit="true" placeholder="Confirmar senha" name="ConfirmarSenhaInstituicao" [(ngModel)]="confirmarSenhaInstituicao" [ionChange]="corSenhaInstituicao()"[style.background]="corInstituicao"></ion-input>
           
-          <a href="homepage-system"><ion-button>Cadastrar</ion-button></a>
+          <ion-button (click)="cadastrarInstituicao()">Cadastrar</ion-button>
         </form>
         <p>Já possui cadastro? Entrar</p>
       </div>

@@ -23,12 +23,23 @@ export class EntrarPage implements OnInit {
 
   //Login
   entrar(){
-    console.log(this.login);
-    this.loginService.consultar(this.login).subscribe( 
-      retorno => { 
-        this.loginService.exibirToast(retorno.mensagem,'medium');
-      } 
-    );
+    if (this.validarCampos()){
+      console.log(this.login);
+      this.loginService.consultar(this.login).subscribe( 
+        retorno => { 
+          this.loginService.exibirToast(retorno, 'medium');
+        } 
+      );
+    }
+  }
+
+  validarCampos(): boolean{
+    if (this.login.email == null || this.login.senha == ''){
+      this.loginService.exibirToast("Todos os campos devem ser preenchidos para acessar sua conta.", "danger");
+      return false;
+    } else {
+      return true;
+    }
   }
 
 }
