@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar id="barraDeFerramentas">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons class="opcoes" slot="end">
+      <ion-item href="meustrabalhos-system" lines="none">
+        <ion-label>Meus trabalhos</ion-label>
+      </ion-item>
+    </ion-buttons>
+    <a href="folder"><ion-title>Academic</ion-title></a>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section id="cabecalho">
+    <ion-text>
+      <h1>Olá, Odeio API</h1>
+      <div>
+        <p class="p_desk">Morbi in quam luctus, euismod ligula quis, porttitor eros. Mauris at sodales ex, id laoreet quam. Suspendisse potenti. Etiam orci ipsum, malesuada eget vulputate ut, pulvinar quis leo. Donec ut posuere tortor. Curabitur egestas hendrerit tortor, id vehicula nibh varius a. Nam vel dictum ante. Integer bibendum dolor lacus, et pellentesque augue convallis ut.</p>
+        <p class="p_mobile">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at luctus leo.</p>
+        <ion-searchbar class="p_desk" placeholder="Pesquise por artigos" searchIcon="search-sharp" [debounce]="250"  inputMode="text"></ion-searchbar>
+        <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250"  inputMode="text"></ion-searchbar>
+      </div>
+    </ion-text>
+  </section>
+</ion-content>

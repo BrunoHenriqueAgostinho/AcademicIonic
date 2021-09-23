@@ -30,9 +30,9 @@
 
         <p>Faça o cadastro para acessar a sua conta no Academic.</p>
         <form>
-            <ion-input type="email" required="true" placeholder="E-mail" name="emailUsuario"></ion-input>
-            <ion-input type="password" required="true" clear-on-edit="true" placeholder="Senha" name="senhaUsuario"></ion-input>
-            <ion-button>Entrar</ion-button> 
+            <ion-input type="email" required="true" placeholder="E-mail" name="emailUsuario" [(ngModel)]="login.email"></ion-input>
+            <ion-input type="password" required="true" clear-on-edit="true" placeholder="Senha" name="senhaUsuario" [(ngModel)]="login.senha"></ion-input>
+            <a href="homepage-system"><ion-button>Entrar</ion-button></a>
         </form>
         <p>Esqueceu a senha?</p>
         <p>Ainda não possui cadastro? Cadastrar</p>
