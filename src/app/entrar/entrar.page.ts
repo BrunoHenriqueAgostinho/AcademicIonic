@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ILogin } from './../model/ILogin.model';
 import { LoginService } from './../services/login.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-entrar',
@@ -14,8 +15,11 @@ export class EntrarPage implements OnInit {
     senha: ''
   } 
 
+  codigo = 0;
+
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private storage: Storage
     ) { }
 
   ngOnInit() {
@@ -26,8 +30,13 @@ export class EntrarPage implements OnInit {
     if (this.validarCampos()){
       console.log(this.login);
       this.loginService.consultar(this.login).subscribe( 
-        retorno => { 
-          this.loginService.exibirToast(retorno, 'medium');
+        async retorno => {
+          await this.storage.create();
+          await this.storage.clear();
+          await this.storage.set('codigo', retorno.codigo);
+          this.codigo = parseInt(await this.storage.get('codigo'));
+          console.log(this.codigo);
+          this.loginService.exibirToast("Acesso realizado com sucesso.", "medium");
         } 
       );
     }
