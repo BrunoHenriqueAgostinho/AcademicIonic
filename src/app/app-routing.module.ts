@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: 'entrar',
     loadChildren: () => import('./entrar/entrar.module').then( m => m.EntrarPageModule)
-  },  {
+  },
+  {
     path: 'homepage-system',
     loadChildren: () => import('./homepage-system/homepage-system.module').then( m => m.HomepageSystemPageModule)
   },

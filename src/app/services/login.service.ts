@@ -23,7 +23,7 @@ export class LoginService {
   consultar(login): Observable<any> {
     return this.http.post(this.URL, login).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro)) 
+      catchError(erro => this.exibirToast(erro.error.erro, 'danger')) 
     );
   }
 
@@ -40,7 +40,7 @@ export class LoginService {
   } 
 
   exibeErro(erro): Observable<any> {
-    console.log(erro);
+    console.log("Erro",erro);
     return null;
   }
 }

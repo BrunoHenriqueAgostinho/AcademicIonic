@@ -22,13 +22,22 @@ export class CadastroPage implements OnInit {
     cpf: null,
     nome: '',
     senha: '',
+    descricao: '',
+    foto: '',
+    dtCadastro: null,
+    tema: null,
+    status: null,
+    codigoContato: null,
     email: ''
   } 
 
   instituicao: IInstituicao = {
     cnpj: null,
     nome: '',
+    logotipo: '',
+    dtCadastro: null,
     senha: '',
+    codigoContato: null,
     email: ''
   } 
 
