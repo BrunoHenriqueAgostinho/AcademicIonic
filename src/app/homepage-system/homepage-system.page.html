@@ -12,6 +12,10 @@
   </ion-toolbar>
 </ion-header>
 
+<ng-template #carregando>
+  Carregando Trabalhos...
+</ng-template>
+
 <ion-content>
   <section id="cabecalho">
     <ion-text>
@@ -19,9 +23,40 @@
       <div>
         <p class="p_desk">Morbi in quam luctus, euismod ligula quis, porttitor eros. Mauris at sodales ex, id laoreet quam. Suspendisse potenti. Etiam orci ipsum, malesuada eget vulputate ut, pulvinar quis leo. Donec ut posuere tortor. Curabitur egestas hendrerit tortor, id vehicula nibh varius a. Nam vel dictum ante. Integer bibendum dolor lacus, et pellentesque augue convallis ut.</p>
         <p class="p_mobile">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at luctus leo.</p>
-        <ion-searchbar class="p_desk" placeholder="Pesquise por artigos" searchIcon="search-sharp" [debounce]="250"  inputMode="text"></ion-searchbar>
+        <ion-searchbar class="p_desk" placeholder="Pesquise por artigos" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionInput)="pesquisar($event)"></ion-searchbar>
         <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250"  inputMode="text"></ion-searchbar>
       </div>
     </ion-text>
   </section>
+
+  <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
+    <ion-row>
+      <ion-col *ngFor="let trab of trabalho" size="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{trab.nome_trabalho}}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>{{trab.descricao_trabalho}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--<ion-item-sliding *ngFor="let pro of produto" (ionDrag)="onDrag($event)">
+    <ion-item-options side="end">
+      <ion-item-option color="warning" (click)="editar(pro.id)">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="danger" (click)="excluir(pro.id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+    <ion-item (click)="mostrarBotao()">
+      <ion-label class="ion-text-wrap">{{pro.descricao}}</ion-label>
+      <ion-label>{{pro.preco | currency: 'BRL'}}</ion-label>
+      <ion-label>{{pro.validade | date: 'shortDate'}}</ion-label>
+    </ion-item>
+  </ion-item-sliding>-->
+
 </ion-content>

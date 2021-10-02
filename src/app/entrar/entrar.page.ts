@@ -17,8 +17,8 @@ export class EntrarPage implements OnInit {
   } 
 
   codigo = 0;
-
   tipo = '';
+
   constructor(
     private loginService: LoginService,
     private storage: Storage,

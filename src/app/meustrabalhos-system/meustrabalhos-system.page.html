@@ -12,6 +12,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ng-template #carregando>
+  Carregando Trabalhos...
+</ng-template>
 
+<ion-content>
+  <section id="cabecalho">
+    <ion-text>
+      <h1>Trabalhos</h1>
+      <div>
+        <ion-button color="light" expand="block">Novo Trabalho</ion-button>
+      </div>
+    </ion-text>
+  </section>
+
+  <section id="Meu_trabalhos">
+    <h1>Meus Trabalhos</h1>
+  </section>
+  
+
+  <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
+    <ion-row>
+      <ion-col *ngFor="let trab of trabalho" size="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{trab.nome_trabalho}}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>{{trab.descricao_trabalho}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
