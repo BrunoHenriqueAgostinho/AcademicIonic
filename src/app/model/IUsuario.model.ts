@@ -1,5 +1,5 @@
 export interface IUsuario {
-    cpf?: number;
+    cpf?: string;
     nome: string;
     senha: string;
     descricao: string;
@@ -7,6 +7,8 @@ export interface IUsuario {
     dtCadastro: Date;
     tema: number;
     status: number;
-    codigoContato: number;
+    contaStatus: number;
     email: string;
+    telefoneFixo: string;
+    telefoneCelular: string; 
 }

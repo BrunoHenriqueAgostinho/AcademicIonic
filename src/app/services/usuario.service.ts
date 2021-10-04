@@ -19,6 +19,13 @@ export class UsuarioService {
   ) { }
 
   //CRUD e outros métodos
+  consultar(usuario): Observable<IUsuario> {
+    return this.http.get<IUsuario>(this.URL + "/consultar_usuario.php", usuario).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    ); 
+  }
+
   inserir(usuario): Observable<any> {
     return this.http.post(this.URL + "/inserirCad_usuario.php", usuario).pipe(
       map(retorno => retorno),

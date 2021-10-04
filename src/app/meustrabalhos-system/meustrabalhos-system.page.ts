@@ -13,7 +13,7 @@ import { delay } from 'rxjs/operators';
 export class MeustrabalhosSystemPage implements OnInit {
 
   listaTrabalho: Observable<ITrabalho[]>;
-  constructor() { 
+  constructor(private trabalhoService: TrabalhoService) { 
     this.listaTrabalho = this.trabalhoService.listar_meusTrabalhos().pipe(delay(1000));
   }
 

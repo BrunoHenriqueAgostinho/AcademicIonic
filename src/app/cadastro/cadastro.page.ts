@@ -27,8 +27,10 @@ export class CadastroPage implements OnInit {
     dtCadastro: null,
     tema: null,
     status: null,
-    codigoContato: null,
-    email: ''
+    contaStatus: null,
+    email: '',
+    telefoneFixo: '',
+    telefoneCelular: ''
   } 
 
   instituicao: IInstituicao = {
