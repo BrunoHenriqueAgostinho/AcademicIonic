@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar id="barraDeFerramentas">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <a href="folder"><ion-title>Academic</ion-title></a>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section id="cabecalho">
+    <ion-text>
+      <h1>Modelos</h1>
+      <div>
+        <ion-searchbar class="p_desk" placeholder="Pesquise por modelos" searchIcon="search-sharp" [debounce]="250"  inputMode="text"></ion-searchbar>
+        <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250"  inputMode="text"></ion-searchbar>
+      </div>
+    </ion-text>
+  </section>
+  <section id="instituicoes">
+    <div id="desenho"><img src="../assets/Formando - Instituições.svg"></div>
+    <div id="texto">
+      <div>
+        <ion-text>
+          <h1>Instituições</h1>
+        </ion-text>
+        <ion-text>
+          <p>Instituções podem mostrar seus potenciais em produções acadêmicas. Certifique trabalhos acadêmicos feitos no âmbito da instituição e dê maior visibilidade para estudantes.</p>
+        </ion-text>
+      </div>
+    </div>
+  </section>
+</ion-content>

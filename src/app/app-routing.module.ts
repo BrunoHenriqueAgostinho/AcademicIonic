@@ -30,7 +30,11 @@ const routes: Routes = [
   {
     path: 'meustrabalhos-system',
     loadChildren: () => import('./meustrabalhos-system/meustrabalhos-system.module').then( m => m.MeustrabalhosSystemPageModule)
+  },  {
+    path: 'modelos',
+    loadChildren: () => import('./modelos/modelos.module').then( m => m.ModelosPageModule)
   }
+
 
 
 ];
