@@ -33,6 +33,10 @@ const routes: Routes = [
   },  {
     path: 'modelos',
     loadChildren: () => import('./modelos/modelos.module').then( m => m.ModelosPageModule)
+  },
+  {
+    path: 'edicaotrabalho-system',
+    loadChildren: () => import('./edicaotrabalho-system/edicaotrabalho-system.module').then( m => m.EdicaotrabalhoSystemPageModule)
   }
 
 

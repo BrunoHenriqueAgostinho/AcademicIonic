@@ -3,9 +3,28 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <a href="folder"><ion-title>Academic</ion-title></a>
+    <ion-buttons class="opcoes" slot="end">
+      <ion-item lines="none">
+        <ion-label>Para Instituições</ion-label>
+      </ion-item>
+      <ion-item lines="none"> 
+        <ion-label>Para Estudantes</ion-label>
+      </ion-item>
+      <div style="border-left:1px solid #000;height:35px"></div>
+      <ion-item [routerLink]="['/meustrabalhos-system']" lines="none">
+        <ion-label>Trabalhos</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="" lines="none">
+        <ion-label>Perfil</ion-label>
+      </ion-item>
+    </ion-buttons>
+    <ion-title [routerLink]="['/homepage-system']">Academic</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ng-template #carregando>
+  Carregando Modelos...
+</ng-template>
 
 <ion-content [fullscreen]="true">
   <section id="cabecalho">
@@ -17,17 +36,31 @@
       </div>
     </ion-text>
   </section>
-  <section id="instituicoes">
-    <div id="desenho"><img src="../assets/Formando - Instituições.svg"></div>
-    <div id="texto">
-      <div>
-        <ion-text>
-          <h1>Instituições</h1>
-        </ion-text>
-        <ion-text>
-          <p>Instituções podem mostrar seus potenciais em produções acadêmicas. Certifique trabalhos acadêmicos feitos no âmbito da instituição e dê maior visibilidade para estudantes.</p>
-        </ion-text>
-      </div>
-    </div>
+  <section id="modelo">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <ion-card [routerLink]="['/edicaotrabalho-system']">
+            <ion-card-content>
+              <ion-card-title>Resumo Expandido</ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="3">
+          <ion-card>
+            <ion-card-content>
+              <ion-card-title>Resumo Expandido</ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="3">
+          <ion-card>
+            <ion-card-content>
+              <ion-card-title>Resumo Expandido</ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </section>
 </ion-content>
