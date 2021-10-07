@@ -19,10 +19,10 @@ export class InstituicaoService {
   ) { }
   
   //CRUD e outros métodos
-  consultar(id): Observable<any> {
-    return this.http.get<any>(this.URL + '/consultar_instituicao', id).pipe(
+  consultar(instituicao): Observable<IInstituicao> {
+    return this.http.post<IInstituicao>(this.URL + '/consultar_instituicao.php', instituicao).pipe(
       map(retorno => retorno),
-      catchError(erro => erro)
+      catchError(erro => this.exibeErro(erro))
     );
   }
 

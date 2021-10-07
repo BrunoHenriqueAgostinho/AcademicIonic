@@ -29,7 +29,8 @@
 <ion-content>
   <section id="cabecalho">
     <ion-text>
-      <h1>Olá, [Nome Usuário]!</h1>
+      <h1 *ngIf="tipo == 'cpf'">Olá, {{usuario.nome}}</h1>
+      <h1 *ngIf="tipo == 'cnpj'">Olá, {{instituicao.nome}}</h1>
       <div>
         <p class="p_desk">Morbi in quam luctus, euismod ligula quis, porttitor eros. Mauris at sodales ex, id laoreet quam. Suspendisse potenti. Etiam orci ipsum, malesuada eget vulputate ut, pulvinar quis leo. Donec ut posuere tortor. Curabitur egestas hendrerit tortor, id vehicula nibh varius a. Nam vel dictum ante. Integer bibendum dolor lacus, et pellentesque augue convallis ut.</p>
         <p class="p_mobile">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at luctus leo.</p>

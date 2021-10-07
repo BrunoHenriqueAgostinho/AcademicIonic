@@ -27,6 +27,12 @@ ion-menu-button {
     color: #344057;
     font-size: 18px;
     box-shadow: none;
+    --background: white;
+}
+
+//Fundo da página
+ion-content {
+  --background: white;
 }
 
 // Cabeçalho

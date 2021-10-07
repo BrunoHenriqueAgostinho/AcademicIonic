@@ -1,9 +1,118 @@
-<ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar id="barraDeFerramentas">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons class="opcoes" slot="end">
+      <ion-item lines="none">
+        <ion-label>Para Instituições</ion-label>
+      </ion-item>
+      <ion-item lines="none"> 
+        <ion-label>Para Estudantes</ion-label>
+      </ion-item>
+      <div style="border-left:1px solid #000;height:35px"></div>
+      <ion-item [routerLink]="['/meustrabalhos-system']" lines="none">
+        <ion-label>Trabalhos</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="" lines="none">
+        <ion-label>Perfil</ion-label>
+      </ion-item>
+    </ion-buttons>
+    <ion-title [routerLink]="['/homepage-system']">Academic</ion-title>
+  </ion-toolbar>
   <ion-toolbar>
-    <ion-title>edicaotrabalho-system</ion-title>
+    <ion-title id="barraDeTarefas">
+      <div>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col><strong>N</strong></ion-col>
+            <ion-col><em>I</em></ion-col>
+            <ion-col><ins>U</ins></ion-col>
+            <ion-col><del>S</del></ion-col>
+            <ion-col>X<sup>n</sup></ion-col>
+            <ion-col>X<sub>n</sub></ion-col>
+            <ion-col><ion-icon name="unlink-sharp" id="icone"></ion-icon></ion-col>
+            <ion-col><ion-icon name="link-sharp" id="icone"></ion-icon></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+              <select id="inputText"onchange="execCommandWithArg('fontName', this.value);">
+                <option value="Arial">Arial</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Courier">Courier</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Times New Roman">Times New Roman</option>
+              </select>
+            </ion-col>
+            <ion-col>
+              <select onchange="execCommandWithArg('fontSize', this.value);">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </ion-col>
+            <ion-col><input type="color" value="Letra" onchange="execCommandWithArg('foreColor', this.value);"/></ion-col>
+            <ion-col><input type="color" onchange="execCommandWithArg('hiliteColor', this.value);"/></ion-col>
+            <ion-col><ion-icon name="image-sharp" onclick="execCommandWithArg('insertImage', prompt('Insira a URL de uma imagem: ', ''));" id="icone"></ion-icon></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12"><p>Texto</p></ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col>1</ion-col>
+            <ion-col>2</ion-col>
+            <ion-col>3</ion-col>
+            <ion-col>4</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>1</ion-col>
+            <ion-col>2</ion-col>
+            <ion-col>3</ion-col>
+            <ion-col>4</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12"><p>Organização</p></ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col>1</ion-col>
+            <ion-col>2</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>1</ion-col>
+            <ion-col>2</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12"><p>Margem</p></ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col><ion-icon name="save-sharp" id="icone"></ion-icon></ion-col>
+            <ion-col><ion-icon name="trash-sharp" id="icone"></ion-icon></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><ion-icon name="people-circle-sharp" id="icone"></ion-icon></ion-col>
+            <ion-col><ion-icon name="eye-off-sharp" id="icone"></ion-icon></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12"><p>Opções</p></ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <iframe id="textField" name="textField">texto</iframe>
+  
 </ion-content>

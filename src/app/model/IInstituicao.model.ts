@@ -1,9 +1,12 @@
 export interface IInstituicao {
-    cnpj?: number;
+    cnpj?: string;
     nome: string;
     logotipo: string;
     dtCadastro: Date;
     senha: string;
-    codigoContato: number;
+    contaStatus: number;
     email: string;
+    telefoneFixo: string;
+    telefoneCelular: string;
+    cidade: string;
 }

@@ -27,6 +27,19 @@ ion-menu-button {
   color: #344057;
   font-size: 18px;
   box-shadow: none;
+  --background:white;
+}
+
+//Fundo da página
+ion-content {
+    --background:white;
+}
+//ion-segment
+ion-segment {
+    --background:#344057;
+}
+ion-segment ion-label {
+    color:white;
 }
 
 // Sessão de dados - Cadastro

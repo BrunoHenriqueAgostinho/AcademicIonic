@@ -39,8 +39,11 @@ export class CadastroPage implements OnInit {
     logotipo: '',
     dtCadastro: null,
     senha: '',
-    codigoContato: null,
-    email: ''
+    contaStatus: null,
+    email: '',
+    telefoneFixo: '',
+    telefoneCelular: '',
+    cidade: ''
   } 
 
   confirmarSenhaUsuario: string = '';

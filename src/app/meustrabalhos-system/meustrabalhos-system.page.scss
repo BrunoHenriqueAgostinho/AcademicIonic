@@ -27,6 +27,12 @@ ion-menu-button {
     color: #344057;
     font-size: 18px;
     box-shadow: none;
+    --background: white;
+}
+
+//Fundo da página
+ion-content {
+  --background: white;
 }
 
 // Cabeçalho
@@ -64,21 +70,11 @@ ion-menu-button {
   #cabecalho ion-text div .p_mobile{
     display: none;
   }
-  
-  #cabecalho ion-text div ion-searchbar {
-    --background: white;
-    --border-radius: 5px;
+
+  #cabecalho ion-text div ion-button{
+    --background: white; 
+    --color: #2F77FF;
     --box-shadow: none;
-    --icon-color: #2F77FF;
-    --cancel-button-color: #2F77FF;
-    --clear-button-color: #2F77FF;
-    text-align: left;
-    --color: #344057;
-    --placeholder-color: #344057;
-    --placeholder-opacity: 100%;
-    --placeholder-font-weight: 300;
-    padding: 0;
-    margin: 0;
   }
 
   #Meu_trabalhos {

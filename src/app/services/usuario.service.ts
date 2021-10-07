@@ -20,7 +20,7 @@ export class UsuarioService {
 
   //CRUD e outros métodos
   consultar(usuario): Observable<IUsuario> {
-    return this.http.get<IUsuario>(this.URL + "/consultar_usuario.php", usuario).pipe(
+    return this.http.post<IUsuario>(this.URL + "/consultar_usuario.php", usuario).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibeErro(erro))
     ); 
