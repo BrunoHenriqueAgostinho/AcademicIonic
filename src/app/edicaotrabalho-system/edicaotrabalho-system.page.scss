@@ -80,12 +80,15 @@ input[type="color"]{
 }
 
 #inputText {
-    width: 65px;
+    background-color: white;
+    color: #344057;
+    border-radius: 5px;
 }
 //documento
 #textField {
     height: 150%;
     Width: 60%;
+    overflow: scroll;
     margin: 2% 20%;
     box-shadow: 1px 1px 8px rgb(0, 0, 0, 0.5);
     border: none;

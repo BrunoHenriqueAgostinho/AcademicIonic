@@ -25,28 +25,27 @@
       <div>
         <ion-grid fixed>
           <ion-row>
-            <ion-col><strong>N</strong></ion-col>
-            <ion-col><em>I</em></ion-col>
-            <ion-col><ins>U</ins></ion-col>
-            <ion-col><del>S</del></ion-col>
-            <ion-col>X<sup>n</sup></ion-col>
-            <ion-col>X<sub>n</sub></ion-col>
-            <ion-col><ion-icon name="unlink-sharp" id="icone"></ion-icon></ion-col>
-            <ion-col><ion-icon name="link-sharp" id="icone"></ion-icon></ion-col>
+            <ion-col><ion-text onclick="execCmd('bold');"><strong>N</strong></ion-text></ion-col>
+            <ion-col><ion-text onclick="execCmd('italic');"><em>I</em></ion-text></ion-col>
+            <ion-col><ion-text onclick="execCmd('underline');"><ins>U</ins></ion-text></ion-col>
+            <ion-col><ion-text onclick="execCmd('strikeThrough');"><del>S</del></ion-text></ion-col>
+            <ion-col><ion-text onclick="execCmd('superscript');">X<sup>n</sup></ion-text></ion-col>
+            <ion-col><ion-text onclick="execCmd('subscript');">X<sub>n</sub></ion-text></ion-col>
+            <ion-col><ion-text onclick="execCommandWithArg('createLink', prompt('Adicione uma URL:', 'http://'));"><ion-icon name="link-sharp" id="icone"></ion-icon></ion-text></ion-col>
+            <ion-col><ion-text onclick="execCmd('unlink');"><ion-icon name="unlink-sharp" id="icone"></ion-icon></ion-text></ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="4">
-              <select id="inputText"onchange="execCommandWithArg('fontName', this.value);">
-                <option value="Arial">Arial</option>
-                <option value="Comic Sans MS">Comic Sans MS</option>
+              <select style="width: 65px" id="inputText" onchange="execCommandWithArg('fontName', this.value);">
+                
+                <option value="Times New Roman">Times New Roman</option><option value="Arial">Arial</option>
                 <option value="Courier">Courier</option>
                 <option value="Georgia">Georgia</option>
                 <option value="Tahoma">Tahoma</option>
-                <option value="Times New Roman">Times New Roman</option>
               </select>
             </ion-col>
             <ion-col>
-              <select onchange="execCommandWithArg('fontSize', this.value);">
+              <select id="inputText" onchange="execCommandWithArg('fontSize', this.value);">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -56,9 +55,9 @@
                 <option value="7">7</option>
               </select>
             </ion-col>
-            <ion-col><input type="color" value="Letra" onchange="execCommandWithArg('foreColor', this.value);"/></ion-col>
+            <ion-col><input type="color" onchange="execCommandWithArg('foreColor', this.value);"/></ion-col>
             <ion-col><input type="color" onchange="execCommandWithArg('hiliteColor', this.value);"/></ion-col>
-            <ion-col><ion-icon name="image-sharp" onclick="execCommandWithArg('insertImage', prompt('Insira a URL de uma imagem: ', ''));" id="icone"></ion-icon></ion-col>
+            <ion-col><ion-icon name="image-sharp" onclick="execCommandWithArg('insertImage', prompt('URL da imagem: ', ''));" id="icone"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12"><p>Texto</p></ion-col>
@@ -66,16 +65,16 @@
         </ion-grid>
         <ion-grid fixed>
           <ion-row>
-            <ion-col>1</ion-col>
-            <ion-col>2</ion-col>
-            <ion-col>3</ion-col>
-            <ion-col>4</ion-col>
+            <ion-col><ion-icon id="icone" name="list-sharp" onclick="execCmd('insertUnorderedList');"></ion-icon></ion-col>
+            <ion-col><ion-icon id="icone" src="assets/orderedlist-sharp.svg" onclick="execCmd('insertOrderedList');"></ion-icon></ion-col>
+            <ion-col><ion-icon id="icone" name="arrow-back-sharp" onclick="execCmd('undo');"></ion-icon></ion-col>
+            <ion-col><ion-icon id="icone" name="arrow-forward-sharp" onclick="execCmd('redo');"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>1</ion-col>
-            <ion-col>2</ion-col>
-            <ion-col>3</ion-col>
-            <ion-col>4</ion-col>
+            <ion-col><ion-icon id="icone" src="assets/alignleft-sharp.svg" onclick="execCmd('justifyLeft');"></ion-icon></ion-col>
+            <ion-col><ion-icon id="icone" src="assets/alignright-sharp.svg" onclick="execCmd('justifyRight');"></ion-icon></ion-col>
+            <ion-col><ion-icon id="icone" src="assets/aligncenter-sharp.svg" onclick="execCmd('justifyCenter');"></ion-icon></ion-col>
+            <ion-col><ion-icon id="icone" src="assets/alignjustify-sharp.svg" onclick="execCmd('justifyFull');"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12"><p>Organização</p></ion-col>
@@ -83,12 +82,56 @@
         </ion-grid>
         <ion-grid fixed>
           <ion-row>
-            <ion-col>1</ion-col>
-            <ion-col>2</ion-col>
+            <ion-col>
+              Dir.
+              <select id="inputText">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </ion-col>
+            <ion-col>
+              Esq.
+              <select id="inputText">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>1</ion-col>
-            <ion-col>2</ion-col>
+            <ion-col>
+              Topo
+              <select id="inputText">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </ion-col>
+            <ion-col>
+              Baixo
+              <select id="inputText">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12"><p>Margem</p></ion-col>
@@ -113,6 +156,6 @@
 </ion-header>
 
 <ion-content>
-  <iframe id="textField" name="textField">texto</iframe>
+  <iframe id="textField" name="textField" seamless="seamless" scrolling="no" frameborder="0">texto</iframe>
   
 </ion-content>
