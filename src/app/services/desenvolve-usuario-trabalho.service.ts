@@ -1,33 +1,25 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { IInstituicao } from '../model/IInstituicao.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InstituicaoService {
+export class DesenvolveUsuarioTrabalhoService {
+
   //Variáveis
-  URL: string = 'http://localhost/apiTCC/api_academic/tb_instituicao';
+  URL: string = 'http://localhost/apiTCC/api_academic/desenvolve_usuario_trabalho';
 
   constructor(
     private http: HttpClient,
     private toastController: ToastController,
     private alertController: AlertController
   ) { }
-  
-  //CRUD e outros métodos
-  consultar(instituicao): Observable<any> {
-    return this.http.post(this.URL + '/consultar_instituicao.php', instituicao).pipe(
-      map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
-    );
-  }
 
-  inserir(instituicao): Observable<any> {
-    return this.http.post(this.URL + "/inserirCad_instituicao.php", instituicao).pipe(
+  inserir(desenvolve): Observable<any> {
+    return this.http.post(this.URL + "/inserir_desenvolve.php", desenvolve).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
     );
@@ -49,4 +41,5 @@ export class InstituicaoService {
     console.log(erro);
     return null;
   }
+
 }
