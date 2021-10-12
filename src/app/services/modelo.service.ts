@@ -26,6 +26,13 @@ export class ModeloService {
     );
   }
 
+  listar(pesquisa): Observable<any[]> {
+    return this.http.post<any[]>(this.URL+ '/listar_modelo.php', pesquisa).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+
   async exibirToast(mensagem, cor) { 
     const toast = await this.toastController.create( 
       { 

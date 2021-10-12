@@ -7,6 +7,9 @@ import { ModeloService } from '../services/modelo.service';
 import { TrabalhoService } from '../services/trabalho.service';
 import { Storage } from '@ionic/storage-angular';
 import { DesenvolveUsuarioTrabalhoService } from '../services/desenvolve-usuario-trabalho.service';
+import { Observable } from 'rxjs';
+import { IPesquisa } from '../model/IPesquisa.model';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modelos',
@@ -46,13 +49,21 @@ export class ModelosPage implements OnInit {
     cargo: 1,
   }
 
+  pesquisa: IPesquisa = {
+    pesquisa: ''
+  }
+
+  listaModelo: Observable<IModelo[]>;
+
   constructor(
     private trabalhoService: TrabalhoService,
     private modeloService: ModeloService,
     private desenvolve: DesenvolveUsuarioTrabalhoService,
     private router: Router,
     private storage: Storage
-  ) { }
+  ) {
+    this.pesquisar();
+  }
 
   async ngOnInit() {
     await this.storage.create();
@@ -82,5 +93,10 @@ export class ModelosPage implements OnInit {
       } 
     );
   }
+
+  pesquisar(){
+    this.listaModelo = this.modeloService.listar(this.pesquisa).pipe(delay(1000));
+  }
+  
 
 }

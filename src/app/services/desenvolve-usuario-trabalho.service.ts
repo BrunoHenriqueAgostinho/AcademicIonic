@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { ITrabalho } from '../model/ITrabalho.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,13 @@ export class DesenvolveUsuarioTrabalhoService {
     return this.http.post(this.URL + "/inserir_desenvolve.php", desenvolve).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
+    );
+  }
+
+  listar(usuario): Observable<any[]> {
+    return this.http.post<any[]>(this.URL + "/listar_desenvolve.php", usuario).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
     );
   }
 

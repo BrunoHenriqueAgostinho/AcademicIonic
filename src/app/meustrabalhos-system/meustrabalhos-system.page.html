@@ -43,13 +43,13 @@
 
   <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
     <ion-row>
-      <ion-col *ngFor="let trab of trabalho" size="4">
+      <ion-col *ngFor="let trabalho of trabalho" size="4">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>{{trab.nome_trabalho}}</ion-card-title>
+            <ion-card-title>{{trabalho.nome}}</ion-card-title>
           </ion-card-header>
         
-          <ion-card-content>{{trab.descricao_trabalho}}</ion-card-content>
+          <ion-card-content>{{trabalho.descricao}}</ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>

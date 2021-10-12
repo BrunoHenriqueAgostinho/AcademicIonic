@@ -4,6 +4,8 @@ import { TrabalhoService } from './../services/trabalho.service';
 import { Storage } from '@ionic/storage-angular';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { DesenvolveUsuarioTrabalhoService } from '../services/desenvolve-usuario-trabalho.service';
+import { IUsuario } from '../model/IUsuario.model';
 
 @Component({
   selector: 'app-meustrabalhos-system',
@@ -12,12 +14,39 @@ import { delay } from 'rxjs/operators';
 })
 export class MeustrabalhosSystemPage implements OnInit {
 
-  listaTrabalho: Observable<ITrabalho[]>;
-  constructor(private trabalhoService: TrabalhoService) { 
-    this.listaTrabalho = this.trabalhoService.listar_meusTrabalhos().pipe(delay(1000));
+  usuario: IUsuario = {
+    cpf: '',
+    nome: '',
+    senha: '',
+    descricao: '',
+    foto: '',
+    dtCadastro: null,
+    tema: null,
+    status: null,
+    contaStatus: null,
+    email: '',
+    telefoneFixo: '',
+    telefoneCelular: ''
   }
 
-  ngOnInit() {
+  listaTrabalho: Observable<ITrabalho[]>;
+
+  constructor(
+    private trabalhoService: TrabalhoService,
+    private desenvolveService: DesenvolveUsuarioTrabalhoService,
+    private storage: Storage
+    ) {
+      this.desenvolveService.listar(this.usuario).subscribe(
+        retorno => {
+          console.log(retorno);
+        }
+      );
+      //this.listaTrabalho = this.desenvolveService.listar(this.usuario).pipe(delay(1000));
+  }
+
+  async ngOnInit() {
+    await this.storage.create();
+    this.usuario.cpf = await this.storage.get('codigo');
   }
 
 }
