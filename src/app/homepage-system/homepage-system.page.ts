@@ -55,7 +55,7 @@ export class HomepageSystemPage implements OnInit {
     private storage: Storage,
     private router: Router
   ) { 
-    //this.listaTrabalho = this.trabalhoService.listar().pipe(delay(1000));
+    this.listaTrabalho = this.trabalhoService.listar().pipe(delay(1000));
   }
 
   async ngOnInit() {
