@@ -16,6 +16,13 @@ export class TrabalhoService {
     private toastController: ToastController
   ) { }
 
+  consultar(trabalho): Observable<any> {
+    return this.http.post<any>(this.URL + "consultar_trabalho.php", trabalho).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
+    );
+  }
+
   inserir(trabalho): Observable<any> {
     return this.http.post(this.URL + "inserir_trabalho.php", trabalho).pipe(
       map(retorno => retorno),

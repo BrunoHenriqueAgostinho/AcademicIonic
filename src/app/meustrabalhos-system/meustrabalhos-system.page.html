@@ -39,19 +39,21 @@
   <section id="Meu_trabalhos">
     <h1>Meus Trabalhos</h1>
   </section>
-  
 
-  <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
-    <ion-row>
-      <ion-col *ngFor="let trabalho of trabalho" size="4">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{trabalho.nome}}</ion-card-title>
-          </ion-card-header>
-        
-          <ion-card-content>{{trabalho.descricao}}</ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <section id="trabalhos">
+    <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
+      <ion-row>
+        <ion-col size="3" *ngFor="let trabalho of trabalho">
+          <ion-card (click)="abrirTrabalho(trabalho.codigo)">
+            <ion-card-header>
+              <ion-card-title>{{trabalho.nome}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-card-title>{{trabalho.descricao}}</ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
 </ion-content>

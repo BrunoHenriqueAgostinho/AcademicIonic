@@ -90,3 +90,35 @@ ion-content {
     margin: 0;
     color: #2F77FF;
   }
+
+  #trabalhos {
+    width: 100%;
+    margin: 2% 0 2% 0;
+    color: #344057;
+  }
+  
+  ion-card {
+    height: 350px;
+    min-width: 250px;
+  }
+  
+  ion-card {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    --background: white;
+  }
+  
+  ion-card-header ion-card-title {
+    text-align: center;
+    --color: #344057;
+    font-size: 24px;
+    font-weight: 250;
+  }
+
+  ion-card-content ion-card-title{
+    text-align: center;
+    --color: #344057;
+    font-size: 18px;
+    font-weight: 250;
+  }
