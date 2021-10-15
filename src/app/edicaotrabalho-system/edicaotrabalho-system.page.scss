@@ -30,6 +30,12 @@ ion-menu-button {
     --background: white;
 }
 
+#barraDeFerramentas ion-input {
+    border: 1px solid #2F77FF;
+    --color: #344057;
+    border-radius: 5px;
+}
+
 //Fundo da página
 ion-content {
   --background: white;
@@ -86,7 +92,7 @@ input[type="color"]{
 }
 //documento
 #textField {
-    height: 150%;
+    min-height: 150%;
     Width: 60%;
     overflow: scroll;
     margin: 2% 20%;

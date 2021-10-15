@@ -1,6 +1,8 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+//import { PopoverComponent } from '../../component/popover/popover.component';
 import { delay } from 'rxjs/operators';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { TrabalhoService } from '../services/trabalho.service';
@@ -12,6 +14,7 @@ import { TrabalhoService } from '../services/trabalho.service';
 })
 export class EdicaotrabalhoSystemPage implements OnInit {
 
+  arquivo: string = '';
   trabalho: ITrabalho = {
     codigo: null,
     nome: 'novo trabalho',
@@ -30,7 +33,8 @@ export class EdicaotrabalhoSystemPage implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private trabalhoService: TrabalhoService
+    private trabalhoService: TrabalhoService,
+    private popoverController: PopoverController
   ) { }
 
   ngOnInit() {
@@ -55,9 +59,15 @@ export class EdicaotrabalhoSystemPage implements OnInit {
           this.trabalho.cnpj = retorno.cnpj;
         }
       );
-      var documento = document.getElementById('textField');
-      documento.innerText = this.trabalho.arquivo;
     }
   }
 
+  salvar() {
+    this.trabalho.arquivo = window.frames['textField'].document.body.innerHTML;
+    this.trabalhoService.alterar(this.trabalho).subscribe(
+      retorno => {
+        console.log(retorno);
+      }
+    );
+  }
 }

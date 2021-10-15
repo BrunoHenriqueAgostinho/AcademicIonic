@@ -30,6 +30,13 @@ export class TrabalhoService {
     );
   }
 
+  alterar(trabalho): Observable<any> {
+    return this.http.put(this.URL + "alterar_trabalho.php", trabalho).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+
   listar(): Observable<ITrabalho[]> {
     return this.http.get<ITrabalho[]>(this.URL+ 'listar_trabalho.php').pipe(
       map(retorno => retorno),
