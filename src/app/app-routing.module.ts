@@ -42,7 +42,11 @@ const routes: Routes = [
   {
     path: 'edicaotrabalho-system/:codigoTrabalho',
     loadChildren: () => import('./edicaotrabalho-system/edicaotrabalho-system.module').then( m => m.EdicaotrabalhoSystemPageModule)
+  },  {
+    path: 'participantes-trabalho',
+    loadChildren: () => import('./modals/participantes-trabalho/participantes-trabalho.module').then( m => m.ParticipantesTrabalhoPageModule)
   }
+
 
 
 

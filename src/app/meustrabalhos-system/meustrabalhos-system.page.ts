@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ITrabalho } from './../model/ITrabalho.model';
-import { TrabalhoService } from './../services/trabalho.service';
 import { Storage } from '@ionic/storage-angular';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -33,7 +32,6 @@ export class MeustrabalhosSystemPage implements OnInit {
   listaTrabalho: Observable<ITrabalho[]>;
 
   constructor(
-    private trabalhoService: TrabalhoService,
     private desenvolveService: DesenvolveUsuarioTrabalhoService,
     private storage: Storage,
     private router: Router
@@ -49,7 +47,7 @@ export class MeustrabalhosSystemPage implements OnInit {
     this.listaTrabalho = this.desenvolveService.listar(this.usuario).pipe(delay(1000));
     this.desenvolveService.listar(this.usuario).subscribe(
       retorno => {
-        console.log(retorno);
+        console.table(retorno);
       }
     );
   }

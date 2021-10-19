@@ -143,7 +143,7 @@
             <ion-col><ion-icon name="trash-sharp" id="icone"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
-            <ion-col><ion-icon name="people-circle-sharp" id="icone"></ion-icon></ion-col>
+            <ion-col><ion-icon name="people-circle-sharp" id="icone" (click)="openModal()"></ion-icon></ion-col>
             <ion-col><ion-icon name="eye-off-sharp" id="icone"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
@@ -156,6 +156,7 @@
 </ion-header>
 
 <ion-content>
+  <button onclick="toogleSource()">mudar</button><br>
   <iframe onLoad="enableEditMode();" id="textField" name="textField" seamless="seamless" scrolling="yes" frameborder="0" srcdoc="{{trabalho.arquivo}}"></iframe>
   
 </ion-content>

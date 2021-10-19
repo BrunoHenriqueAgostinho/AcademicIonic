@@ -1,0 +1,15 @@
+ion-toolbar{
+    --background: white;
+    --color: black;
+}
+
+ion-content, ion-list, ion-item {
+    --background: white;
+    background: white;
+    --color: black;
+}
+
+ion-select, ion-select-option {
+    background-color: white;
+    --color: black;
+}

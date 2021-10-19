@@ -1,0 +1,25 @@
+<!-- my-modal.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{tituloModal}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="listaUsuario | async as usuario; else carregando">
+    <ion-item *ngFor="let usuario of usuario"> 
+      <ion-avatar slot="start">
+        <img src="https://veja.abril.com.br/wp-content/uploads/2017/07/pessoa-neurocc81tica.jpg?quality=70&strip=info&resize=680,453">
+      </ion-avatar>
+      <ion-label>{{usuario.nome}}</ion-label>
+      <ion-select value="Autor" okText="Confirmar" cancelText="Cancelar">
+        <ion-select-option value="Autor">Autor</ion-select-option>
+        <ion-select-option value="Coautor">Coautor</ion-select-option>
+        <ion-select-option value="Orientador">Orientador</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="closeModal()" expand="block">
+    Confirmar
+  </ion-button>
+</ion-content>

@@ -2,10 +2,11 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-//import { PopoverComponent } from '../../component/popover/popover.component';
 import { delay } from 'rxjs/operators';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { TrabalhoService } from '../services/trabalho.service';
+import { ModalController } from '@ionic/angular';
+import { ParticipantesTrabalhoPage } from '../modals/participantes-trabalho/participantes-trabalho.page';
 
 @Component({
   selector: 'app-edicaotrabalho-system',
@@ -29,12 +30,13 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     modelo: null,
     cnpj: null
   }
+  dataReturned: any;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private trabalhoService: TrabalhoService,
-    private popoverController: PopoverController
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -69,5 +71,24 @@ export class EdicaotrabalhoSystemPage implements OnInit {
         console.log(retorno);
       }
     );
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: ParticipantesTrabalhoPage,
+      componentProps: {
+        "paramID": this.trabalho.codigo,
+        "paramTitle": "Participantes do Trabalho"
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+
+    return await modal.present();
   }
 }

@@ -4,6 +4,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ITrabalho } from '../model/ITrabalho.model';
+import { IUsuario } from '../model/IUsuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,13 @@ export class DesenvolveUsuarioTrabalhoService {
 
   listar(usuario): Observable<ITrabalho[]> {
     return this.http.post<ITrabalho[]>(this.URL + "/listar_desenvolve.php", usuario).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+
+  listarUsuariosTrabalho(trabalho): Observable<IUsuario[]> {
+    return this.http.post<IUsuario[]>(this.URL + "/listar_usuario.php", trabalho).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibeErro(erro))
     );
