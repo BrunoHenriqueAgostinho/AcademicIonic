@@ -12,11 +12,12 @@
         <img src="https://veja.abril.com.br/wp-content/uploads/2017/07/pessoa-neurocc81tica.jpg?quality=70&strip=info&resize=680,453">
       </ion-avatar>
       <ion-label>{{usuario.nome}}</ion-label>
-      <ion-select value="Autor" okText="Confirmar" cancelText="Cancelar">
-        <ion-select-option value="Autor">Autor</ion-select-option>
-        <ion-select-option value="Coautor">Coautor</ion-select-option>
-        <ion-select-option value="Orientador">Orientador</ion-select-option>
+      <ion-select value="{{usuario.cargo}}" okText="Confirmar" cancelText="Cancelar">
+        <ion-select-option value="1">Autor</ion-select-option>
+        <ion-select-option value="3">Coautor</ion-select-option>
+        <ion-select-option value="2">Orientador</ion-select-option>
       </ion-select>
+      <ion-icon slot="end" name="close-circle-sharp" color="danger"></ion-icon>
     </ion-item>
   </ion-list>
   <ion-button (click)="closeModal()" expand="block">

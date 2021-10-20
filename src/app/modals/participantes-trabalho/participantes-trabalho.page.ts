@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DesenvolveUsuarioTrabalhoService } from 'src/app/services/desenvolve-usuario-trabalho.service';
+import { IDesenvolve } from 'src/app/model/IDesenvolve.model';
 import { 
   ModalController, 
   NavParams 
@@ -20,7 +21,7 @@ export class ParticipantesTrabalhoPage implements OnInit {
   codigoModal: number;
   dataReturned: any;
 
-  listaUsuario: Observable<IUsuario[]>;
+  listaUsuario: Observable<IDesenvolve[]>;
 
   trabalho: ITrabalho = {
     codigo: null,
@@ -44,16 +45,15 @@ export class ParticipantesTrabalhoPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    //console.table(this.navParams);
     this.codigoModal = this.navParams.data.paramID;
     this.tituloModal = this.navParams.data.paramTitle;
     this.trabalho.codigo = Number(this.codigoModal);
     this.listaUsuario = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(200));
+    console.log(this.listaUsuario);
   }
 
   async closeModal() {
-    const onClosedData: string = "Wrapped Up!";
-    await this.modalController.dismiss(onClosedData);
+    await this.modalController.dismiss();
   }
 
 }

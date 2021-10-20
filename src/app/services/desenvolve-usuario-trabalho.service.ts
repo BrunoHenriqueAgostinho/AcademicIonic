@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { IDesenvolve } from '../model/IDesenvolve.model';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { IUsuario } from '../model/IUsuario.model';
 
@@ -34,8 +35,8 @@ export class DesenvolveUsuarioTrabalhoService {
     );
   }
 
-  listarUsuariosTrabalho(trabalho): Observable<IUsuario[]> {
-    return this.http.post<IUsuario[]>(this.URL + "/listar_usuario.php", trabalho).pipe(
+  listarUsuariosTrabalho(trabalho): Observable<IDesenvolve[]> {
+    return this.http.post<IDesenvolve[]>(this.URL + "/listar_usuario.php", trabalho).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibeErro(erro))
     );
