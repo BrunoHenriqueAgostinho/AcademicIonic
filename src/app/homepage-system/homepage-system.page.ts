@@ -46,6 +46,9 @@ export class HomepageSystemPage implements OnInit {
   }
 
   tipo = '';
+  pesquisa = {
+    pesquisa: ''
+  };
   
   listaTrabalho: Observable<ITrabalho[]>;
   constructor(
@@ -55,10 +58,11 @@ export class HomepageSystemPage implements OnInit {
     private storage: Storage,
     private router: Router
   ) { 
-    this.listaTrabalho = this.trabalhoService.listar().pipe(delay(1000));
+    
   }
 
   async ngOnInit() {
+    this.atualizar();
     await this.storage.create();
     //this.codigo = parseInt(await this.storage.get('codigo'));
     //this.senha = await this.storage.get('senha');
@@ -90,11 +94,11 @@ export class HomepageSystemPage implements OnInit {
    
   }
 
-  pesquisar(trab: any){
-    
+  pesquisar(){
+    this.listaTrabalho = this.trabalhoService.pesquisar(this.pesquisa).pipe(delay(100));
   }
-  /*atualizar() {
-    this.listaTrabalho = this.trabalhoService.listar().pipe(delay(500));
-  }*/
+  atualizar() {
+    this.listaTrabalho = this.trabalhoService.listar().pipe(delay(100));
+  }
 
 }

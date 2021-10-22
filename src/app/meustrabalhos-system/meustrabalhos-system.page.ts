@@ -41,15 +41,23 @@ export class MeustrabalhosSystemPage implements OnInit {
     this.router.navigate(["/edicaotrabalho-system/" + codigoTrabalho]);
   }
 
+  atualizar(){
+    this.listaTrabalho = this.desenvolveService.listar(this.usuario).pipe(delay(1000));
+  }
+
   async ngOnInit() {
     await this.storage.create();
     this.usuario.cpf = String(await this.storage.get('codigo'));
-    this.listaTrabalho = this.desenvolveService.listar(this.usuario).pipe(delay(1000));
+    this.atualizar();
     this.desenvolveService.listar(this.usuario).subscribe(
       retorno => {
         console.table(retorno);
       }
     );
+  }
+
+  ionViewDidEnter(){
+    this.atualizar();
   }
 
 }
