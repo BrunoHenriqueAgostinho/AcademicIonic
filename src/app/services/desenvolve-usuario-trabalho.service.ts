@@ -4,6 +4,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { IDesenvolve } from '../model/IDesenvolve.model';
+import { IDesenvolveusuariotrabalho } from '../model/IDesenvolveusuariotrabalho.model';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { IUsuario } from '../model/IUsuario.model';
 
@@ -37,6 +38,19 @@ export class DesenvolveUsuarioTrabalhoService {
 
   listarUsuariosTrabalho(trabalho): Observable<IDesenvolve[]> {
     return this.http.post<IDesenvolve[]>(this.URL + "/listar_usuario.php", trabalho).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+  alterar(desenvolve): Observable<any> {
+    return this.http.put(this.URL + "/alterar_desenvolve.php", desenvolve).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+
+  excluir(desenvolve): Observable<IDesenvolveusuariotrabalho> {
+    return this.http.post<IDesenvolveusuariotrabalho>(this.URL + "/deletar_desenvolve.php", desenvolve).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibeErro(erro))
     );

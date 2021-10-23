@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DesenvolveUsuarioTrabalhoService } from 'src/app/services/desenvolve-usuario-trabalho.service';
 import { IDesenvolve } from 'src/app/model/IDesenvolve.model';
 import { 
+  AlertController,
   ModalController, 
   NavParams 
   } from '@ionic/angular';
@@ -9,6 +10,7 @@ import { IUsuario } from 'src/app/model/IUsuario.model';
 import { Observable } from 'rxjs';
 import { ITrabalho } from 'src/app/model/ITrabalho.model';
 import { delay } from 'rxjs/operators';
+import { IDesenvolveusuariotrabalho } from 'src/app/model/IDesenvolveusuariotrabalho.model';
 
 @Component({
   selector: 'app-participantes-trabalho',
@@ -21,7 +23,13 @@ export class ParticipantesTrabalhoPage implements OnInit {
   codigoModal: number;
   dataReturned: any;
 
-  listaUsuario: Observable<IDesenvolve[]>;
+  listaMembros: Observable<IDesenvolve[]>;
+
+  desenvolve : IDesenvolveusuariotrabalho = {
+    cpf: '',
+    codigo: null,
+    cargo: null,
+  }
 
   trabalho: ITrabalho = {
     codigo: null,
@@ -38,22 +46,54 @@ export class ParticipantesTrabalhoPage implements OnInit {
     cnpj: null
   }
 
+  selectCargo = null;
+
   constructor(
     private desenvolveService: DesenvolveUsuarioTrabalhoService,
     private modalController: ModalController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
     this.codigoModal = this.navParams.data.paramID;
     this.tituloModal = this.navParams.data.paramTitle;
     this.trabalho.codigo = Number(this.codigoModal);
-    this.listaUsuario = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(200));
-    console.log(this.listaUsuario);
+    this.listaMembros = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(200));
+    console.log(this.listaMembros);
   }
 
   async closeModal() {
     await this.modalController.dismiss();
+  }
+
+  async excluir(cpf) {
+    this.desenvolve.codigo = this.trabalho.codigo;
+    this.desenvolve.cpf = cpf;
+    const alerta = await this.alertController.create({
+      header: 'Desvincular Membro',
+      message: 'Você tem certeza que deseja desvincular esse membro desse trabalho?',
+      buttons: [
+        {
+          text:'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text:'Desvincular',
+          handler:() => {
+            this.desenvolveService.excluir(this.desenvolve).subscribe(
+              (dados)=>{
+                console.log(dados);
+                this.listaMembros = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(200));
+              }
+            );
+          }
+        }
+      ]
+    });
+    await alerta.present();
+  }
+  alterar(usuario) {
   }
 
 }
