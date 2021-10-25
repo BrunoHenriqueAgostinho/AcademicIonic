@@ -11,6 +11,8 @@ import { Observable } from 'rxjs';
 import { ITrabalho } from 'src/app/model/ITrabalho.model';
 import { delay } from 'rxjs/operators';
 import { IDesenvolveusuariotrabalho } from 'src/app/model/IDesenvolveusuariotrabalho.model';
+import { IPesquisa } from 'src/app/model/IPesquisa.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-participantes-trabalho',
@@ -24,11 +26,16 @@ export class ParticipantesTrabalhoPage implements OnInit {
   dataReturned: any;
 
   listaMembros: Observable<IDesenvolve[]>;
+  listaUsuarios: Observable<IUsuario[]>;
+
+  pesquisa: IPesquisa = {
+    pesquisa: ''
+  }
 
   desenvolve : IDesenvolveusuariotrabalho = {
     cpf: '',
     codigo: null,
-    cargo: null,
+    cargo: null
   }
 
   trabalho: ITrabalho = {
@@ -50,6 +57,7 @@ export class ParticipantesTrabalhoPage implements OnInit {
 
   constructor(
     private desenvolveService: DesenvolveUsuarioTrabalhoService,
+    private usuarioService: UsuarioService,
     private modalController: ModalController,
     private navParams: NavParams,
     private alertController: AlertController
@@ -67,9 +75,10 @@ export class ParticipantesTrabalhoPage implements OnInit {
     await this.modalController.dismiss();
   }
 
-  async excluir(cpf) {
+  async excluirUsuarioTrabalho(cpf) {
     this.desenvolve.codigo = this.trabalho.codigo;
-    this.desenvolve.cpf = cpf;
+    this.desenvolve.cpf = String(cpf);
+    console.table(this.desenvolve);
     const alerta = await this.alertController.create({
       header: 'Desvincular Membro',
       message: 'Você tem certeza que deseja desvincular esse membro desse trabalho?',
@@ -93,7 +102,21 @@ export class ParticipantesTrabalhoPage implements OnInit {
     });
     await alerta.present();
   }
-  alterar(usuario) {
+
+  adicionarUsuarioTrabalho(cpf) {
+    this.desenvolve.cpf = cpf;
+    this.desenvolve.codigo = this.trabalho.codigo;
+    this.desenvolveService.inserir(this.desenvolve).subscribe(
+      retorno => {
+        this.desenvolveService.exibirToast(retorno.mensagem, 'success');
+      }
+    );
   }
 
+  alterar(cpf, cargo) {
+  }
+  
+  listarUsuarios() {
+    this.listaUsuarios = this.usuarioService.listar(this.pesquisa).pipe(delay(200));
+  }
 }

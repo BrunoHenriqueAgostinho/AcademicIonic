@@ -32,6 +32,11 @@ export class EdicaotrabalhoSystemPage implements OnInit {
   }
   dataReturned: any;
 
+  direita = "";
+  esquerda = "";
+  topo = "";
+  rodape = "";
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -117,7 +122,13 @@ export class EdicaotrabalhoSystemPage implements OnInit {
         //alert('Modal Sent Data :'+ dataReturned);
       }
     });
-
     return await modal.present();
+  }
+
+  mudar() {
+    document.getElementById("textField").style.paddingLeft= this.esquerda;
+    document.getElementById("textField").style.paddingRight= this.direita;
+    document.getElementById("textField").style.paddingTop= this.topo;
+    document.getElementById("textField").style.paddingBottom= this.rodape;
   }
 }
