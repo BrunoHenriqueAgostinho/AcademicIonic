@@ -4,17 +4,10 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons class="opcoes" slot="end">
-      <ion-item lines="none">
-        <ion-label>Para Instituições</ion-label>
-      </ion-item>
-      <ion-item lines="none"> 
-        <ion-label>Para Estudantes</ion-label>
-      </ion-item>
-      <div style="border-left:1px solid #000;height:35px"></div>
       <ion-item [routerLink]="['/meustrabalhos-system']" lines="none">
         <ion-label>Trabalhos</ion-label>
       </ion-item>
-      <ion-item [routerLink]="" lines="none">
+      <ion-item [routerLink]="['/perfil']" lines="none">
         <ion-label>Perfil</ion-label>
       </ion-item>
     </ion-buttons>
