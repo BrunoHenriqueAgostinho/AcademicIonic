@@ -33,6 +33,13 @@ export class UsuarioService {
     );
   }
 
+  listar(pesquisa): Observable<IUsuario[]> {
+    return this.http.post<IUsuario[]>( this.URL + "/listar_usuario.php", pesquisa).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+
   async exibirToast(mensagem, cor) { 
     const toast = await this.toastController.create( 
       { 

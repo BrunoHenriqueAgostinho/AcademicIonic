@@ -35,6 +35,7 @@
     function execCommandWithArg(command, arg){
         textField.document.execCommand(command, false, arg);
     }
+
     function toogleSource(){
         if(showingSourceCode){
             textField.document.getElementsByTagName('body')[0].innerHTML = textField.document.getElementsByTagName('body')[0].textContent;

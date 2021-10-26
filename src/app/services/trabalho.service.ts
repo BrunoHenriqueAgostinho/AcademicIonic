@@ -51,8 +51,8 @@ export class TrabalhoService {
     );
   }
 
-  pesquisar(): Observable<ITrabalho[]> {
-    return this.http.get<ITrabalho[]>(this.URL+ 'pesquisar_trabalho.php', ).pipe(
+  pesquisar(pesquisa): Observable<ITrabalho[]> {
+    return this.http.post<ITrabalho[]>(this.URL+ 'pesquisar_trabalho.php', pesquisa).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibeErro(erro))
     );

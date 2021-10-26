@@ -16,7 +16,7 @@
 </ion-header>
 
 <ng-template #carregando>
-  Carregando Modelos...
+  <ion-progress-bar type="indeterminate"></ion-progress-bar>
 </ng-template>
 
 <ion-content [fullscreen]="true">
@@ -35,9 +35,9 @@
       <ion-row>
         <ion-col size="3" *ngFor="let modelo of modelo">
           <ion-card (click)="criarTrabalho(modelo.codigo)">
-            <ion-card-content>
+            <ion-card-header>
               <ion-card-title>{{modelo.nome}}</ion-card-title>
-            </ion-card-content>
+            </ion-card-header>
           </ion-card>
         </ion-col>
       </ion-row>

@@ -17,6 +17,7 @@ ion-menu-button {
     font-weight: 900;
     font-style:italic;
     font-size: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #barraDeFerramentas a{
@@ -28,11 +29,13 @@ ion-menu-button {
     font-size: 18px;
     box-shadow: none;
     --background: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 //Fundo da página
 ion-content {
     --background: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
   
 // Sessão de dados - Cadastro
@@ -40,8 +43,8 @@ ion-content {
     display: flex;
     //align-items: center;
     width: 80%;
-    height: 481px;
-    margin: 6% auto;
+    height: 480px;
+    margin: 1% auto;
     background-color: #344057;
 }
 
@@ -59,12 +62,14 @@ ion-content {
 #item_cadastro h1{
     font-weight: bold;
     font-size: 80px;
-    //text-align: center;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #item_cadastro p{
-    font-size: 14px;
-    //text-align: center;
+    font-size: 18px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #card_cadastro #item_cadastro .cad_usuario .itemDoInput{
@@ -99,6 +104,7 @@ ion-content {
     --padding-top: 12px;
     margin-top: 10px;
     border-radius: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #card_cadastro #item_cadastro .cad_usuario{

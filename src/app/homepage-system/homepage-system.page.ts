@@ -46,6 +46,9 @@ export class HomepageSystemPage implements OnInit {
   }
 
   tipo = '';
+  pesquisa = {
+    pesquisa: ''
+  };
   
   listaTrabalho: Observable<ITrabalho[]>;
   constructor(
@@ -55,7 +58,7 @@ export class HomepageSystemPage implements OnInit {
     private storage: Storage,
     private router: Router
   ) { 
-    this.listaTrabalho = this.trabalhoService.listar().pipe(delay(1000));
+    
   }
 
   async ngOnInit() {
@@ -86,15 +89,14 @@ export class HomepageSystemPage implements OnInit {
     } else {
       this.router.navigate(['/folder']);
     }
-    //console.log('Código: ', this.codigo, '. Senha: ', this.senha, this.tipo);
-   
   }
 
-  pesquisar(trab: any){
-    
+  pesquisar(){
+    this.listaTrabalho = this.trabalhoService.pesquisar(this.pesquisa).pipe(delay(200));
   }
-  /*atualizar() {
-    this.listaTrabalho = this.trabalhoService.listar().pipe(delay(500));
-  }*/
+
+  atualizar() {
+    this.listaTrabalho = this.trabalhoService.listar().pipe(delay(200));
+  }
 
 }

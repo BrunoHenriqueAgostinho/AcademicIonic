@@ -23,23 +23,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true"> 
-  <ion-segment (ionChange)="segmentChanged($event)" color="light">
-    <ion-segment-button value="usuario">
-      <ion-label>Usuário</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="instituicao">
-      <ion-label>Instituição</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  
   
   <ion-card id="card_cadastro">
     <ion-item id="item_cadastro" lines="none">
       <div class="cad_usuario" [ngStyle]="{'display': displayU}">
         <h1>Cadastro</h1>
-
         <p>Faça o cadastro para acessar a sua conta no Academic.</p>
+        <ion-segment (ionChange)="segmentChanged($event)" color="light">
+          <ion-segment-button value="usuario">
+            <ion-label>Usuário</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="instituicao">
+            <ion-label>Instituição</ion-label>
+          </ion-segment-button>
+        </ion-segment>
         <form>
-            <ion-input mask="000.000.000.-00" type="number" required="true" placeholder="CPF" maxlength="11" name="cpfUsuario" [(ngModel)]="usuario.cpf"></ion-input>
+            <ion-input type="number" required="true" placeholder="CPF" maxlength="11" name="cpfUsuario" [(ngModel)]="usuario.cpf"></ion-input>
             <ion-input type="text" required="true" placeholder="Nome completo" name="nomeUsuario" clear-input="True" [(ngModel)]="usuario.nome"></ion-input>
 
             <ion-input type="email" required="true" placeholder="E-mail" name="emailUsuario" [(ngModel)]="usuario.email"></ion-input>
@@ -50,13 +50,20 @@
           
           <ion-button (click)="cadastrarUsuario()">Cadastrar</ion-button>
         </form>
-        <p>Já possui cadastro? Entrar</p>
+        <p>Já possui cadastro? <a href="entrar">Entrar</a></p>
       </div>
 
       <div class="cad_instituicao" [ngStyle]="{'display': displayI}">
         <h1>Cadastro</h1>
-
         <p>Faça o cadastro para acessar a sua conta no Academic.</p>
+        <ion-segment (ionChange)="segmentChanged($event)" color="light">
+          <ion-segment-button value="usuario">
+            <ion-label>Usuário</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="instituicao">
+            <ion-label>Instituição</ion-label>
+          </ion-segment-button>
+        </ion-segment>
         <form>
             <ion-input type="number" placeholder="CNPJ" name="cnpjInstituicao" [(ngModel)]="instituicao.cnpj"></ion-input>
             <ion-input type="text" placeholder="Nome completo" name="nomeInstituicao" [(ngModel)]="instituicao.nome"></ion-input>
@@ -66,7 +73,7 @@
           
           <ion-button (click)="cadastrarInstituicao()">Cadastrar</ion-button>
         </form>
-        <p>Já possui cadastro? Entrar</p>
+        <p>Já possui cadastro? <a href="entrar">Entrar</a></p>
       </div>
     </ion-item>
 

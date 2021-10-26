@@ -17,6 +17,7 @@ ion-menu-button {
     font-weight: 900;
     font-style:italic;
     font-size: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #barraDeFerramentas a{
@@ -28,11 +29,13 @@ ion-menu-button {
     font-size: 18px;
     box-shadow: none;
     --background: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 //Fundo da página
 ion-content {
   --background: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 // Cabeçalho
@@ -49,12 +52,14 @@ ion-content {
     font-weight: 900;
     padding-bottom: 2%;
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   
   #cabecalho ion-text div {
     max-width: 700px;
     margin: auto;
     padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   
   #cabecalho ion-text div p {
@@ -85,4 +90,30 @@ ion-content {
     --placeholder-font-weight: 300;
     padding: 0;
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  ion-card {
+    height: 350px;
+    min-width: 250px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    --background: white;
+  }
+  
+  ion-card-header ion-card-title {
+    text-align: center;
+    --color: #344057;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  ion-card-content ion-card-title{
+    text-align: center;
+    --color: #344057;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }

@@ -22,18 +22,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <section id="cabecalho">
-    <ion-text>
-      <h1>Bem vindo ao Academic!</h1>
-      <div>
-        <p class="p_desk">Morbi in quam luctus, euismod ligula quis, porttitor eros. Mauris at sodales ex, id laoreet quam. Suspendisse potenti. Etiam orci ipsum, malesuada eget vulputate ut, pulvinar quis leo. Donec ut posuere tortor. Curabitur egestas hendrerit tortor, id vehicula nibh varius a. Nam vel dictum ante. Integer bibendum dolor lacus, et pellentesque augue convallis ut.</p>
-        <p class="p_mobile">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at luctus leo.</p>
-        <ion-searchbar class="p_desk" placeholder="Pesquise por artigos" searchIcon="search-sharp" [debounce]="250"  inputMode="text"></ion-searchbar>
-        <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250"  inputMode="text"></ion-searchbar>
-      </div>
-    </ion-text>
-  </section>
+<ng-template #carregando>
   <section id="instituicoes">
     <div id="desenho"><img src="../assets/Formando - Instituições.svg"></div>
     <div id="texto">
@@ -60,7 +49,51 @@
     </div>
     <div id="desenho"><img src="../assets/Livro - Estudantes.svg"></div>
   </section>
+</ng-template>
 
+<ion-content [fullscreen]="true">
+  <section id="cabecalho">
+    <ion-text>
+      <h1>Bem-vindo ao Academic!</h1>
+      <div>
+        <p class="p_desk">Morbi in quam luctus, euismod ligula quis, porttitor eros. Mauris at sodales ex, id laoreet quam. Suspendisse potenti. Etiam orci ipsum, malesuada eget vulputate ut, pulvinar quis leo. Donec ut posuere tortor. Curabitur egestas hendrerit tortor, id vehicula nibh varius a. Nam vel dictum ante. Integer bibendum dolor lacus, et pellentesque augue convallis ut.</p>
+        <p class="p_mobile">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at luctus leo.</p>
+        <ion-searchbar class="p_desk" placeholder="Pesquise por artigos" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
+        <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
+        
+        <ion-chip>
+          <ion-label>Exatas</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-label>Humanas</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-label>Biológicas</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-label>Linguagens</ion-label>
+        </ion-chip>
+        
+      </div>
+    </ion-text>
+  </section>
+  <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
+    <ion-row>
+      <ion-col size="3" *ngFor="let trab of trabalho">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{trab.nome}}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-card-title>
+              {{trab.descricao}}
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <section id="rodape">
     <div id="barra01"></div>
     <div id="barra02">

@@ -2,10 +2,11 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-//import { PopoverComponent } from '../../component/popover/popover.component';
 import { delay } from 'rxjs/operators';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { TrabalhoService } from '../services/trabalho.service';
+import { ModalController } from '@ionic/angular';
+import { ParticipantesTrabalhoPage } from '../modals/participantes-trabalho/participantes-trabalho.page';
 
 @Component({
   selector: 'app-edicaotrabalho-system',
@@ -29,12 +30,18 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     modelo: null,
     cnpj: null
   }
+  dataReturned: any;
+
+  direita = "";
+  esquerda = "";
+  topo = "";
+  rodape = "";
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private trabalhoService: TrabalhoService,
-    private popoverController: PopoverController
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -64,10 +71,64 @@ export class EdicaotrabalhoSystemPage implements OnInit {
 
   salvar() {
     this.trabalho.arquivo = window.frames['textField'].document.body.innerHTML;
+    this.testeArquivo();
     this.trabalhoService.alterar(this.trabalho).subscribe(
       retorno => {
         console.log(retorno);
       }
     );
+  }
+
+  testeArquivo() {
+
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: right;"', 'align="right"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: left;"', 'align="left"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: center;"', 'align="center"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: justify;"', 'align="justify"');
+
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="right" style="text-align: right;"', 'align="right"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="right" style="text-align: left;"', 'align="left"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="right" style="text-align: center;"', 'align="center"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="right" style="text-align: justify;"', 'align="justify"');
+
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="left" style="text-align: right;"', 'align="right"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="left" style="text-align: left;"', 'align="left"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="left" style="text-align: center;"', 'align="center"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="left" style="text-align: justify;"', 'align="justify"');
+
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="justify" style="text-align: right;"', 'align="right"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="justify" style="text-align: left;"', 'align="left"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="justify" style="text-align: center;"', 'align="center"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('align="justify" style="text-align: justify;"', 'align="justify"');
+
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: center;"', 'align="center"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: left;"', 'align="left"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: right;"', 'align="right"');
+    this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: justify;"', 'align="justify"');
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: ParticipantesTrabalhoPage,
+      componentProps: {
+        "paramID": this.trabalho.codigo,
+        "paramTitle": "Participantes do Trabalho"
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+    return await modal.present();
+  }
+
+  mudar() {
+    document.getElementById("textField").style.paddingLeft= this.esquerda;
+    document.getElementById("textField").style.paddingRight= this.direita;
+    document.getElementById("textField").style.paddingTop= this.topo;
+    document.getElementById("textField").style.paddingBottom= this.rodape;
   }
 }
