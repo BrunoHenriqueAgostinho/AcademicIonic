@@ -17,7 +17,7 @@ export class AppComponent {
     { title: 'Entrar', url: '/entrar', icon: 'enter' }
   ];
   public paginasUsuario = [
-    { title: 'Perfil', url: '/folder', icon: 'person' },
+    { title: 'Perfil', url: '/perfil', icon: 'person' },
     { title: 'Para Estudantes', url: '/folder', icon: 'book' },
     { title: 'Para Instituições', url: '/folder', icon: 'storefront' },
     { title: 'Meus Trabalhos', url: '/meustrabalhos-system', icon: 'clipboard' }

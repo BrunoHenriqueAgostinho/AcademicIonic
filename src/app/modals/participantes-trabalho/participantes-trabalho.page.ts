@@ -80,6 +80,7 @@ export class ParticipantesTrabalhoPage implements OnInit {
     this.desenvolve.cpf = String(cpf);
     console.table(this.desenvolve);
     const alerta = await this.alertController.create({
+      cssClass: 'alerta',
       header: 'Desvincular Membro',
       message: 'Você tem certeza que deseja desvincular esse membro desse trabalho?',
       buttons: [
@@ -113,7 +114,15 @@ export class ParticipantesTrabalhoPage implements OnInit {
     );
   }
 
-  alterar(cpf, cargo) {
+  alterar(cargo, cpf) {
+    this.desenvolve.codigo = this.trabalho.codigo;
+    this.desenvolve.cpf = cpf;
+    this.desenvolve.cargo = cargo.detail.value;
+    this.desenvolveService.alterar(this.desenvolve).subscribe(
+      retorno => {
+        this.desenvolveService.exibirToast(retorno.mensagem, 'success');
+      }
+    );
   }
   
   listarUsuarios() {
