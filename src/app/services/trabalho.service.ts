@@ -58,6 +58,13 @@ export class TrabalhoService {
     );
   }
 
+  excluir(trabalho): Observable<any> {
+    return this.http.post(this.URL + "deletar_trabalho.php", trabalho).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+
   async exibirToast(mensagem, cor) { 
     const toast = await this.toastController.create( 
       { 

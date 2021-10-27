@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { delay } from 'rxjs/operators';
 import { IUsuario } from '../model/IUsuario.model';
 import { UsuarioService } from '../services/usuario.service';
 import { ITrabalho } from './../model/ITrabalho.model';
@@ -34,7 +36,9 @@ export class PerfilPage implements OnInit {
   constructor(
     private storage: Storage,
     private usuarioService: UsuarioService,
-    private trabalhoService: TrabalhoService) { }
+    private trabalhoService: TrabalhoService,
+    private router: Router
+    ) { }
 
   async ngOnInit() {
     await this.storage.create();
@@ -70,4 +74,20 @@ export class PerfilPage implements OnInit {
     }*/
   }
 
+  salvarAlteracoes() {
+    this.usuario.telefoneCelular = String(this.usuario.telefoneCelular);
+    this.usuario.telefoneFixo = String(this.usuario.telefoneFixo);
+    console.log(this.usuario);
+    this.usuarioService.alterar(this.usuario).subscribe(
+      retorno => {
+        this.usuarioService.exibirToast(retorno.mensagem, "success");
+      }
+    );
+  }
+
+  async sair(){
+    await this.storage.create();
+    this.storage.clear();
+    this.router.navigate(["/folder"]);
+  }
 }

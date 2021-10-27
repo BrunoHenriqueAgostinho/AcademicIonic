@@ -1,12 +1,14 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import { AlertController, PopoverController } from '@ionic/angular';
 import { delay } from 'rxjs/operators';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { TrabalhoService } from '../services/trabalho.service';
 import { ModalController } from '@ionic/angular';
 import { ParticipantesTrabalhoPage } from '../modals/participantes-trabalho/participantes-trabalho.page';
+import { DesenvolveUsuarioTrabalhoService } from '../services/desenvolve-usuario-trabalho.service';
+import { IDesenvolveusuariotrabalho } from '../model/IDesenvolveusuariotrabalho.model';
 
 @Component({
   selector: 'app-edicaotrabalho-system',
@@ -30,6 +32,13 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     modelo: null,
     cnpj: null
   }
+
+  desenvolve: IDesenvolveusuariotrabalho = {
+    cpf: '',
+    codigo: null,
+    cargo: null
+  }
+
   dataReturned: any;
 
   direita = "";
@@ -41,7 +50,9 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private trabalhoService: TrabalhoService,
-    public modalController: ModalController
+    private desenvolveService: DesenvolveUsuarioTrabalhoService,
+    public modalController: ModalController,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -79,8 +90,36 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     );
   }
 
-  testeArquivo() {
+  async deletar() {
+    this.desenvolve.codigo = this.trabalho.codigo;
+    const alerta = await this.alertController.create({
+      cssClass: 'alerta',
+      header: 'Deletar Trabalho',
+      message: 'Você tem certeza que deseja deletar esse trabalho?',
+      buttons: [
+        {
+          text:'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text:'Deletar',
+          handler:() => {
+            this.trabalhoService.excluir(this.trabalho).subscribe(
+              retorno => {
+                this.trabalhoService.exibirToast(retorno.mensagem, "success");
+              }
+            );
+            this.router.navigate(["/meustrabalhos-system"])
+          }
+        }
+      ]
+    });
+    await alerta.present();
+    
+    
+  }
 
+  testeArquivo() {
     this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: right;"', 'align="right"');
     this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: left;"', 'align="left"');
     this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: center;"', 'align="center"');

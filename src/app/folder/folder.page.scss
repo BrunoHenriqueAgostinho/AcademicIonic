@@ -1,7 +1,6 @@
 // Barra de Ferramentas
 #barraDeFerramentas{
   --background: white;
-  padding: 0;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.250);
   width: 100%;
   padding: 0% 12% 0% 12%;
@@ -16,13 +15,13 @@ ion-menu-button {
   color: #2F77FF;
   font-weight: 900;
   font-style:italic;
-  font-size: 24px;
+  font-size: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #barraDeFerramentas ion-item {
   color: #344057;
-  font-size: 18px;
+  font-size: 16px;
   box-shadow: none;
   --background: white;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -44,7 +43,7 @@ ion-content {
 }
 
 #cabecalho ion-text h1 {
-  font-size: 72px;
+  font-size: 70px;
   font-weight: 900;
   padding-bottom: 2%;
   margin: 0;
@@ -57,7 +56,7 @@ ion-content {
 }
 
 #cabecalho ion-text div p {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 250;
   text-align: justify;
 }
@@ -142,12 +141,12 @@ ion-chip {
 }
 
 #texto ion-text h1 {
-  font-size: 78px;
+  font-size: 70px;
   font-weight: 900;
 }
 
 #texto ion-text p {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   text-align: justify;
 }
@@ -183,15 +182,16 @@ ion-chip {
 }
 
 #barra02 ion-text h1{
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 900;
   font-style:italic;
   margin: 15px 15px;
 }
 
+//trabalho
+
 ion-card {
   height: 350px;
-  min-width: 250px;
 }
 
 ion-card {
@@ -204,7 +204,7 @@ ion-card {
 ion-card-header ion-card-title {
   text-align: center;
   --color: #344057;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -212,17 +212,23 @@ ion-card-header ion-card-title {
 ion-card-content ion-card-title{
   text-align: center;
   --color: #344057;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@media screen and (max-width: 1030px) {
+  ion-col{
+    --ion-grid-columns: 6;
+  }
 }
 
 
 @media screen and (max-width: 500px) {
   #barraDeFerramentas{
-    padding: 7% 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
   }
-
+  
   ion-menu-button {
     display: block;
   }
@@ -232,11 +238,11 @@ ion-card-content ion-card-title{
   }
 
   #barraDeFerramentas ion-title {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   #cabecalho ion-text h1 {
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 900;
     padding-top: 4%;
   }
@@ -250,16 +256,12 @@ ion-card-content ion-card-title{
     font-size: 16px;
   }
 
-  #cabecalho {
-    padding-bottom: 10%;
-  }
-
   #texto ion-text h1 {
     font-size: 20px;
   }
   
   #texto ion-text p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   #rodape{
@@ -282,23 +284,26 @@ ion-card-content ion-card-title{
 
   #instituicoes {
     flex-direction: column;
+    margin: 0;
+    height: auto;
+
   }
 
   #instituicoes #desenho {
     width: 100%;
-    height: 150px;
+    height: auto;
     border-radius:0px 0px 0px 0px;
   }
 
   #estudantes {
     flex-direction: column-reverse;
-    margin-top: 20%;
-    height: 250px;
+    margin: 0;
+    height: auto;
   }
 
   #estudantes #desenho {
     width: 100%;
-    height: 150px;
+    height: auto;
     border-radius:0px 0px 0px 0px;
   }
 
@@ -309,7 +314,11 @@ ion-card-content ion-card-title{
 
   #texto {
     width: 100%;
-    height: 200px;
+    height: auto;
+  }
+
+  ion-col{
+    --ion-grid-columns: 3;
   }
 }
 

@@ -40,6 +40,13 @@ export class UsuarioService {
     );
   }
 
+  alterar(usuario): Observable<any> {
+    return this.http.put(this.URL + "/alterar_usuario.php", usuario).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
+    );
+  }
+
   async exibirToast(mensagem, cor) { 
     const toast = await this.toastController.create( 
       { 
