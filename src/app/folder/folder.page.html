@@ -18,6 +18,21 @@
         <ion-label>Entrar</ion-label>
       </ion-item>
     </ion-buttons>
+    <ion-buttons class="opcoesIcones" slot="end">
+      <ion-item lines="none">
+        <ion-icon id="icone" name="storefront-sharp"></ion-icon>
+      </ion-item>
+      <ion-item lines="none"> 
+        <ion-icon id="icone" name="book-sharp"></ion-icon>
+      </ion-item>
+      <div style="border-left:1px solid #000;height:35px"></div>
+      <ion-item [routerLink]="['/cadastro']" lines="none">
+        <ion-icon id="icone" name="key-sharp" ></ion-icon>
+      </ion-item>
+      <ion-item [routerLink]="['/entrar']" lines="none">
+        <ion-icon id="icone" name="log-in-sharp"></ion-icon>
+      </ion-item>
+    </ion-buttons>
     <ion-title [routerLink]="['/folder']">Academic</ion-title>
   </ion-toolbar>
 </ion-header>

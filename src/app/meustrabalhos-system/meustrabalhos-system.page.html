@@ -11,6 +11,14 @@
         <ion-label>Perfil</ion-label>
       </ion-item>
     </ion-buttons>
+    <ion-buttons class="opcoesIcones" slot="end">
+      <ion-item [routerLink]="['/meustrabalhos-system']" lines="none">
+        <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
+      </ion-item>
+      <ion-item [routerLink]="['/perfil']" lines="none">
+        <ion-icon id="icone" name="body-sharp"></ion-icon>
+      </ion-item>
+    </ion-buttons>
     <ion-title [routerLink]="['/homepage-system']">Academic</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -28,11 +36,7 @@
       </div>
     </ion-text>
   </section>
-
-  <section id="Meu_trabalhos">
-    <h1>Meus Trabalhos</h1>
-  </section>
-
+  
   <section id="trabalhos">
     <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
       <ion-row>

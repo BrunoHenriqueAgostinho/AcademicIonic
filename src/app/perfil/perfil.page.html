@@ -53,5 +53,18 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    {{numeroSeguidos}}
   </section>
+  <ion-grid *ngIf="listaSeguidos | async as amizade; else carregando">
+    <ion-row>
+      <ion-col size="3" *ngFor="let amizade of amizade">
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>{{amizade.seguido}}</ion-card-title>
+            <ion-card-title>{{amizade.seguidor}}</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

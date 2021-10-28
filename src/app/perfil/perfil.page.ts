@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { IAdicionausuariousuario } from '../model/IAdicionausuariousuario.model';
 import { IUsuario } from '../model/IUsuario.model';
+import { AdicionaUsuarioUsuarioService } from '../services/adiciona-usuario-usuario.service';
 import { UsuarioService } from '../services/usuario.service';
 import { ITrabalho } from './../model/ITrabalho.model';
 import { TrabalhoService } from './../services/trabalho.service';
@@ -27,6 +30,10 @@ export class PerfilPage implements OnInit {
     telefoneFixo: '',
     telefoneCelular: ''
   }
+
+  listaSeguidos: Observable<IAdicionausuariousuario[]>;
+  numeroSeguidos = 0;
+
   tipo = '';
 
   status: String = '';
@@ -37,6 +44,7 @@ export class PerfilPage implements OnInit {
     private storage: Storage,
     private usuarioService: UsuarioService,
     private trabalhoService: TrabalhoService,
+    private adicionaService: AdicionaUsuarioUsuarioService,
     private router: Router
     ) { }
 
@@ -54,6 +62,8 @@ export class PerfilPage implements OnInit {
           console.log(this.usuario);
         }
       );
+
+      this.listaSeguidos = this.adicionaService.listar_seguidos(this.usuario).pipe(delay(0));
     }
     /*if(this.usuario.tema == 1){
       this.tema = "Light";
