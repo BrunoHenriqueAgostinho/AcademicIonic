@@ -23,7 +23,10 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     nome: 'novo trabalho',
     descricao: '',
     arquivo: '',
-    formatacao: '',
+    margemDireita: '',
+    margemEsquerda: '',
+    margemTopo: '',
+    margemBaixo: '',
     finalizado: 0,
     dtCriacao: null,
     dtAlteracao: null,
@@ -40,11 +43,6 @@ export class EdicaotrabalhoSystemPage implements OnInit {
   }
 
   dataReturned: any;
-
-  direita = "";
-  esquerda = "";
-  topo = "";
-  rodape = "";
 
   constructor(
     private router: Router,
@@ -67,14 +65,18 @@ export class EdicaotrabalhoSystemPage implements OnInit {
           this.trabalho.nome = retorno.nome;
           this.trabalho.descricao = retorno.descricao;
           this.trabalho.arquivo = retorno.arquivo;
-          this.trabalho.formatacao = retorno.formatacao;
           this.trabalho.finalizado = retorno.finalizado;
+          this.trabalho.margemDireita = retorno.margemDireita;
+          this.trabalho.margemEsquerda = retorno.margemEsquerda;
+          this.trabalho.margemTopo = retorno.margemTopo;
+          this.trabalho.margemBaixo = retorno.margemBaixo;
           this.trabalho.dtCriacao = retorno.dtCriacao;
           this.trabalho.dtAlteracao = retorno.dtAlteracao;
           this.trabalho.dtPublicacao = retorno.dtPublicacao;
           this.trabalho.avaliacao = retorno.avaliacao;
           this.trabalho.modelo = retorno.modelo;
           this.trabalho.cnpj = retorno.cnpj;
+          this.mudar();
         }
       );
     }
@@ -115,8 +117,31 @@ export class EdicaotrabalhoSystemPage implements OnInit {
       ]
     });
     await alerta.present();
-    
-    
+  }
+
+  publicar(){
+    this.trabalho.finalizado = 1;
+    this.trabalhoService.publicar(this.trabalho).subscribe(
+      retorno => this.trabalhoService.exibirToast(retorno.mensagem, "success")
+    );
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: ParticipantesTrabalhoPage,
+      componentProps: {
+        "paramID": this.trabalho.codigo,
+        "paramTitle": "Participantes do Trabalho"
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+    return await modal.present();
   }
 
   testeArquivo() {
@@ -146,28 +171,10 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: justify;"', 'align="justify"');
   }
 
-  async openModal() {
-    const modal = await this.modalController.create({
-      component: ParticipantesTrabalhoPage,
-      componentProps: {
-        "paramID": this.trabalho.codigo,
-        "paramTitle": "Participantes do Trabalho"
-      }
-    });
-
-    modal.onDidDismiss().then((dataReturned) => {
-      if (dataReturned !== null) {
-        this.dataReturned = dataReturned.data;
-        //alert('Modal Sent Data :'+ dataReturned);
-      }
-    });
-    return await modal.present();
-  }
-
   mudar() {
-    document.getElementById("textField").style.paddingLeft= this.esquerda;
-    document.getElementById("textField").style.paddingRight= this.direita;
-    document.getElementById("textField").style.paddingTop= this.topo;
-    document.getElementById("textField").style.paddingBottom= this.rodape;
+    document.getElementById("textField").style.paddingLeft = this.trabalho.margemEsquerda;
+    document.getElementById("textField").style.paddingRight = this.trabalho.margemDireita;
+    document.getElementById("textField").style.paddingTop = this.trabalho.margemTopo;
+    document.getElementById("textField").style.paddingBottom = this.trabalho.margemBaixo;
   }
 }

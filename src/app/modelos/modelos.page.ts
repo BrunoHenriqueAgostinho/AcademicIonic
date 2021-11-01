@@ -23,7 +23,10 @@ export class ModelosPage implements OnInit {
     nome: 'novo trabalho',
     descricao: '',
     arquivo: '',
-    formatacao: '',
+    margemDireita: '',
+    margemEsquerda: '',
+    margemTopo: '',
+    margemBaixo: '',
     finalizado: 0,
     dtCriacao: null,
     dtAlteracao: null,
@@ -37,7 +40,10 @@ export class ModelosPage implements OnInit {
     codigo: null,
     nome: '',
     arquivo: '',
-    formatacao: '',
+    margemDireita: '',
+    margemEsquerda: '',
+    margemTopo: '',
+    margemBaixo: '',
     dtCadastro: null,
     descricao: '',
     cnpj: null
@@ -79,14 +85,17 @@ export class ModelosPage implements OnInit {
         console.log(this.modelo);
         this.trabalho.descricao = this.modelo.descricao;
         this.trabalho.arquivo = this.modelo.arquivo;
-        this.trabalho.formatacao = this.modelo.formatacao;
+        this.trabalho.margemDireita = this.modelo.margemDireita;
+        this.trabalho.margemEsquerda = this.modelo.margemEsquerda;
+        this.trabalho.margemTopo = this.modelo.margemTopo;
+        this.trabalho.margemBaixo = this.modelo.margemBaixo;
         this.trabalho.modelo = this.modelo.codigo;
         this.trabalhoService.inserir(this.trabalho).subscribe(
           retorno => {
             this.desenvolveUsuarioTrabalho.codigo = retorno.codigo;
             console.log(this.desenvolveUsuarioTrabalho);
             this.desenvolve.inserir(this.desenvolveUsuarioTrabalho).subscribe(
-              retorno => this.desenvolve.exibirToast('Trabalho criado com sucesso','medium')
+              retorno => this.desenvolve.exibirToast('Trabalho criado com sucesso.','medium')
             );
           }
         );

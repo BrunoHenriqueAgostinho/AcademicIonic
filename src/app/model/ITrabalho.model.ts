@@ -3,7 +3,10 @@ export interface ITrabalho {
     nome: string;
     descricao: string;
     arquivo: string;
-    formatacao: string;
+    margemDireita: string;
+    margemEsquerda: string;
+    margemTopo: string;
+    margemBaixo: string;
     finalizado: number;
     dtCriacao: Date;
     dtAlteracao: Date;

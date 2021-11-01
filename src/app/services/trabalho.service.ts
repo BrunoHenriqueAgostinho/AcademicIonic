@@ -26,7 +26,7 @@ export class TrabalhoService {
   inserir(trabalho): Observable<any> {
     return this.http.post(this.URL + "inserir_trabalho.php", trabalho).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
+      catchError(erro => this.exibeErro(erro))
     );
   }
 
@@ -34,6 +34,13 @@ export class TrabalhoService {
     return this.http.put(this.URL + "alterar_trabalho.php", trabalho).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibeErro(erro))
+    );
+  }
+
+  publicar(trabalho): Observable<any> {
+    return this.http.put(this.URL + "publicar_trabalho.php", trabalho).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 

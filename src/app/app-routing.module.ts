@@ -50,7 +50,16 @@ const routes: Routes = [
   {
     path: 'participantes-trabalho',
     loadChildren: () => import('./modals/participantes-trabalho/participantes-trabalho.module').then( m => m.ParticipantesTrabalhoPageModule)
+  },
+  {
+    path: 'visualizartrabalho',
+    loadChildren: () => import('./visualizartrabalho/visualizartrabalho.module').then( m => m.VisualizartrabalhoPageModule)
+  },
+  {
+    path: 'visualizartrabalho/:codigoTrabalho',
+    loadChildren: () => import('./visualizartrabalho/visualizartrabalho.module').then( m => m.VisualizartrabalhoPageModule)
   }
+
 
 
 

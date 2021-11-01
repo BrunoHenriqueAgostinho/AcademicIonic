@@ -19,6 +19,20 @@ constructor(
     private alertController: AlertController
   ) { }
 
+  contar_seguidores(usuario): Observable<any> {
+    return this.http.post(this.URL + "/contar_seguidores.php", usuario).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
+    );
+  }
+
+  contar_seguidos(usuario): Observable<any> {
+    return this.http.post(this.URL + "/contar_seguidos.php", usuario).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
+    );
+  }
+
   listar_seguidos(usuario): Observable<IAdicionausuariousuario[]> {
     return this.http.post(this.URL + "/listar_seguidos.php", usuario).pipe(
       map(retorno => retorno),

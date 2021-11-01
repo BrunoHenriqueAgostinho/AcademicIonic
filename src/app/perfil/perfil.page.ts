@@ -31,7 +31,7 @@ export class PerfilPage implements OnInit {
     telefoneCelular: ''
   }
 
-  listaSeguidos: Observable<IAdicionausuariousuario[]>;
+  numeroSeguidores = 0;
   numeroSeguidos = 0;
 
   tipo = '';
@@ -63,7 +63,17 @@ export class PerfilPage implements OnInit {
         }
       );
 
-      this.listaSeguidos = this.adicionaService.listar_seguidos(this.usuario).pipe(delay(0));
+      this.adicionaService.contar_seguidores(this.usuario).subscribe(
+        retorno => {
+          this.numeroSeguidores = retorno.mensagem;
+        }
+      );
+
+      this.adicionaService.contar_seguidos(this.usuario).subscribe(
+        retorno => {
+          this.numeroSeguidos = retorno.mensagem;
+        }
+      );
     }
     /*if(this.usuario.tema == 1){
       this.tema = "Light";

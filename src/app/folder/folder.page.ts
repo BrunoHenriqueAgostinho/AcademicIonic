@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { ITrabalho } from '../model/ITrabalho.model';
@@ -19,7 +19,8 @@ export class FolderPage implements OnInit {
   };
 
   constructor(
-    private trabalhoService: TrabalhoService
+    private trabalhoService: TrabalhoService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,6 +29,10 @@ export class FolderPage implements OnInit {
   pesquisar(){
     this.listaTrabalho = this.trabalhoService.pesquisar(this.pesquisa).pipe(delay(200));
     console.log(this.listaTrabalho);
+  }
+  
+  visualizarTrabalho(trabalho){
+    this.router.navigate(["/visualizartrabalho/" + trabalho]);
   }
 
 }

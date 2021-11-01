@@ -49,11 +49,13 @@
             <ion-button id="botaoAlteracoes" (click)="salvarAlteracoes()" expand="block">
               Salvar alterações
             </ion-button>
+            
           </ion-text>
         </ion-col>
       </ion-row>
     </ion-grid>
-    {{numeroSeguidos}}
+    {{numeroSeguidores}} Seguidores
+    {{numeroSeguidos}} Seguidos
   </section>
   <ion-grid *ngIf="listaSeguidos | async as amizade; else carregando">
     <ion-row>

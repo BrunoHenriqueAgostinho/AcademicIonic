@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar id="barraDeFerramentas">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons class="opcoes" slot="end">
+      <ion-item lines="none">
+        <ion-label>Para Instituições</ion-label>
+      </ion-item>
+      <ion-item lines="none"> 
+        <ion-label>Para Estudantes</ion-label>
+      </ion-item>
+      <div style="border-left:1px solid #000;height:35px"></div>
+      <ion-item [routerLink]="['/cadastro']" lines="none">
+        <ion-label>Cadastrar</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="['/entrar']" lines="none">
+        <ion-label>Entrar</ion-label>
+      </ion-item>
+    </ion-buttons>
+    <ion-buttons class="opcoesIcones" slot="end">
+      <ion-item lines="none">
+        <ion-icon id="icone" name="storefront-sharp"></ion-icon>
+      </ion-item>
+      <ion-item lines="none"> 
+        <ion-icon id="icone" name="book-sharp"></ion-icon>
+      </ion-item>
+      <div style="border-left:1px solid #000;height:35px"></div>
+      <ion-item [routerLink]="['/cadastro']" lines="none">
+        <ion-icon id="icone" name="key-sharp" ></ion-icon>
+      </ion-item>
+      <ion-item [routerLink]="['/entrar']" lines="none">
+        <ion-icon id="icone" name="log-in-sharp"></ion-icon>
+      </ion-item>
+    </ion-buttons>
+    <ion-title [routerLink]="['/folder']">Academic</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section id="cabecalho">
+    <ion-text>
+      <h1>{{trabalho.nome}}</h1>
+      <div *ngIf="listaMembros | async as usuario;">
+        <p *ngFor="let usu of usuario">{{usu.nome}} <sub>{{usu.email}}</sub></p>
+      </div>
+      <hr color="white" width="100%">
+      <div>
+        <p>Descrição: {{trabalho.descricao}}</p>
+        <p>Data de Publicação: {{trabalho.dtPublicacao | date: 'shortDate'}}</p>
+      </div>
+    </ion-text>
+  </section>
+  <iframe id="textField" name="textField" seamless="seamless" scrolling="yes" frameborder="0" srcdoc="{{trabalho.arquivo}}"></iframe>
+</ion-content>
