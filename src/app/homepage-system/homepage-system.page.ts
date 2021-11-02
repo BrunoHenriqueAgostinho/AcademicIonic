@@ -62,28 +62,23 @@ export class HomepageSystemPage implements OnInit {
   }
 
   async ngOnInit() {
+    //Autenticação de acesso à página
     await this.storage.create();
-    //this.codigo = parseInt(await this.storage.get('codigo'));
-    //this.senha = await this.storage.get('senha');
     this.tipo = await this.storage.get('tipo');
     if (this.tipo == 'cpf'){
       this.usuario.cpf = String(await this.storage.get('codigo'));
       this.usuario.senha = await this.storage.get('senha');
-      console.log(this.usuario);
       this.usuarioService.consultar(this.usuario).subscribe(
         retorno => {
           this.usuario = retorno;
-          console.log(this.usuario);
         }
       );
     } else if (this.tipo == 'cnpj') {
       this.instituicao.cnpj = String(await this.storage.get('codigo'));
       this.instituicao.senha = await this.storage.get('senha');
-      console.log(this.instituicao);
       this.instituicaoService.consultar(this.instituicao).subscribe(
         retorno => {
           this.instituicao = retorno;
-          console.log(retorno);
         }
       );
     } else {
@@ -99,4 +94,7 @@ export class HomepageSystemPage implements OnInit {
     this.listaTrabalho = this.trabalhoService.listar().pipe(delay(200));
   }
 
+  visualizarTrabalho(trabalho){
+    this.router.navigate(["/visualizartrabalho/" + trabalho]);
+  }
 }

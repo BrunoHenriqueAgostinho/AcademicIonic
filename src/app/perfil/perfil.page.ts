@@ -4,8 +4,10 @@ import { Storage } from '@ionic/storage-angular';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { IAdicionausuariousuario } from '../model/IAdicionausuariousuario.model';
+import { IInstituicao } from '../model/IInstituicao.model';
 import { IUsuario } from '../model/IUsuario.model';
 import { AdicionaUsuarioUsuarioService } from '../services/adiciona-usuario-usuario.service';
+import { InstituicaoService } from '../services/instituicao.service';
 import { UsuarioService } from '../services/usuario.service';
 import { ITrabalho } from './../model/ITrabalho.model';
 import { TrabalhoService } from './../services/trabalho.service';
@@ -31,6 +33,19 @@ export class PerfilPage implements OnInit {
     telefoneCelular: ''
   }
 
+  instituicao : IInstituicao = {
+    cnpj: '',
+    nome: '',
+    logotipo: '',
+    dtCadastro: null,
+    senha: '',
+    contaStatus: null,
+    email: '',
+    telefoneFixo: '',
+    telefoneCelular: '',
+    cidade: ''
+  }
+
   numeroSeguidores = 0;
   numeroSeguidos = 0;
 
@@ -43,23 +58,22 @@ export class PerfilPage implements OnInit {
   constructor(
     private storage: Storage,
     private usuarioService: UsuarioService,
+    private instituicaoService: InstituicaoService,
     private trabalhoService: TrabalhoService,
     private adicionaService: AdicionaUsuarioUsuarioService,
     private router: Router
     ) { }
 
   async ngOnInit() {
+    //Autenticação de acesso à página
     await this.storage.create();
     this.tipo = await this.storage.get('tipo');
     if (this.tipo == 'cpf'){
-      
       this.usuario.cpf = String(await this.storage.get('codigo'));
       this.usuario.senha = await this.storage.get('senha');
-      console.log(this.usuario);
       this.usuarioService.consultar(this.usuario).subscribe(
         retorno => {
           this.usuario = retorno;
-          console.log(this.usuario);
         }
       );
 
@@ -74,24 +88,17 @@ export class PerfilPage implements OnInit {
           this.numeroSeguidos = retorno.mensagem;
         }
       );
+    } else if (this.tipo == 'cnpj') {
+      this.instituicao.cnpj = String(await this.storage.get('codigo'));
+      this.instituicao.senha = await this.storage.get('senha');
+      this.instituicaoService.consultar(this.instituicao).subscribe(
+        retorno => {
+          this.instituicao = retorno;
+        }
+      );
+    } else {
+      this.router.navigate(['/folder']);
     }
-    /*if(this.usuario.tema == 1){
-      this.tema = "Light";
-    }else{
-      this.tema = "Dark";
-    }
-
-    if(this.usuario.status == 1){
-      this.status = 'Disponível';
-    }else{
-      this.status = 'Indisponível';
-    }
-
-    if(this.usuario.contaStatus == 1){
-      this.contaStatus = "Ativa";
-    }else{
-      this.contaStatus = "Desativada";
-    }*/
   }
 
   salvarAlteracoes() {

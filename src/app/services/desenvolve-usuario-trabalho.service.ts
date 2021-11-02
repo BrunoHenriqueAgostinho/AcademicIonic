@@ -29,6 +29,13 @@ export class DesenvolveUsuarioTrabalhoService {
     );
   }
 
+  consultarUsuario(desenvolve): Observable<any> {
+    return this.http.post(this.URL + "/consultarUsuario_desenvolve.php", desenvolve).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
+    );
+  }
+
   listar(usuario): Observable<ITrabalho[]> {
     return this.http.post<ITrabalho[]>(this.URL + "/listar_desenvolve.php", usuario).pipe(
       map(retorno => retorno),

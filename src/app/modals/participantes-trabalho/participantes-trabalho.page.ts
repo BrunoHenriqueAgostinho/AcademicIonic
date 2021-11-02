@@ -84,8 +84,8 @@ export class ParticipantesTrabalhoPage implements OnInit {
     console.table(this.desenvolve);
     const alerta = await this.alertController.create({
       cssClass: 'alerta',
-      header: 'Desvincular Membro',
-      message: 'Você tem certeza que deseja desvincular esse membro desse trabalho?',
+      header: 'Você tem certeza que deseja desvincular esse membro do trabalho?',
+      message: 'Esse membro não poderá mais acessar as funções de edição desse trabalho.',
       buttons: [
         {
           text:'Cancelar',

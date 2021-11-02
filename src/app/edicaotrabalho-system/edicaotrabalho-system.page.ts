@@ -9,6 +9,11 @@ import { ModalController } from '@ionic/angular';
 import { ParticipantesTrabalhoPage } from '../modals/participantes-trabalho/participantes-trabalho.page';
 import { DesenvolveUsuarioTrabalhoService } from '../services/desenvolve-usuario-trabalho.service';
 import { IDesenvolveusuariotrabalho } from '../model/IDesenvolveusuariotrabalho.model';
+import { IUsuario } from '../model/IUsuario.model';
+import { IInstituicao } from '../model/IInstituicao.model';
+import { Storage } from '@ionic/storage-angular';
+import { UsuarioService } from '../services/usuario.service';
+import { InstituicaoService } from '../services/instituicao.service';
 
 @Component({
   selector: 'app-edicaotrabalho-system',
@@ -16,6 +21,34 @@ import { IDesenvolveusuariotrabalho } from '../model/IDesenvolveusuariotrabalho.
   styleUrls: ['./edicaotrabalho-system.page.scss'],
 })
 export class EdicaotrabalhoSystemPage implements OnInit {
+  
+  usuario: IUsuario = {
+    cpf: '',
+    nome: '',
+    senha: '',
+    descricao: '',
+    foto: '',
+    dtCadastro: null,
+    tema: null,
+    status: null,
+    contaStatus: null,
+    email: '',
+    telefoneFixo: '',
+    telefoneCelular: ''
+  }
+
+  instituicao : IInstituicao = {
+    cnpj: '',
+    nome: '',
+    logotipo: '',
+    dtCadastro: null,
+    senha: '',
+    contaStatus: null,
+    email: '',
+    telefoneFixo: '',
+    telefoneCelular: '',
+    cidade: ''
+  }
 
   arquivo: string = '';
   trabalho: ITrabalho = {
@@ -44,42 +77,83 @@ export class EdicaotrabalhoSystemPage implements OnInit {
 
   dataReturned: any;
 
+  tipo = '';
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private storage: Storage,
+    private usuarioService: UsuarioService,
+    private instituicaoService: InstituicaoService,
     private trabalhoService: TrabalhoService,
     private desenvolveService: DesenvolveUsuarioTrabalhoService,
     public modalController: ModalController,
     private alertController: AlertController
   ) { }
 
-  ngOnInit() {
-    this.trabalho.codigo = Number(this.activatedRoute.snapshot.paramMap.get('codigoTrabalho'));
-    console.log(this.trabalho.codigo);
-    if(this.trabalho.codigo == 0){
-      this.router.navigate(["/homepage-system/"]);
-    } else {
-      console.log(this.trabalho);
-      this.trabalhoService.consultar(this.trabalho).subscribe(
+  async ngOnInit() {
+    //Autenticação de acesso à página
+    await this.storage.create();
+    this.tipo = await this.storage.get('tipo');
+    if (this.tipo == 'cpf'){
+      this.usuario.cpf = String(await this.storage.get('codigo'));
+      this.usuario.senha = await this.storage.get('senha');
+      this.usuarioService.consultar(this.usuario).subscribe(
         retorno => {
-          this.trabalho.nome = retorno.nome;
-          this.trabalho.descricao = retorno.descricao;
-          this.trabalho.arquivo = retorno.arquivo;
-          this.trabalho.finalizado = retorno.finalizado;
-          this.trabalho.margemDireita = retorno.margemDireita;
-          this.trabalho.margemEsquerda = retorno.margemEsquerda;
-          this.trabalho.margemTopo = retorno.margemTopo;
-          this.trabalho.margemBaixo = retorno.margemBaixo;
-          this.trabalho.dtCriacao = retorno.dtCriacao;
-          this.trabalho.dtAlteracao = retorno.dtAlteracao;
-          this.trabalho.dtPublicacao = retorno.dtPublicacao;
-          this.trabalho.avaliacao = retorno.avaliacao;
-          this.trabalho.modelo = retorno.modelo;
-          this.trabalho.cnpj = retorno.cnpj;
-          this.mudar();
+          this.usuario = retorno;
         }
       );
+      //Verificação de relacionamente entre usuário e trabalho
+      this.desenvolve.cpf = this.usuario.cpf;
+      this.desenvolve.codigo = Number(this.activatedRoute.snapshot.paramMap.get('codigoTrabalho'));
+      this.desenvolveService.consultarUsuario(this.desenvolve).subscribe(
+        retorno => {
+          if(retorno.usuario == 0){
+            this.router.navigate(['/homepage-system']);
+          } else {
+            //Busca por informações do trabalho
+            this.trabalho.codigo = Number(this.activatedRoute.snapshot.paramMap.get('codigoTrabalho'));
+            if(this.trabalho.codigo == 0){
+              this.router.navigate(["/homepage-system/"]);
+            } else {
+              this.trabalhoService.consultar(this.trabalho).subscribe(
+                retorno => {
+                  this.trabalho.nome = retorno.nome;
+                  this.trabalho.descricao = retorno.descricao;
+                  this.trabalho.arquivo = retorno.arquivo;
+                  this.trabalho.finalizado = retorno.finalizado;
+                  this.trabalho.margemDireita = retorno.margemDireita;
+                  this.trabalho.margemEsquerda = retorno.margemEsquerda;
+                  this.trabalho.margemTopo = retorno.margemTopo;
+                  this.trabalho.margemBaixo = retorno.margemBaixo;
+                  this.trabalho.dtCriacao = retorno.dtCriacao;
+                  this.trabalho.dtAlteracao = retorno.dtAlteracao;
+                  this.trabalho.dtPublicacao = retorno.dtPublicacao;
+                  this.trabalho.avaliacao = retorno.avaliacao;
+                  this.trabalho.modelo = retorno.modelo;
+                  this.trabalho.cnpj = retorno.cnpj;
+                  this.mudar();
+                }
+              );
+            }
+          }
+        }
+      );
+    } else if (this.tipo == 'cnpj') {
+      this.instituicao.cnpj = String(await this.storage.get('codigo'));
+      this.instituicao.senha = await this.storage.get('senha');
+      this.instituicaoService.consultar(this.instituicao).subscribe(
+        retorno => {
+          this.instituicao = retorno;
+        }
+      );
+    } else {
+      this.router.navigate(['/folder']);
     }
+
+
+    //somente deve ser executado caso seja um membro do trabalho
+    
   }
 
   salvar() {
@@ -96,8 +170,8 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     this.desenvolve.codigo = this.trabalho.codigo;
     const alerta = await this.alertController.create({
       cssClass: 'alerta',
-      header: 'Deletar Trabalho',
-      message: 'Você tem certeza que deseja deletar esse trabalho?',
+      header: 'Você tem certeza que deseja deletar esse trabalho?',
+      message: 'Ao deletar esse trabalho, todos os membros perdem acesso a ele.',
       buttons: [
         {
           text:'Cancelar',
@@ -111,7 +185,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
                 this.trabalhoService.exibirToast(retorno.mensagem, "success");
               }
             );
-            this.router.navigate(["/meustrabalhos-system"])
+            this.router.navigate(["/meustrabalhos-system"]);
           }
         }
       ]
@@ -119,11 +193,29 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     await alerta.present();
   }
 
-  publicar(){
-    this.trabalho.finalizado = 1;
-    this.trabalhoService.publicar(this.trabalho).subscribe(
-      retorno => this.trabalhoService.exibirToast(retorno.mensagem, "success")
-    );
+  async publicar(){
+    const alerta = await this.alertController.create({
+      cssClass: 'alerta',
+      header: 'Você tem certeza que deseja publicar esse trabalho?',
+      message: 'Ao publicar seu trabalho, qualquer pessoa poderá pesquisar por ele.',
+      buttons: [
+        {
+          text:'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text:'Publicar',
+          handler:() => {
+            this.trabalho.finalizado = 1;
+            this.trabalhoService.publicar(this.trabalho).subscribe(
+              retorno => this.trabalhoService.exibirToast(retorno.mensagem, "success")
+            );
+          }
+        }
+      ]
+    });
+    await alerta.present();
+    
   }
 
   async openModal() {
