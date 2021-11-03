@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../services/usuario.service';
 import { InstituicaoService } from '../services/instituicao.service';
 import { IInstituicao } from '../model/IInstituicao.model';
+import { IModelo } from '../model/IModelo.model';
+import { ModeloService } from '../services/modelo.service';
 
 @Component({
   selector: 'app-meustrabalhos-system',
@@ -45,14 +47,32 @@ export class MeustrabalhosSystemPage implements OnInit {
     cidade: ''
   }
 
+  modelo: IModelo = {
+    codigo: null,
+    nome: 'novo trabalho',
+    arquivo: '',
+    margemDireita: '0cm',
+    margemEsquerda: '0cm',
+    margemTopo: '0cm',
+    margemBaixo: '0cm',
+    dtCadastro: null,
+    descricao: '',
+    cnpj: null
+  }
+
   listaTrabalho: Observable<ITrabalho[]>;
 
+  listaModelos: Observable<IModelo[]>;
+
   tipo = '';
+  booleanUsuario = false;
+  booleanInstituicao = false;
 
   constructor(
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService,
     private desenvolveService: DesenvolveUsuarioTrabalhoService,
+    private modeloService: ModeloService,
     private storage: Storage,
     private router: Router
   ) { }
@@ -69,6 +89,8 @@ export class MeustrabalhosSystemPage implements OnInit {
           this.usuario = retorno;
         }
       );
+      this.booleanUsuario = true;
+      this.atualizarListaTrabalho();
     } else if (this.tipo == 'cnpj') {
       this.instituicao.cnpj = String(await this.storage.get('codigo'));
       this.instituicao.senha = await this.storage.get('senha');
@@ -77,26 +99,41 @@ export class MeustrabalhosSystemPage implements OnInit {
           this.instituicao = retorno;
         }
       );
+      this.booleanInstituicao = true;
+      this.atualizarListaModelos();
     } else {
       this.router.navigate(['/folder']);
-    }
-
-
-    //await this.storage.create();
-    //this.usuario.cpf = String(await this.storage.get('codigo'));
-    this.atualizar();
+    }  
   }
   
   ionViewDidEnter(){
-    this.atualizar();
+    if (this.tipo == "cpf"){
+      this.atualizarListaTrabalho();
+    } else if (this.tipo == "cnpj"){
+      this.atualizarListaModelos();
+    }
+    
   }
 
   abrirTrabalho(codigoTrabalho) {
     this.router.navigate(["/edicaotrabalho-system/" + codigoTrabalho]);
   }
 
-  atualizar(){
+  atualizarListaTrabalho(){
     this.listaTrabalho = this.desenvolveService.listar(this.usuario).pipe(delay(1000));
   }
 
+  atualizarListaModelos(){
+    this.listaModelos = this.modeloService.listarPorCnpj(this.instituicao).pipe(delay(0));
+  }
+
+  criarModelo(){
+    this.modelo.cnpj = this.instituicao.cnpj;
+    this.modeloService.inserir(this.modelo).subscribe(
+      retorno => {
+        this.instituicaoService.exibirToast(retorno.mensagem, "success");
+      }
+    );
+    this.atualizarListaModelos();
+  }
 }

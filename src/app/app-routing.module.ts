@@ -32,6 +32,10 @@ const routes: Routes = [
     loadChildren: () => import('./meustrabalhos-system/meustrabalhos-system.module').then( m => m.MeustrabalhosSystemPageModule)
   },
   {
+    path: 'meusmodelos-system',
+    loadChildren: () => import('./meustrabalhos-system/meustrabalhos-system.module').then( m => m.MeustrabalhosSystemPageModule)
+  },
+  {
     path: 'modelos',
     loadChildren: () => import('./modelos/modelos.module').then( m => m.ModelosPageModule)
   },

@@ -30,14 +30,15 @@
 <ion-content>
   <section id="cabecalho">
     <ion-text>
-      <h1>Trabalhos</h1>
+      <h1 *ngIf="booleanUsuario">Trabalhos</h1><h1 *ngIf="booleanInstituicao">Modelos</h1>
       <div>
-        <ion-button expand="block" [routerLink]="['/modelos']">Novo Trabalho</ion-button>
+        <ion-button *ngIf="booleanUsuario" expand="block" [routerLink]="['/modelos']">Novo Trabalho</ion-button>
+        <ion-button *ngIf="booleanInstituicao" expand="block" (click)="criarModelo()">Novo Modelo</ion-button>
       </div>
     </ion-text>
   </section>
   
-  <section id="trabalhos">
+  <section id="trabalhos" *ngIf="booleanUsuario">
     <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
       <ion-row>
         <ion-col size="3" *ngFor="let trabalho of trabalho">
@@ -48,6 +49,23 @@
             <ion-card-content>
               <ion-card-title>{{trabalho.descricao}}</ion-card-title>
               <ion-card-title>{{trabalho.dtCriacao | date: 'shortDate'}}</ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+  <section id="trabalhos" *ngIf="booleanInstituicao">
+    <ion-grid *ngIf="listaModelos | async as modelo; else carregando">
+      <ion-row>
+        <ion-col size="3" *ngFor="let modelo of modelo">
+          <ion-card (click)="abrirTrabalho(trabalho.codigo)">
+            <ion-card-header>
+              <ion-card-title>{{modelo.nome}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-card-title>{{modelo.descricao}}</ion-card-title>
+              <ion-card-title>{{modelo.dtCriacao | date: 'shortDate'}}</ion-card-title>
             </ion-card-content>
           </ion-card>
         </ion-col>
