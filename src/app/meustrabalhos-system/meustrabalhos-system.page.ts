@@ -103,16 +103,16 @@ export class MeustrabalhosSystemPage implements OnInit {
       this.atualizarListaModelos();
     } else {
       this.router.navigate(['/folder']);
-    }  
+    }
   }
-  
+
   ionViewDidEnter(){
     if (this.tipo == "cpf"){
       this.atualizarListaTrabalho();
     } else if (this.tipo == "cnpj"){
       this.atualizarListaModelos();
     }
-    
+
   }
 
   abrirTrabalho(codigoTrabalho) {
@@ -124,6 +124,8 @@ export class MeustrabalhosSystemPage implements OnInit {
   }
 
   atualizarListaModelos(){
+    console.log(this.instituicao);
+    this.instituicao.cnpj
     this.listaModelos = this.modeloService.listarPorCnpj(this.instituicao).pipe(delay(0));
   }
 

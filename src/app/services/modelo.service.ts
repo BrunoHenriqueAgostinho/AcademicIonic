@@ -22,7 +22,7 @@ export class ModeloService {
   consultar(modelo): Observable<any> {
     return this.http.post(this.URL + '/consultar_modelo.php', modelo).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibirToast(erro.error.erro, 'danger')) 
+      catchError(erro => this.exibirToast(erro.error.erro, 'danger'))
     );
   }
 
@@ -34,7 +34,7 @@ export class ModeloService {
   }
 
   listarPorCnpj(instituicao): Observable<any[]> {
-    return this.http.post<any[]>(this.URL+ '/listar_modelo.php', instituicao).pipe(
+    return this.http.post<any[]>(this.URL+ '/listarPorCnpj_modelo.php', instituicao).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibeErro(erro))
     );
@@ -43,22 +43,22 @@ export class ModeloService {
   inserir(modelo): Observable<any> {
     return this.http.post(this.URL + "/inserir_modelo.php", modelo).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
-  async exibirToast(mensagem, cor) { 
-    const toast = await this.toastController.create( 
-      { 
-        message: mensagem, 
-        duration: 2000, 
-        color: cor, 
-        position: 'bottom'	 
-      } 
-    ); 
-    toast.present(); 
-  } 
-    
+  async exibirToast(mensagem, cor) {
+    const toast = await this.toastController.create(
+      {
+        message: mensagem,
+        duration: 2000,
+        color: cor,
+        position: 'bottom'
+      }
+    );
+    toast.present();
+  }
+
   exibeErro(erro): Observable<any> {
     console.log(erro);
     return null;
