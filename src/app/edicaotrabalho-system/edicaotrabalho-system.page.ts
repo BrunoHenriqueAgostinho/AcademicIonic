@@ -14,6 +14,8 @@ import { IInstituicao } from '../model/IInstituicao.model';
 import { Storage } from '@ionic/storage-angular';
 import { UsuarioService } from '../services/usuario.service';
 import { InstituicaoService } from '../services/instituicao.service';
+import { IModelo } from '../model/IModelo.model';
+import { ModeloService } from '../services/modelo.service';
 
 @Component({
   selector: 'app-edicaotrabalho-system',
@@ -69,6 +71,19 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     cnpj: null
   }
 
+  modelo: IModelo = {
+    codigo: null,
+    nome: 'novo trabalho',
+    arquivo: '',
+    margemDireita: '0cm',
+    margemEsquerda: '0cm',
+    margemTopo: '0cm',
+    margemBaixo: '0cm',
+    dtCriacao: null,
+    descricao: '',
+    cnpj: null
+  }
+
   desenvolve: IDesenvolveusuariotrabalho = {
     cpf: '',
     codigo: null,
@@ -78,6 +93,8 @@ export class EdicaotrabalhoSystemPage implements OnInit {
   dataReturned: any;
 
   tipo = '';
+  booleanUsuario = false;
+  booleanInstituicao = false;
 
   constructor(
     private router: Router,
@@ -87,6 +104,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     private instituicaoService: InstituicaoService,
     private trabalhoService: TrabalhoService,
     private desenvolveService: DesenvolveUsuarioTrabalhoService,
+    private modeloService: ModeloService,
     public modalController: ModalController,
     private alertController: AlertController
   ) { }
@@ -103,6 +121,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
           this.usuario = retorno;
         }
       );
+      this.booleanUsuario = true;
       //Verificação de relacionamente entre usuário e trabalho
       this.desenvolve.cpf = this.usuario.cpf;
       this.desenvolve.codigo = Number(this.activatedRoute.snapshot.paramMap.get('codigoTrabalho'));
@@ -132,7 +151,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
                   this.trabalho.avaliacao = retorno.avaliacao;
                   this.trabalho.modelo = retorno.modelo;
                   this.trabalho.cnpj = retorno.cnpj;
-                  this.mudar();
+                  this.mudarTrabalho();
                 }
               );
             }
@@ -147,13 +166,36 @@ export class EdicaotrabalhoSystemPage implements OnInit {
           this.instituicao = retorno;
         }
       );
+      this.booleanInstituicao = true;
+      //Verificação de relacionamente entre instituicao e modelo
+      this.modelo.codigo = Number(this.activatedRoute.snapshot.paramMap.get('codigoModelo'));
+      this.modelo.cnpj = this.instituicao.cnpj;
+      this.modeloService.consultarInstituicao(this.modelo).subscribe(
+        retorno => {
+          if(retorno.instituicao == 0){
+            this.router.navigate(['/homepage-system']);
+          } else {
+            //Busca por informações da instituicao
+            this.modeloService.consultar(this.modelo).subscribe(
+              retorno => {
+                this.modelo.nome = retorno.nome;
+                this.modelo.arquivo = retorno.arquivo;
+                this.modelo.margemDireita = retorno.margemDireita;
+                this.modelo.margemEsquerda = retorno.margemEsquerda;
+                this.modelo.margemTopo = retorno.margemTopo;
+                this.modelo.margemBaixo = retorno.margemBaixo;
+                this.modelo.descricao = retorno.descricao;
+                this.modelo.dtCriacao = retorno.dtCriacao;
+                this.mudarModelo();
+                console.log(this.modelo);
+              }
+            );
+          }
+        }
+      );
     } else {
       this.router.navigate(['/folder']);
     }
-
-
-    //somente deve ser executado caso seja um membro do trabalho
-    
   }
 
   salvar() {
@@ -263,10 +305,17 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: justify;"', 'align="justify"');
   }
 
-  mudar() {
+  mudarTrabalho() {
     document.getElementById("textField").style.paddingLeft = this.trabalho.margemEsquerda;
     document.getElementById("textField").style.paddingRight = this.trabalho.margemDireita;
     document.getElementById("textField").style.paddingTop = this.trabalho.margemTopo;
     document.getElementById("textField").style.paddingBottom = this.trabalho.margemBaixo;
+  }
+
+  mudarModelo() {
+    document.getElementById("textField").style.paddingLeft = this.modelo.margemEsquerda;
+    document.getElementById("textField").style.paddingRight = this.modelo.margemDireita;
+    document.getElementById("textField").style.paddingTop = this.modelo.margemTopo;
+    document.getElementById("textField").style.paddingBottom = this.modelo.margemBaixo;
   }
 }

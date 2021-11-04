@@ -55,7 +55,7 @@ export class MeustrabalhosSystemPage implements OnInit {
     margemEsquerda: '0cm',
     margemTopo: '0cm',
     margemBaixo: '0cm',
-    dtCadastro: null,
+    dtCriacao: null,
     descricao: '',
     cnpj: null
   }
@@ -117,6 +117,9 @@ export class MeustrabalhosSystemPage implements OnInit {
 
   abrirTrabalho(codigoTrabalho) {
     this.router.navigate(["/edicaotrabalho-system/" + codigoTrabalho]);
+  }
+  abrirModelo(codigoModelo) {
+    this.router.navigate(["/edicaomodelo-system/" + codigoModelo]);
   }
 
   atualizarListaTrabalho(){

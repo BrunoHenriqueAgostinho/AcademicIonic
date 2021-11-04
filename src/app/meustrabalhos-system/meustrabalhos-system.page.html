@@ -4,15 +4,21 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons class="opcoes" slot="end">
-      <ion-item [routerLink]="['/meustrabalhos-system']" lines="none">
+      <ion-item *ngIf="booleanUsuario" [routerLink]="['/meustrabalhos-system']" lines="none">
         <ion-label>Trabalhos</ion-label>
+      </ion-item>
+      <ion-item *ngIf="booleanInstituicao" [routerLink]="['/meusmodelos-system']" lines="none">
+        <ion-label>Modelo</ion-label>
       </ion-item>
       <ion-item [routerLink]="['/perfil']" lines="none">
         <ion-label>Perfil</ion-label>
       </ion-item>
     </ion-buttons>
     <ion-buttons class="opcoesIcones" slot="end">
-      <ion-item [routerLink]="['/meustrabalhos-system']" lines="none">
+      <ion-item *ngIf="booleanUsuario" [routerLink]="['/meustrabalhos-system']" lines="none">
+        <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
+      </ion-item>
+      <ion-item *ngIf="booleanInstituicao" [routerLink]="['/meusmodelos-system']" lines="none">
         <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
       </ion-item>
       <ion-item [routerLink]="['/perfil']" lines="none">
@@ -59,7 +65,7 @@
     <ion-grid *ngIf="listaModelos | async as modelo; else carregando">
       <ion-row>
         <ion-col size="3" *ngFor="let modelo of modelo">
-          <ion-card (click)="abrirTrabalho(trabalho.codigo)">
+          <ion-card (click)="abrirModelo(modelo.codigo)">
             <ion-card-header>
               <ion-card-title>{{modelo.nome}}</ion-card-title>
             </ion-card-header>

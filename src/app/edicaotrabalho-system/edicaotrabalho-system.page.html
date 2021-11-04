@@ -4,22 +4,29 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons class="opcoes" slot="end">
-      <ion-item [routerLink]="['/meustrabalhos-system']" lines="none">
+      <ion-item *ngIf="booleanUsuario" [routerLink]="['/meustrabalhos-system']" lines="none">
         <ion-label>Trabalhos</ion-label>
+      </ion-item>
+      <ion-item *ngIf="booleanInstituicao" [routerLink]="['/meusmodelos-system']" lines="none">
+        <ion-label>Modelo</ion-label>
       </ion-item>
       <ion-item [routerLink]="['/perfil']" lines="none">
         <ion-label>Perfil</ion-label>
       </ion-item>
     </ion-buttons>
     <ion-buttons class="opcoesIcones" slot="end">
-      <ion-item [routerLink]="['/meustrabalhos-system']" lines="none">
+      <ion-item *ngIf="booleanUsuario" [routerLink]="['/meustrabalhos-system']" lines="none">
+        <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
+      </ion-item>
+      <ion-item *ngIf="booleanInstituicao" [routerLink]="['/meusmodelos-system']" lines="none">
         <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
       </ion-item>
       <ion-item [routerLink]="['/perfil']" lines="none">
         <ion-icon id="icone" name="body-sharp"></ion-icon>
       </ion-item>
     </ion-buttons>
-    <ion-input type="text" placeholder="Awesome Input" value="{{trabalho.nome}}" [(ngModel)]="trabalho.nome"></ion-input>
+    <ion-input *ngIf="booleanUsuario" type="text" placeholder="Título do trabalho" value="{{trabalho.nome}}" [(ngModel)]="trabalho.nome"></ion-input>
+    <ion-input *ngIf="booleanInstituicao" type="text" placeholder="Título do Modelo" value="{{modelo.nome}}" [(ngModel)]="modelo.nome"></ion-input>
   </ion-toolbar>
   <ion-toolbar>
     <div id="barraDeTarefas">
@@ -80,11 +87,11 @@
             <ion-col size="12"><p>Organização</p></ion-col>
           </ion-row>
         </ion-grid>
-        <ion-grid fixed class="comandosEscondidos">
+        <ion-grid *ngIf="booleanUsuario" class="comandosEscondidos" fixed>
           <ion-row>
             <ion-col>
               Dir.
-              <select id="inputText" [(ngModel)]="trabalho.margemDireita" (click)="mudar()">
+              <select id="inputText" [(ngModel)]="trabalho.margemDireita" (click)="mudarTrabalho()">
                 <option value="0.5cm">0,5cm</option>
                 <option value="1cm">1cm</option>
                 <option value="1.5cm">1,5cm</option>
@@ -106,7 +113,7 @@
             </ion-col>
             <ion-col>
               Esq.
-              <select id="inputText" [(ngModel)]="trabalho.margemEsquerda" (click)="mudar()">
+              <select id="inputText" [(ngModel)]="trabalho.margemEsquerda" (click)="mudarTrabalho()">
                 <option value="0.5cm">0,5cm</option>
                 <option value="1cm">1cm</option>
                 <option value="1.5cm">1,5cm</option>
@@ -130,7 +137,7 @@
           <ion-row>
             <ion-col>
               Topo
-              <select id="inputText" [(ngModel)]="trabalho.margemTopo" (click)="mudar()">
+              <select id="inputText" [(ngModel)]="trabalho.margemTopo" (click)="mudarTrabalho()">
                 <option value="0.5cm">0,5cm</option>
                 <option value="1cm">1cm</option>
                 <option value="1.5cm">1,5cm</option>
@@ -152,7 +159,104 @@
             </ion-col>
             <ion-col>
               Baixo
-              <select id="inputText" [(ngModel)]="trabalho.margemBaixo" (click)="mudar()">
+              <select id="inputText" [(ngModel)]="trabalho.margemBaixo" (click)="mudarTrabalho()">
+                <option value="0.5cm">0,5cm</option>
+                <option value="1cm">1cm</option>
+                <option value="1.5cm">1,5cm</option>
+                <option value="2cm">2cm</option>
+                <option value="2.5cm">2,5cm</option>
+                <option value="3cm">3cm</option>
+                <option value="3.5cm">3,5cm</option>
+                <option value="4cm">4cm</option>
+                <option value="4.5cm">4,5cm</option>
+                <option value="5cm">5cm</option>
+                <option value="5.5cm">5,5cm</option>
+                <option value="6cm">6cm</option>
+                <option value="6.5cm">6,5cm</option>
+                <option value="7cm">7cm</option>
+                <option value="7.5cm">7,5cm</option>
+                <option value="8cm">8cm</option>
+                <option value="8.5cm">8,5cm</option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12"><p>Margem</p></ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid *ngIf="booleanInstituicao" class="comandosEscondidos" fixed>
+          <ion-row>
+            <ion-col>
+              Dir.
+              <select id="inputText" [(ngModel)]="modelo.margemDireita" (click)="mudarModelo()">
+                <option value="0.5cm">0,5cm</option>
+                <option value="1cm">1cm</option>
+                <option value="1.5cm">1,5cm</option>
+                <option value="2cm">2cm</option>
+                <option value="2.5cm">2,5cm</option>
+                <option value="3cm">3cm</option>
+                <option value="3.5cm">3,5cm</option>
+                <option value="4cm">4cm</option>
+                <option value="4.5cm">4,5cm</option>
+                <option value="5cm">5cm</option>
+                <option value="5.5cm">5,5cm</option>
+                <option value="6cm">6cm</option>
+                <option value="6.5cm">6,5cm</option>
+                <option value="7cm">7cm</option>
+                <option value="7.5cm">7,5cm</option>
+                <option value="8cm">8cm</option>
+                <option value="8.5cm">8,5cm</option>
+              </select>
+            </ion-col>
+            <ion-col>
+              Esq.
+              <select id="inputText" [(ngModel)]="modelo.margemEsquerda" (click)="mudarModelo()">
+                <option value="0.5cm">0,5cm</option>
+                <option value="1cm">1cm</option>
+                <option value="1.5cm">1,5cm</option>
+                <option value="2cm">2cm</option>
+                <option value="2.5cm">2,5cm</option>
+                <option value="3cm">3cm</option>
+                <option value="3.5cm">3,5cm</option>
+                <option value="4cm">4cm</option>
+                <option value="4.5cm">4,5cm</option>
+                <option value="5cm">5cm</option>
+                <option value="5.5cm">5,5cm</option>
+                <option value="6cm">6cm</option>
+                <option value="6.5cm">6,5cm</option>
+                <option value="7cm">7cm</option>
+                <option value="7.5cm">7,5cm</option>
+                <option value="8cm">8cm</option>
+                <option value="8.5cm">8,5cm</option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Topo
+              <select id="inputText" [(ngModel)]="modelo.margemTopo" (click)="mudarModelo()">
+                <option value="0.5cm">0,5cm</option>
+                <option value="1cm">1cm</option>
+                <option value="1.5cm">1,5cm</option>
+                <option value="2cm">2cm</option>
+                <option value="2.5cm">2,5cm</option>
+                <option value="3cm">3cm</option>
+                <option value="3.5cm">3,5cm</option>
+                <option value="4cm">4cm</option>
+                <option value="4.5cm">4,5cm</option>
+                <option value="5cm">5cm</option>
+                <option value="5.5cm">5,5cm</option>
+                <option value="6cm">6cm</option>
+                <option value="6.5cm">6,5cm</option>
+                <option value="7cm">7cm</option>
+                <option value="7.5cm">7,5cm</option>
+                <option value="8cm">8cm</option>
+                <option value="8.5cm">8,5cm</option>
+              </select>
+            </ion-col>
+            <ion-col>
+              Baixo
+              <select id="inputText" [(ngModel)]="modelo.margemBaixo" (click)="mudarModelo()">
                 <option value="0.5cm">0,5cm</option>
                 <option value="1cm">1cm</option>
                 <option value="1.5cm">1,5cm</option>
@@ -183,7 +287,7 @@
             <ion-col><ion-icon name="trash-sharp" id="icone" (click)="deletar()"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
-            <ion-col><ion-icon name="people-circle-sharp" id="icone" (click)="openModal()"></ion-icon></ion-col>
+            <ion-col *ngIf="booleanUsuario"><ion-icon name="people-circle-sharp" id="icone" (click)="openModal()"></ion-icon></ion-col>
             <ion-col><ion-icon name="eye-off-sharp" id="icone" (click)="publicar()"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
@@ -196,7 +300,6 @@
 </ion-header>
 
 <ion-content>
-  <!--<button onclick="toogleSource()">mudar</button><br>-->
-  <iframe onLoad="enableEditMode();" id="textField" name="textField" seamless="seamless" scrolling="yes" frameborder="0" srcdoc="{{trabalho.arquivo}}"></iframe>
-  
+  <iframe *ngIf="booleanUsuario" onLoad="enableEditMode();" id="textField" name="textField" seamless="seamless" scrolling="no" frameborder="0" srcdoc="{{trabalho.arquivo}}"></iframe>
+  <iframe *ngIf="booleanInstituicao" onLoad="enableEditMode();" id="textField" name="textField" seamless="seamless" scrolling="no" frameborder="0" srcdoc="{{modelo.arquivo}}"></iframe>
 </ion-content>

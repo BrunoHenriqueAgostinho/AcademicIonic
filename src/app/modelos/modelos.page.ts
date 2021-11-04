@@ -76,7 +76,7 @@ export class ModelosPage implements OnInit {
     margemEsquerda: '',
     margemTopo: '',
     margemBaixo: '',
-    dtCadastro: null,
+    dtCriacao: null,
     descricao: '',
     cnpj: null
   }

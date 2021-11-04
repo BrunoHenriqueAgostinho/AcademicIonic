@@ -26,6 +26,13 @@ export class ModeloService {
     );
   }
 
+  consultarInstituicao(modelo): Observable<any> {
+    return this.http.post(this.URL + "/consultarInstituicao_modelo.php", modelo).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+
   listar(pesquisa): Observable<any[]> {
     return this.http.post<any[]>(this.URL+ '/listar_modelo.php', pesquisa).pipe(
       map(retorno => retorno),

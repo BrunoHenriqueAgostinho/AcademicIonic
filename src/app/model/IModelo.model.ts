@@ -6,7 +6,7 @@ export interface IModelo {
     margemEsquerda: string;
     margemTopo: string;
     margemBaixo: string;
-    dtCadastro: Date;
+    dtCriacao: Date;
     descricao: string;
     cnpj: string;
 }

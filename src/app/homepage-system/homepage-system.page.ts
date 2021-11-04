@@ -51,15 +51,17 @@ export class HomepageSystemPage implements OnInit {
   };
   
   listaTrabalho: Observable<ITrabalho[]>;
+
+  booleanUsuario = false;
+  booleanInstituicao = false;
+
   constructor(
     private trabalhoService: TrabalhoService,
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService,
     private storage: Storage,
     private router: Router
-  ) { 
-    
-  }
+  ) { }
 
   async ngOnInit() {
     //Autenticação de acesso à página
@@ -73,6 +75,7 @@ export class HomepageSystemPage implements OnInit {
           this.usuario = retorno;
         }
       );
+      this.booleanUsuario = true;
     } else if (this.tipo == 'cnpj') {
       this.instituicao.cnpj = String(await this.storage.get('codigo'));
       this.instituicao.senha = await this.storage.get('senha');
@@ -81,6 +84,7 @@ export class HomepageSystemPage implements OnInit {
           this.instituicao = retorno;
         }
       );
+      this.booleanInstituicao = true;
     } else {
       this.router.navigate(['/folder']);
     }

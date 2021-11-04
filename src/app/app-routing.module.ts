@@ -48,6 +48,14 @@ const routes: Routes = [
     loadChildren: () => import('./edicaotrabalho-system/edicaotrabalho-system.module').then( m => m.EdicaotrabalhoSystemPageModule)
   },
   {
+    path: 'edicaomodelo-system',
+    loadChildren: () => import('./edicaotrabalho-system/edicaotrabalho-system.module').then( m => m.EdicaotrabalhoSystemPageModule)
+  },
+  {
+    path: 'edicaomodelo-system/:codigoModelo',
+    loadChildren: () => import('./edicaotrabalho-system/edicaotrabalho-system.module').then( m => m.EdicaotrabalhoSystemPageModule)
+  },
+  {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },

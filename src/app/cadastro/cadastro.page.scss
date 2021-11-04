@@ -105,7 +105,7 @@ ion-segment ion-label {
 }
 
 #card_cadastro ion-input{
-    --placeholder-color: #344057;
+    --placeholder-color: #989fac;
     color: #344057;
     --background: white;
     --placeholder-opacity: 1;
@@ -116,6 +116,7 @@ ion-segment ion-label {
     margin-top: 10px;
     border-radius: 5px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --placeholder-font-weight: 300;
 }
 
 #card_cadastro #item_cadastro .cad_usuario{
