@@ -283,11 +283,14 @@
         </ion-grid>
         <ion-grid fixed>
           <ion-row>
-            <ion-col><ion-icon name="save-sharp" id="icone" (click)="salvar()"></ion-icon></ion-col>
-            <ion-col><ion-icon name="trash-sharp" id="icone" (click)="deletar()"></ion-icon></ion-col>
+            <ion-col><ion-icon *ngIf="booleanUsuario" name="save-sharp" id="icone" (click)="salvarTrabalho()"></ion-icon></ion-col>
+            <ion-col><ion-icon *ngIf="booleanInstituicao" name="save-sharp" id="icone" (click)="salvarModelo()"></ion-icon></ion-col>
+            <ion-col><ion-icon *ngIf="booleanInstituicao" name="trash-sharp" id="icone" (click)="deletarModelo()"></ion-icon></ion-col>
+            <ion-col><ion-icon *ngIf="booleanUsuario" name="trash-sharp" id="icone" (click)="deletarTrabalho()"></ion-icon></ion-col>
+            
           </ion-row>
-          <ion-row>
-            <ion-col *ngIf="booleanUsuario"><ion-icon name="people-circle-sharp" id="icone" (click)="openModal()"></ion-icon></ion-col>
+          <ion-row *ngIf="booleanUsuario">
+            <ion-col><ion-icon name="people-circle-sharp" id="icone" (click)="openModal()"></ion-icon></ion-col>
             <ion-col><ion-icon name="eye-off-sharp" id="icone" (click)="publicar()"></ion-icon></ion-col>
           </ion-row>
           <ion-row>

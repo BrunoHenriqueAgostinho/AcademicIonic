@@ -198,9 +198,9 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     }
   }
 
-  salvar() {
+  salvarTrabalho() {
     this.trabalho.arquivo = window.frames['textField'].document.body.innerHTML;
-    this.testeArquivo();
+    this.testeArquivoTrabalho();
     this.trabalhoService.alterar(this.trabalho).subscribe(
       retorno => {
         console.log(retorno);
@@ -208,7 +208,17 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     );
   }
 
-  async deletar() {
+  salvarModelo() {
+    this.modelo.arquivo = window.frames['textField'].document.body.innerHTML;
+    this.testeArquivoModelo();
+    this.modeloService.alterar(this.modelo).subscribe(
+      retorno => {
+        console.log(retorno);
+      }
+    );
+  }
+
+  async deletarTrabalho() {
     this.desenvolve.codigo = this.trabalho.codigo;
     const alerta = await this.alertController.create({
       cssClass: 'alerta',
@@ -228,6 +238,34 @@ export class EdicaotrabalhoSystemPage implements OnInit {
               }
             );
             this.router.navigate(["/meustrabalhos-system"]);
+          }
+        }
+      ]
+    });
+    await alerta.present();
+  }
+
+  async deletarModelo() {
+    this.desenvolve.codigo = this.trabalho.codigo;
+    const alerta = await this.alertController.create({
+      cssClass: 'alerta',
+      header: 'Você tem certeza que deseja deletar esse modelo?',
+      message: 'Ao deletar esse modelo, todos que já utilizaram o modelo continuaram com seus trabalhos.',
+      buttons: [
+        {
+          text:'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text:'Deletar',
+          handler:() => {
+            console.log(this.modelo.codigo);
+            this.modeloService.excluir(this.modelo).subscribe(
+              retorno => {
+                this.modeloService.exibirToast(retorno.mensagem, "success");
+              }
+            );
+            this.router.navigate(["/meusmodelos-system"]);
           }
         }
       ]
@@ -278,7 +316,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     return await modal.present();
   }
 
-  testeArquivo() {
+  testeArquivoTrabalho() {
     this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: right;"', 'align="right"');
     this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: left;"', 'align="left"');
     this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: center;"', 'align="center"');
@@ -303,6 +341,33 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: left;"', 'align="left"');
     this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: right;"', 'align="right"');
     this.trabalho.arquivo = this.trabalho.arquivo.replace('style="text-align: justify;"', 'align="justify"');
+  }
+
+  testeArquivoModelo() {
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="center" style="text-align: right;"', 'align="right"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="center" style="text-align: left;"', 'align="left"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="center" style="text-align: center;"', 'align="center"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="center" style="text-align: justify;"', 'align="justify"');
+
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="right" style="text-align: right;"', 'align="right"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="right" style="text-align: left;"', 'align="left"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="right" style="text-align: center;"', 'align="center"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="right" style="text-align: justify;"', 'align="justify"');
+
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="left" style="text-align: right;"', 'align="right"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="left" style="text-align: left;"', 'align="left"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="left" style="text-align: center;"', 'align="center"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="left" style="text-align: justify;"', 'align="justify"');
+
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="justify" style="text-align: right;"', 'align="right"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="justify" style="text-align: left;"', 'align="left"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="justify" style="text-align: center;"', 'align="center"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('align="justify" style="text-align: justify;"', 'align="justify"');
+
+    this.modelo.arquivo = this.modelo.arquivo.replace('style="text-align: center;"', 'align="center"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('style="text-align: left;"', 'align="left"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('style="text-align: right;"', 'align="right"');
+    this.modelo.arquivo = this.modelo.arquivo.replace('style="text-align: justify;"', 'align="justify"');
   }
 
   mudarTrabalho() {

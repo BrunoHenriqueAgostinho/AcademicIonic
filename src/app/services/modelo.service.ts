@@ -54,6 +54,21 @@ export class ModeloService {
     );
   }
 
+  //alterar_modelo.php
+  alterar(modelo): Observable<any> {
+    return this.http.put(this.URL + "/alterar_modelo.php", modelo).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
+    );
+  }
+
+  excluir(modelo): Observable<any> {
+    return this.http.post(this.URL + "/deletar_modelo.php", modelo).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibeErro(erro))
+    );
+  }
+
   async exibirToast(mensagem, cor) {
     const toast = await this.toastController.create(
       {
