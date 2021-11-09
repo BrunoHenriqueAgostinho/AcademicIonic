@@ -1,6 +1,11 @@
 <!-- my-modal.page.html -->
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>{{tituloModal}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -37,8 +42,4 @@
       <ion-icon slot="end" size="large" name="add-circle-sharp" color="success" (click)="adicionarUsuarioTrabalho(usu.cpf)"></ion-icon>
     </ion-item>
   </ion-list>
-
-  <ion-button (click)="closeModal()" expand="block">
-    Voltar
-  </ion-button>
 </ion-content>

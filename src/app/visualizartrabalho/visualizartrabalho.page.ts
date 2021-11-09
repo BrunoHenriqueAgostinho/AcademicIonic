@@ -6,6 +6,10 @@ import { IDesenvolve } from '../model/IDesenvolve.model';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { DesenvolveUsuarioTrabalhoService } from '../services/desenvolve-usuario-trabalho.service';
 import { TrabalhoService } from '../services/trabalho.service';
+import { 
+  ModalController, 
+  NavParams 
+  } from '@ionic/angular';
 
 @Component({
   selector: 'app-visualizartrabalho',
@@ -13,6 +17,9 @@ import { TrabalhoService } from '../services/trabalho.service';
   styleUrls: ['./visualizartrabalho.page.scss'],
 })
 export class VisualizartrabalhoPage implements OnInit {
+
+  tituloModal: string;
+  codigoModal: number;
 
   trabalho: ITrabalho = {
     codigo: null,
@@ -37,11 +44,16 @@ export class VisualizartrabalhoPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private trabalhoService: TrabalhoService,
-    private desenvolveService: DesenvolveUsuarioTrabalhoService
+    private desenvolveService: DesenvolveUsuarioTrabalhoService,
+    private modalController: ModalController,
+    private navParams: NavParams
   ) { }
 
   ngOnInit() {
-    this.trabalho.codigo = Number(this.activatedRoute.snapshot.paramMap.get('codigoTrabalho'));
+    console.table(this.navParams);
+    this.trabalho.codigo = this.navParams.data.paramID;
+    this.tituloModal = this.navParams.data.paramTitle; 
+
     this.trabalhoService.consultar(this.trabalho).subscribe(
       retorno => {
         this.trabalho.nome = retorno.nome;
@@ -55,7 +67,12 @@ export class VisualizartrabalhoPage implements OnInit {
         this.mudar();
       }
     );
-    this.listaMembros = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(200));
+
+    this.listaMembros = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(0));
+  }
+
+  async closeModal() {
+    await this.modalController.dismiss();
   }
 
   mudar() {

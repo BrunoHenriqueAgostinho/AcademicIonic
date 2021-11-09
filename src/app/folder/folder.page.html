@@ -95,7 +95,7 @@
   <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
     <ion-row>
       <ion-col size="3" *ngFor="let trab of trabalho">
-        <ion-card (click)="visualizarTrabalho(trab.codigo)">
+        <ion-card (click)="openModal(trab.codigo)">
           <ion-card-header>
             <ion-card-title>{{trab.nome}}</ion-card-title>
           </ion-card-header>

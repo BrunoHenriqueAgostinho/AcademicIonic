@@ -33,6 +33,13 @@ export class InstituicaoService {
     );
   }
 
+  alterar(instituicao): Observable<any> {
+    return this.http.put(this.URL + "/alterar_instituicao.php", instituicao).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
+    );
+  }
+
   async exibirToast(mensagem, cor) { 
     const toast = await this.toastController.create( 
       { 

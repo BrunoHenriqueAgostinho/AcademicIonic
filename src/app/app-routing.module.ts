@@ -70,7 +70,11 @@ const routes: Routes = [
   {
     path: 'visualizartrabalho/:codigoTrabalho',
     loadChildren: () => import('./visualizartrabalho/visualizartrabalho.module').then( m => m.VisualizartrabalhoPageModule)
+  },  {
+    path: 'propriedadestrabalho',
+    loadChildren: () => import('./modals/propriedadestrabalho/propriedadestrabalho.module').then( m => m.PropriedadestrabalhoPageModule)
   }
+
 
 
 

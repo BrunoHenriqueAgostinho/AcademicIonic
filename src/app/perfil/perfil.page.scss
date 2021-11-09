@@ -59,13 +59,13 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 ion-text h1{
   font-weight: bold;
-    font-size: 60px;
+    font-size: 40px;
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 ion-input{
-  --placeholder-color: #344057;
+  --placeholder-color: #989fac;
   color: #344057;
   --background: white;
   --placeholder-opacity: 1;
@@ -119,6 +119,15 @@ ion-select, ion-select-option {
   color: #2F77FF;
 }
 
+@media screen and (max-width: 1030px) {
+  ion-avatar {
+    margin:auto;
+  }
+  ion-col{
+    --ion-grid-columns: 6;
+  }
+}
+
 @media screen and (max-width: 850px) {
   #barraDeFerramentas .opcoes{
     display: none;
@@ -152,8 +161,12 @@ ion-select, ion-select-option {
   }
 
   #cabecalho ion-text h1 {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 900;
     padding-top: 4%;
+  }
+  #imagem{
+    width: 150px;
+    height: 150px;
   }
 }

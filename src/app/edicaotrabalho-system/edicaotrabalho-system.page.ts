@@ -16,6 +16,7 @@ import { UsuarioService } from '../services/usuario.service';
 import { InstituicaoService } from '../services/instituicao.service';
 import { IModelo } from '../model/IModelo.model';
 import { ModeloService } from '../services/modelo.service';
+import { PropriedadestrabalhoPage } from '../modals/propriedadestrabalho/propriedadestrabalho.page';
 
 @Component({
   selector: 'app-edicaotrabalho-system',
@@ -304,6 +305,24 @@ export class EdicaotrabalhoSystemPage implements OnInit {
       componentProps: {
         "paramID": this.trabalho.codigo,
         "paramTitle": "Participantes do Trabalho"
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+    return await modal.present();
+  }
+
+  async openPropriedades() {
+    const modal = await this.modalController.create({
+      component: PropriedadestrabalhoPage,
+      componentProps: {
+        "paramID": this.trabalho.codigo,
+        "paramTitle": "Propriedades do Trabalho"
       }
     });
 

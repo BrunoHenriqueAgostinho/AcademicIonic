@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { TrabalhoService } from '../services/trabalho.service';
+import { ModalController } from '@ionic/angular';
+import { VisualizartrabalhoPage } from '../visualizartrabalho/visualizartrabalho.page';
 
 @Component({
   selector: 'app-folder',
@@ -18,9 +20,12 @@ export class FolderPage implements OnInit {
     pesquisa: ''
   };
 
+  dataReturned: any;
+
   constructor(
     private trabalhoService: TrabalhoService,
-    private router: Router
+    private router: Router,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -30,9 +35,22 @@ export class FolderPage implements OnInit {
     this.listaTrabalho = this.trabalhoService.pesquisar(this.pesquisa).pipe(delay(200));
     console.log(this.listaTrabalho);
   }
-  
-  visualizarTrabalho(trabalho){
-    this.router.navigate(["/visualizartrabalho/" + trabalho]);
-  }
 
+  async openModal(id) {
+    const modal = await this.modalController.create({
+      component: VisualizartrabalhoPage,
+      componentProps: {
+        "paramID": id,
+        "paramTitle": "Visualizar Trabalho"
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+    return await modal.present();
+  }
 }

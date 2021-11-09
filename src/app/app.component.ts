@@ -10,19 +10,28 @@ import { UsuarioService } from './services/usuario.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
   public paginasAnonimo = [
     { title: 'Para Estudantes', url: '/folder', icon: 'book' },
     { title: 'Para Instituições', url: '/folder', icon: 'storefront' },
     { title: 'Cadastro', url: '/cadastro', icon: 'key' },
     { title: 'Entrar', url: '/entrar', icon: 'enter' }
   ];
+
   public paginasUsuario = [
     { title: 'Perfil', url: '/perfil', icon: 'body' },
     { title: 'Para Estudantes', url: '/folder', icon: 'book' },
     { title: 'Para Instituições', url: '/folder', icon: 'storefront' },
     { title: 'Meus Trabalhos', url: '/meustrabalhos-system', icon: 'clipboard' }
-    
   ];
+
+  public paginasInstituicao = [
+    { title: 'Perfil', url: '/perfil', icon: 'body' },
+    { title: 'Para Estudantes', url: '/folder', icon: 'book' },
+    { title: 'Para Instituições', url: '/folder', icon: 'storefront' },
+    { title: 'Meus Modelos', url: '/meusmodelos-system', icon: 'clipboard' }
+  ];
+
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   
   usuario: IUsuario = {
@@ -52,9 +61,9 @@ export class AppComponent {
     telefoneCelular: '',
     cidade: ''
   }
-  usuarioOn: Boolean = null;
-  instituicaoOn: Boolean = null;
-  anonimoOn: Boolean = null;
+  booleanUsuario = false;
+  booleanInstituicao = false;
+  booleanAnonimo = false;
   tipo = '';
   
   constructor(
@@ -74,9 +83,9 @@ export class AppComponent {
         retorno => {
           this.usuario = retorno;
           console.log(this.usuario);
-          this.usuarioOn = true;
         }
       );
+      this.booleanUsuario = true;
     } else if (this.tipo == 'cnpj') {
       this.instituicao.cnpj = String(await this.storage.get('codigo'));
       this.instituicao.senha = await this.storage.get('senha');
@@ -85,11 +94,11 @@ export class AppComponent {
         retorno => {
           this.instituicao = retorno;
           console.log(retorno);
-          this.instituicaoOn = true;
         }
       );
+      this.booleanInstituicao = true;
     } else {
-      this.anonimoOn = true;
+      this.booleanAnonimo = true;
     }
   }
 }

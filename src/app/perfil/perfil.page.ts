@@ -50,6 +50,8 @@ export class PerfilPage implements OnInit {
   numeroSeguidos = 0;
 
   tipo = '';
+  booleanUsuario = false;
+  booleanInstituicao = false;
 
   status: String = '';
   tema: String = '';
@@ -77,6 +79,8 @@ export class PerfilPage implements OnInit {
         }
       );
 
+      this.booleanUsuario = true;
+
       this.adicionaService.contar_seguidores(this.usuario).subscribe(
         retorno => {
           this.numeroSeguidores = retorno.mensagem;
@@ -96,16 +100,28 @@ export class PerfilPage implements OnInit {
           this.instituicao = retorno;
         }
       );
+      this.booleanInstituicao = true;
     } else {
       this.router.navigate(['/folder']);
     }
   }
 
-  salvarAlteracoes() {
+  salvarAlteracoesUsuario() {
     this.usuario.telefoneCelular = String(this.usuario.telefoneCelular);
     this.usuario.telefoneFixo = String(this.usuario.telefoneFixo);
     console.log(this.usuario);
     this.usuarioService.alterar(this.usuario).subscribe(
+      retorno => {
+        this.usuarioService.exibirToast(retorno.mensagem, "success");
+      }
+    );
+  }
+
+  salvarAlteracoesInstituicao() {
+    this.instituicao.telefoneCelular = String(this.instituicao.telefoneCelular);
+    this.instituicao.telefoneFixo = String(this.instituicao.telefoneFixo);
+    console.log(this.instituicao);
+    this.instituicaoService.alterar(this.instituicao).subscribe(
       retorno => {
         this.usuarioService.exibirToast(retorno.mensagem, "success");
       }

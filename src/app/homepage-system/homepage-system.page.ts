@@ -10,6 +10,8 @@ import { IUsuario } from '../model/IUsuario.model';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Router } from '@angular/router';
 import { IInstituicao } from '../model/IInstituicao.model';
+import { ModalController } from '@ionic/angular';
+import { VisualizartrabalhoPage } from '../visualizartrabalho/visualizartrabalho.page';
 
 @Component({
   selector: 'app-homepage-system',
@@ -54,13 +56,15 @@ export class HomepageSystemPage implements OnInit {
 
   booleanUsuario = false;
   booleanInstituicao = false;
+  dataReturned: any;
 
   constructor(
     private trabalhoService: TrabalhoService,
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService,
     private storage: Storage,
-    private router: Router
+    private router: Router,
+    private modalController: ModalController
   ) { }
 
   async ngOnInit() {
@@ -98,7 +102,21 @@ export class HomepageSystemPage implements OnInit {
     this.listaTrabalho = this.trabalhoService.listar().pipe(delay(200));
   }
 
-  visualizarTrabalho(trabalho){
-    this.router.navigate(["/visualizartrabalho/" + trabalho]);
+  async openModal(id) {
+    const modal = await this.modalController.create({
+      component: VisualizartrabalhoPage,
+      componentProps: {
+        "paramID": id,
+        "paramTitle": "Visualizar Trabalho"
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+    return await modal.present();
   }
 }

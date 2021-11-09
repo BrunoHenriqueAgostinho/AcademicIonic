@@ -36,30 +36,30 @@
 </ion-header>
 
 <ion-content>
-  <section id="cabecalho">
+  <section *ngIf="booleanUsuario" id="cabecalho">
     <ion-grid>
       <ion-row>
-        <ion-col size="4">
+        <ion-col size="6">
           <ion-avatar id="imagem">
             <img src="https://veja.abril.com.br/wp-content/uploads/2017/07/pessoa-neurocc81tica.jpg?quality=70&strip=info&resize=680,453">
           </ion-avatar>
         </ion-col>
-        <ion-col size="8">
+        <ion-col size="6">
           <ion-text>
             <h1>{{usuario.nome}}</h1>
-            <ion-icon name="reader-sharp" slot="start"></ion-icon><ion-input type="text" placeholder="Digite uma descrição para o seu perfil" name="descricao" [(ngModel)]="usuario.descricao"></ion-input>
+            <ion-icon name="reader-sharp" slot="start"></ion-icon><ion-input type="text" placeholder="Descrição" name="descricao" [(ngModel)]="usuario.descricao"></ion-input>
             <ion-input type="number" placeholder="11999999999" name="telefoneFixo" [(ngModel)]="usuario.telefoneFixo"></ion-input>
             <ion-input type="number" placeholder="1199999999" name="telefoneCelular" [(ngModel)]="usuario.telefoneCelular"></ion-input>
             <ion-item>
               <ion-label>Status</ion-label>
-              <ion-select [(ngModel)]="usuario.status" placeholder="Defina seu status atual na plataforma">
+              <ion-select [(ngModel)]="usuario.status" placeholder="Status">
                 <ion-select-option value="1">Disponível</ion-select-option>
                 <ion-select-option value="0">Ausente</ion-select-option>
                 <ion-select-option value="2">Não Perturbar</ion-select-option>
                 <ion-select-option value="3">Invisível</ion-select-option>
               </ion-select>
             </ion-item>
-            <ion-button id="botaoAlteracoes" (click)="salvarAlteracoes()" expand="block">
+            <ion-button id="botaoAlteracoes" (click)="salvarAlteracoesUsuario()" expand="block">
               Salvar alterações
             </ion-button>
             
@@ -70,16 +70,25 @@
     {{numeroSeguidores}} Seguidores
     {{numeroSeguidos}} Seguidos
   </section>
-  <ion-grid *ngIf="listaSeguidos | async as amizade">
-    <ion-row>
-      <ion-col size="3" *ngFor="let amizade of amizade">
-        <ion-card>
-          <ion-card-content>
-            <ion-card-title>{{amizade.seguido}}</ion-card-title>
-            <ion-card-title>{{amizade.seguidor}}</ion-card-title>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <section *ngIf="booleanInstituicao" id="cabecalho">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-avatar id="imagem">
+            <img src="https://veja.abril.com.br/wp-content/uploads/2017/07/pessoa-neurocc81tica.jpg?quality=70&strip=info&resize=680,453">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="6">
+          <ion-text>
+            <h1>{{instituicao.nome}}</h1>
+            <ion-input type="number" placeholder="11999999999" name="telefoneFixo" [(ngModel)]="instituicao.telefoneFixo"></ion-input>
+            <ion-input type="number" placeholder="1199999999" name="telefoneCelular" [(ngModel)]="instituicao.telefoneCelular"></ion-input>
+            <ion-button id="botaoAlteracoes" (click)="salvarAlteracoesInstituicao()" expand="block">
+              Salvar alterações
+            </ion-button>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
 </ion-content>
