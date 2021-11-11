@@ -60,6 +60,10 @@ ion-segment ion-label {
     height: 600px;
     margin: 1% auto;
     background-color: #344057;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #card_cadastro #item_cadastro{
@@ -119,11 +123,7 @@ ion-segment ion-label {
     --placeholder-font-weight: 300;
 }
 
-#card_cadastro #item_cadastro .cad_usuario{
-    margin: auto;
-}
-
-#card_cadastro #item_cadastro .cad_instituicao{
+#card_cadastro #item_cadastro .geral{
     margin: auto;
 }
 
