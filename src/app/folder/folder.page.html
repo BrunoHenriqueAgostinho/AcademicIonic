@@ -7,7 +7,7 @@
       <ion-item lines="none">
         <ion-label>Para Instituições</ion-label>
       </ion-item>
-      <ion-item lines="none"> 
+      <ion-item lines="none">
         <ion-label>Para Estudantes</ion-label>
       </ion-item>
       <div style="border-left:1px solid #000;height:35px"></div>
@@ -20,17 +20,17 @@
     </ion-buttons>
     <ion-buttons class="opcoesIcones" slot="end">
       <ion-item lines="none">
-        <ion-icon id="icone" name="storefront-sharp"></ion-icon>
+        <ion-icon id="icone" [ios]="'storefront-outline'" [md]="'storefront-sharp'"></ion-icon>
       </ion-item>
-      <ion-item lines="none"> 
-        <ion-icon id="icone" name="book-sharp"></ion-icon>
+      <ion-item lines="none">
+        <ion-icon id="icone" [ios]="'book-outline'" [md]="'book-sharp'"></ion-icon>
       </ion-item>
       <div style="border-left:1px solid #000;height:35px"></div>
       <ion-item [routerLink]="['/cadastro']" lines="none">
-        <ion-icon id="icone" name="key-sharp" ></ion-icon>
+        <ion-icon id="icone" [ios]="'key-outline'" [md]="'key-sharp'"></ion-icon>
       </ion-item>
       <ion-item [routerLink]="['/entrar']" lines="none">
-        <ion-icon id="icone" name="log-in-sharp"></ion-icon>
+        <ion-icon id="icone" [ios]="'log-in-outline'" [md]="'log-in-sharp'"></ion-icon>
       </ion-item>
     </ion-buttons>
     <ion-title [routerLink]="['/folder']">Academic</ion-title>
@@ -75,7 +75,7 @@
         <p class="p_mobile">Olá, usuário! Fique a vontade para pesquisar por trabalhos em nossa plataforma e desenvolver seus projetos.</p>
         <ion-searchbar class="p_desk" placeholder="Pesquise por trabalhos científicos" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
         <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
-        
+
         <!--<ion-chip>
           <ion-label>Exatas</ion-label>
         </ion-chip>
@@ -88,7 +88,7 @@
         <ion-chip>
           <ion-label>Linguagens</ion-label>
         </ion-chip>-->
-        
+
       </div>
     </ion-text>
   </section>
@@ -99,7 +99,7 @@
           <ion-card-header>
             <ion-card-title>{{trab.nome}}</ion-card-title>
           </ion-card-header>
-        
+
           <ion-card-content>
             <ion-card-title>
               {{trab.descricao}}

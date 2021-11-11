@@ -1,7 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar id="barraDeFerramentas">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button *ngIf="booleanUsuario" [routerLink]="['/meustrabalhos-system']">
+        <ion-icon id="voltar" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="booleanInstituicao" [routerLink]="['/meusmodelos-system']">
+        <ion-icon id="voltar" name="arrow-back-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-buttons class="opcoes" slot="end">
       <ion-item *ngIf="booleanUsuario" [routerLink]="['/meustrabalhos-system']" lines="none">
@@ -25,8 +30,7 @@
         <ion-icon id="icone" name="body-sharp"></ion-icon>
       </ion-item>
     </ion-buttons>
-    <ion-input *ngIf="booleanUsuario" type="text" placeholder="Título do trabalho" value="{{trabalho.nome}}" [(ngModel)]="trabalho.nome"></ion-input>
-    <ion-input *ngIf="booleanInstituicao" type="text" placeholder="Título do Modelo" value="{{modelo.nome}}" [(ngModel)]="modelo.nome"></ion-input>
+    <ion-title [routerLink]="['/homepage-system']">Academic</ion-title>
   </ion-toolbar>
   <ion-toolbar>
     <div id="barraDeTarefas">
@@ -287,15 +291,15 @@
             <ion-col><ion-icon *ngIf="booleanInstituicao" name="save-sharp" id="icone" (click)="salvarModelo()"></ion-icon></ion-col>
             <ion-col><ion-icon *ngIf="booleanInstituicao" name="trash-sharp" id="icone" (click)="deletarModelo()"></ion-icon></ion-col>
             <ion-col><ion-icon *ngIf="booleanUsuario" name="trash-sharp" id="icone" (click)="deletarTrabalho()"></ion-icon></ion-col>
-            
+
           </ion-row>
           <ion-row *ngIf="booleanUsuario">
-            <ion-col><ion-icon name="add" id="icone" (click)="openPropriedadesTrabalho()"></ion-icon></ion-col>
+            <ion-col><ion-icon name="brush-sharp" id="icone" (click)="openPropriedadesTrabalho()"></ion-icon></ion-col>
             <ion-col><ion-icon name="people-circle-sharp" id="icone" (click)="openModal()"></ion-icon></ion-col>
             <ion-col><ion-icon name="eye-off-sharp" id="icone" (click)="publicar()"></ion-icon></ion-col>
           </ion-row>
           <ion-row *ngIf="booleanInstituicao">
-            <ion-col><ion-icon name="add" id="icone" (click)="openPropriedadesmodelo()"></ion-icon></ion-col>
+            <ion-col><ion-icon name="brush-sharp" id="icone" (click)="openPropriedadesModelo()"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12"><p>Opções</p></ion-col>

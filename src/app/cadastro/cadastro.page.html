@@ -7,7 +7,7 @@
       <ion-item lines="none">
         <ion-label>Para Instituições</ion-label>
       </ion-item>
-      <ion-item lines="none"> 
+      <ion-item lines="none">
         <ion-label>Para Estudantes</ion-label>
       </ion-item>
       <div style="border-left:1px solid #000;height:35px"></div>
@@ -20,17 +20,17 @@
     </ion-buttons>
     <ion-buttons class="opcoesIcones" slot="end">
       <ion-item lines="none">
-        <ion-icon id="icone" name="storefront-sharp"></ion-icon>
+        <ion-icon id="icone" [ios]="'storefront-outline'" [md]="'storefront-sharp'"></ion-icon>
       </ion-item>
-      <ion-item lines="none"> 
-        <ion-icon id="icone" name="book-sharp"></ion-icon>
+      <ion-item lines="none">
+        <ion-icon id="icone" [ios]="'book-outline'" [md]="'book-sharp'"></ion-icon>
       </ion-item>
       <div style="border-left:1px solid #000;height:35px"></div>
       <ion-item [routerLink]="['/cadastro']" lines="none">
-        <ion-icon id="icone" name="key-sharp" ></ion-icon>
+        <ion-icon id="icone" [ios]="'key-outline'" [md]="'key-sharp'"></ion-icon>
       </ion-item>
       <ion-item [routerLink]="['/entrar']" lines="none">
-        <ion-icon id="icone" name="log-in-sharp"></ion-icon>
+        <ion-icon id="icone" [ios]="'log-in-outline'" [md]="'log-in-sharp'"></ion-icon>
       </ion-item>
     </ion-buttons>
     <ion-title [routerLink]="['/folder']">Academic</ion-title>
@@ -39,11 +39,11 @@
 
 
 
-<ion-content [fullscreen]="true"> 
+<ion-content [fullscreen]="true">
   <ion-card id="card_cadastro">
     <ion-item id="item_cadastro" lines="none">
       <!--<div class="geral">-->
-          
+
       <!--</div>-->
       <div class="geral">
           <h1>Cadastro</h1>
@@ -74,15 +74,13 @@
                 <ion-input type="text" placeholder="E-mail" name="emailInstituicao" [(ngModel)]="instituicao.email"></ion-input>
                 <ion-input type="password" placeholder="Senha" name="senhaInstituicao" [(ngModel)]="instituicao.senha" [ionChange]="corSenhaInstituicao()"></ion-input>
                 <ion-input type="password" required="true" clear-on-edit="true" placeholder="Confirmar senha" name="ConfirmarSenhaInstituicao" [(ngModel)]="confirmarSenhaInstituicao" [ionChange]="corSenhaInstituicao()"[style.background]="corInstituicao"></ion-input>
-              
+
               <ion-button (click)="cadastrarInstituicao()">Cadastrar</ion-button>
             </form>
         </div>
-        <p>Já possui cadastro? <a href="entrar">Entrar</a></p>
-      </div>
     </ion-item>
 
-    <ion-item id="itemIMG" lines="none"> 
+    <ion-item id="itemIMG" lines="none">
         <img class="img_cadastro" src="../assets/img_cadastro.png">
       </ion-item>
   </ion-card>

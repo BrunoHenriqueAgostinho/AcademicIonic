@@ -17,6 +17,7 @@ import { InstituicaoService } from '../services/instituicao.service';
 import { IModelo } from '../model/IModelo.model';
 import { ModeloService } from '../services/modelo.service';
 import { PropriedadestrabalhoPage } from '../modals/propriedadestrabalho/propriedadestrabalho.page';
+import { PropriedadesmodeloPage } from '../modals/propriedadesmodelo/propriedadesmodelo.page';
 
 @Component({
   selector: 'app-edicaotrabalho-system',
@@ -24,7 +25,7 @@ import { PropriedadestrabalhoPage } from '../modals/propriedadestrabalho/proprie
   styleUrls: ['./edicaotrabalho-system.page.scss'],
 })
 export class EdicaotrabalhoSystemPage implements OnInit {
-  
+
   usuario: IUsuario = {
     cpf: '',
     nome: '',
@@ -296,7 +297,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
       ]
     });
     await alerta.present();
-    
+
   }
 
   async openModal() {
@@ -335,7 +336,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     return await modal.present();
   }
 
-  /*async openPropriedadesModelo() {
+  async openPropriedadesModelo() {
     const modal = await this.modalController.create({
       component: PropriedadesmodeloPage,
       componentProps: {
@@ -351,7 +352,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
       }
     });
     return await modal.present();
-  }*/
+  }
 
   testeArquivoTrabalho() {
     this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: right;"', 'align="right"');

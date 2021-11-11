@@ -19,16 +19,16 @@
     </ion-buttons>
     <ion-buttons class="opcoesIcones" slot="end">
       <ion-item *ngIf="booleanUsuario" [routerLink]="['/meustrabalhos-system']" lines="none">
-        <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
+        <ion-icon id="icone" [ios]="'clipboard-outline'" [md]="'clipboard-sharp'"></ion-icon>
       </ion-item>
       <ion-item *ngIf="booleanInstituicao" [routerLink]="['/meusmodelos-system']" lines="none">
-        <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
+        <ion-icon id="icone" [ios]="'clipboard-outline'" [md]="'clipboard-sharp'"></ion-icon>
       </ion-item>
       <ion-item [routerLink]="['/perfil']" lines="none">
-        <ion-icon id="icone" name="body-sharp"></ion-icon>
+        <ion-icon id="icone" [ios]="'body-outline'" [md]="'body-sharp'"></ion-icon>
       </ion-item>
       <ion-item (click)="sair()" lines="none">
-        <ion-icon id="icone" name="log-out-sharp"></ion-icon>
+        <ion-icon id="icone" [ios]="'log-out-outline'" [md]="'log-out-sharp'"></ion-icon>
       </ion-item>
     </ion-buttons>
     <ion-title [routerLink]="['/homepage-system']">Academic</ion-title>
@@ -62,7 +62,7 @@
             <ion-button id="botaoAlteracoes" (click)="salvarAlteracoesUsuario()" expand="block">
               Salvar alterações
             </ion-button>
-            
+
           </ion-text>
         </ion-col>
       </ion-row>

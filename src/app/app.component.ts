@@ -12,6 +12,7 @@ import { UsuarioService } from './services/usuario.service';
 export class AppComponent {
 
   public paginasAnonimo = [
+    { title: 'Início', url: '/folder', icon: 'home' },
     { title: 'Para Estudantes', url: '/folder', icon: 'book' },
     { title: 'Para Instituições', url: '/folder', icon: 'storefront' },
     { title: 'Cadastro', url: '/cadastro', icon: 'key' },
@@ -19,6 +20,7 @@ export class AppComponent {
   ];
 
   public paginasUsuario = [
+    { title: 'Início', url: '/homepage-system', icon: 'home' },
     { title: 'Perfil', url: '/perfil', icon: 'body' },
     { title: 'Para Estudantes', url: '/folder', icon: 'book' },
     { title: 'Para Instituições', url: '/folder', icon: 'storefront' },
@@ -26,6 +28,7 @@ export class AppComponent {
   ];
 
   public paginasInstituicao = [
+    { title: 'Início', url: '/homepage-system', icon: 'home' },
     { title: 'Perfil', url: '/perfil', icon: 'body' },
     { title: 'Para Estudantes', url: '/folder', icon: 'book' },
     { title: 'Para Instituições', url: '/folder', icon: 'storefront' },
@@ -33,7 +36,7 @@ export class AppComponent {
   ];
 
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  
+
   usuario: IUsuario = {
     cpf: '',
     nome: '',
@@ -65,7 +68,7 @@ export class AppComponent {
   booleanInstituicao = false;
   booleanAnonimo = false;
   tipo = '';
-  
+
   constructor(
     private storage: Storage,
     private usuarioService: UsuarioService,

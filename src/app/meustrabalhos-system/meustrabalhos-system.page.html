@@ -16,13 +16,13 @@
     </ion-buttons>
     <ion-buttons class="opcoesIcones" slot="end">
       <ion-item *ngIf="booleanUsuario" [routerLink]="['/meustrabalhos-system']" lines="none">
-        <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
+        <ion-icon id="icone" [ios]="'clipboard-outline'" [md]="'clipboard-sharp'"></ion-icon>
       </ion-item>
       <ion-item *ngIf="booleanInstituicao" [routerLink]="['/meusmodelos-system']" lines="none">
-        <ion-icon id="icone" name="clipboard-sharp" ></ion-icon>
+        <ion-icon id="icone" [ios]="'clipboard-outline'" [md]="'clipboard-sharp'"></ion-icon>
       </ion-item>
       <ion-item [routerLink]="['/perfil']" lines="none">
-        <ion-icon id="icone" name="body-sharp"></ion-icon>
+        <ion-icon id="icone" [ios]="'body-outline'" [md]="'body-sharp'"></ion-icon>
       </ion-item>
     </ion-buttons>
     <ion-title [routerLink]="['/homepage-system']">Academic</ion-title>
@@ -43,7 +43,7 @@
       </div>
     </ion-text>
   </section>
-  
+
   <section id="trabalhos" *ngIf="booleanUsuario">
     <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
       <ion-row>

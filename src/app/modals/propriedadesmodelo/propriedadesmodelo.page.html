@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>propriedadesmodelo</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{tituloModal}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <ion-input type="text" placeholder="Nome do modelo" name="nomeModelo" [(ngModel)]="modelo.nome"></ion-input>
+  <ion-input type="text" placeholder="Descrição do modelo" [(ngModel)]="modelo.descricao"></ion-input>
+  <ion-button id="botaoAlteracoes" (click)="salvarAlteracoesModelo()" expand="block">
+    Salvar alterações
+  </ion-button>
 </ion-content>
