@@ -290,9 +290,12 @@
             
           </ion-row>
           <ion-row *ngIf="booleanUsuario">
-            <ion-col><ion-icon name="add" id="icone" (click)="openPropriedades()"></ion-icon></ion-col>
+            <ion-col><ion-icon name="add" id="icone" (click)="openPropriedadesTrabalho()"></ion-icon></ion-col>
             <ion-col><ion-icon name="people-circle-sharp" id="icone" (click)="openModal()"></ion-icon></ion-col>
             <ion-col><ion-icon name="eye-off-sharp" id="icone" (click)="publicar()"></ion-icon></ion-col>
+          </ion-row>
+          <ion-row *ngIf="booleanInstituicao">
+            <ion-col><ion-icon name="add" id="icone" (click)="openPropriedadesmodelo()"></ion-icon></ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="12"><p>Opções</p></ion-col>

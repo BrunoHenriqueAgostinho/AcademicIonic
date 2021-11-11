@@ -317,7 +317,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     return await modal.present();
   }
 
-  async openPropriedades() {
+  async openPropriedadesTrabalho() {
     const modal = await this.modalController.create({
       component: PropriedadestrabalhoPage,
       componentProps: {
@@ -334,6 +334,24 @@ export class EdicaotrabalhoSystemPage implements OnInit {
     });
     return await modal.present();
   }
+
+  /*async openPropriedadesModelo() {
+    const modal = await this.modalController.create({
+      component: PropriedadesmodeloPage,
+      componentProps: {
+        "paramID": this.modelo.codigo,
+        "paramTitle": "Propriedades do Modelo"
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+    return await modal.present();
+  }*/
 
   testeArquivoTrabalho() {
     this.trabalho.arquivo = this.trabalho.arquivo.replace('align="center" style="text-align: right;"', 'align="right"');
