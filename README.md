@@ -1,6 +1,6 @@
 # Academic
 
-<img align="center" src="https://github.com/BrunoHenriqueAgostinho/AcademicIonic/tree/main/src/assets/academic.png" width="auto" height="300px" alt="Academic">
+<!--<img src="https://github.com/BrunoHenriqueAgostinho/AcademicIonic/blob/main/src/assets/academic.png" width="auto" height="300px" alt="Academic">-->
 
 ## Descrição do Projeto
 
