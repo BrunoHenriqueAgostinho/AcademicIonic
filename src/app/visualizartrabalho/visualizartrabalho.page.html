@@ -23,6 +23,11 @@
         <p>Descrição: {{trabalho.descricao}}</p>
         <p>Data de Publicação: {{trabalho.dtPublicacao | date: 'shortDate'}}</p>
       </div>
+      <p *ngIf="listaTag | async as tag">
+        <ion-chip (click)="inserirExcluirTag(tag.codigo)" outline color="white" *ngFor="let tag of tag">
+          {{tag.categoria}}
+        </ion-chip>
+      </p>
     </ion-text>
   </section>
   <iframe id="textField" name="textField" seamless="seamless" scrolling="yes" frameborder="0" srcdoc="{{trabalho.arquivo}}"></iframe>

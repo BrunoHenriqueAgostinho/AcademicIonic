@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, NavParams } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { IApresentatrabalhotag } from 'src/app/model/IApresentatrabalhotag.model';
+import { ITag } from 'src/app/model/ITag.model';
 import { ITrabalho } from 'src/app/model/ITrabalho.model';
+import { ApresentaTrabalhoTagService } from 'src/app/services/apresenta-trabalho-tag.service';
+import { TagService } from 'src/app/services/tag.service';
 import { TrabalhoService } from 'src/app/services/trabalho.service';
 
 @Component({
@@ -32,10 +37,18 @@ export class PropriedadestrabalhoPage implements OnInit {
     cnpj: null
   }
 
+  listaTag: Observable<ITag[]>;
+  tag: IApresentatrabalhotag = {
+    codigo: 0,
+    tag: 0
+  }
+
   constructor(
     private modalController: ModalController,
     private navParams: NavParams,
-    private trabalhoService: TrabalhoService
+    private trabalhoService: TrabalhoService,
+    private tagService: TagService,
+    private apresentaTagService: ApresentaTrabalhoTagService
   ) { }
 
   ngOnInit() {
@@ -56,6 +69,7 @@ export class PropriedadestrabalhoPage implements OnInit {
         this.trabalho.cnpj = retorno.cnpj;
       }
     );
+    this.listaTag = this.tagService.listar().pipe(delay(0));
   }
 
   async closeModal() {
@@ -66,6 +80,17 @@ export class PropriedadestrabalhoPage implements OnInit {
     this.trabalhoService.alterar(this.trabalho).subscribe(
       retorno => {
         this.trabalhoService.exibirToast(retorno.mensagem, "success");
+      }
+    );
+  }
+
+  inserirExcluirTag(tag){
+    this.tag.tag = tag;
+    this.tag.codigo = this.trabalho.codigo;
+    console.log(this.tag);
+    this.apresentaTagService.inserirExcluir(this.tag).subscribe(
+      retorno => {
+        this.apresentaTagService.exibirToast(retorno.mensagem, "success");
       }
     );
   }

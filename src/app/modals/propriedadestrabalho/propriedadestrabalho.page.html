@@ -16,4 +16,9 @@
   <ion-button id="botaoAlteracoes" (click)="salvarAlteracoesTrabalho()" expand="block">
     Salvar alterações
   </ion-button>
+  <div *ngIf="listaTag | async as tag">
+    <ion-chip (click)="inserirExcluirTag(tag.codigo)" outline color="azul" *ngFor="let tag of tag">
+      {{tag.categoria}}
+    </ion-chip>
+  </div>
 </ion-content>

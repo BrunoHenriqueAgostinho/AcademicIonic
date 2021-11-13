@@ -10,6 +10,8 @@ import {
   ModalController, 
   NavParams 
   } from '@ionic/angular';
+import { TagService } from '../services/tag.service';
+import { ITag } from '../model/ITag.model';
 
 @Component({
   selector: 'app-visualizartrabalho',
@@ -40,11 +42,13 @@ export class VisualizartrabalhoPage implements OnInit {
   }
 
   listaMembros: Observable<IDesenvolve[]>;
+  listaTag: Observable<ITag[]>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private trabalhoService: TrabalhoService,
     private desenvolveService: DesenvolveUsuarioTrabalhoService,
+    private tagService: TagService,
     private modalController: ModalController,
     private navParams: NavParams
   ) { }
@@ -69,6 +73,7 @@ export class VisualizartrabalhoPage implements OnInit {
     );
 
     this.listaMembros = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(0));
+    this.listaTag = this.tagService.consultar(this.trabalho).pipe(delay(0));
   }
 
   async closeModal() {
