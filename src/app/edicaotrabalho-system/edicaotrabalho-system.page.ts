@@ -75,7 +75,7 @@ export class EdicaotrabalhoSystemPage implements OnInit {
 
   modelo: IModelo = {
     codigo: null,
-    nome: 'novo trabalho',
+    nome: 'novo modelo',
     arquivo: '',
     margemDireita: '0cm',
     margemEsquerda: '0cm',
@@ -97,6 +97,35 @@ export class EdicaotrabalhoSystemPage implements OnInit {
   tipo = '';
   booleanUsuario = false;
   booleanInstituicao = false;
+
+  public valoresMargem = [
+    { valor: '0cm'},
+    { valor: '0.2cm'},
+    { valor: '0.4cm'},
+    { valor: '0.6cm'},
+    { valor: '0.8cm'},
+    { valor: '1cm'},
+    { valor: '1.2cm'},
+    { valor: '1.4cm'},
+    { valor: '1.6cm'},
+    { valor: '1.8cm'},
+    { valor: '2cm'},
+    { valor: '2.2cm'},
+    { valor: '2.4cm'},
+    { valor: '2.6cm'},
+    { valor: '2.8cm'},
+    { valor: '3cm'},
+    { valor: '3.2cm'},
+    { valor: '3.4cm'},
+    { valor: '3.6cm'},
+    { valor: '3.8cm'},
+    { valor: '4cm'},
+    { valor: '4.2cm'},
+    { valor: '4.4cm'},
+    { valor: '4.6cm'},
+    { valor: '4.8cm'},
+    { valor: '5cm'}
+  ];
 
   constructor(
     private router: Router,

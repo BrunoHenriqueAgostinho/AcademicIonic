@@ -14,15 +14,17 @@
   <ion-list *ngIf="listaMembros | async as usuario;">
     <ion-item *ngFor="let usu of usuario"> 
       <ion-avatar slot="start">
-        <img src="https://veja.abril.com.br/wp-content/uploads/2017/07/pessoa-neurocc81tica.jpg?quality=70&strip=info&resize=680,453">
+        <img src="https://avatars.githubusercontent.com/u/51271634?s=400&v=4">
       </ion-avatar>
       <ion-label>{{usu.nome}}<br><ion-note>{{usu.email}}</ion-note></ion-label>
-      
-      <ion-select [value]="usu.cargo" okText="Confirmar" cancelText="Cancelar" (ionChange)="alterar($event, usu.cpf)">
-        <ion-select-option value="1">Autor</ion-select-option>
-        <ion-select-option value="3">Coautor</ion-select-option>
-        <ion-select-option value="2">Orientador</ion-select-option>
-      </ion-select>
+      <ion-item>
+        <ion-label>Cargo</ion-label>
+        <ion-select [value]="usu.cargo" okText="Confirmar" cancelText="Cancelar" (ionChange)="alterar($event, usu.cpf)">
+          <ion-select-option value="1">Autor</ion-select-option>
+          <ion-select-option value="3">Coautor</ion-select-option>
+          <ion-select-option value="2">Orientador</ion-select-option>
+        </ion-select>
+      </ion-item>
       <ion-button (click)="excluirUsuarioTrabalho(usu.cpf)" fill="clear">
         <ion-icon slot="end" size="large" name="close-circle-sharp" color="danger" ></ion-icon>
       </ion-button>

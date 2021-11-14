@@ -94,6 +94,8 @@ export class ModelosPage implements OnInit {
   listaModelo: Observable<IModelo[]>;
 
   tipo = '';
+  booleanUsuario = false;
+  booleanInstituicao = false;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -119,6 +121,7 @@ export class ModelosPage implements OnInit {
           this.usuario = retorno;
         }
       );
+      this.booleanUsuario = true;
     } else if (this.tipo == 'cnpj') {
       this.instituicao.cnpj = String(await this.storage.get('codigo'));
       this.instituicao.senha = await this.storage.get('senha');
@@ -127,6 +130,7 @@ export class ModelosPage implements OnInit {
           this.instituicao = retorno;
         }
       );
+      this.booleanInstituicao = true;
     } else {
       this.router.navigate(['/folder']);
     }

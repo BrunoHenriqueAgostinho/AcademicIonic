@@ -49,7 +49,7 @@ export class MeustrabalhosSystemPage implements OnInit {
 
   modelo: IModelo = {
     codigo: null,
-    nome: 'novo trabalho',
+    nome: 'novo modelo',
     arquivo: '',
     margemDireita: '0cm',
     margemEsquerda: '0cm',
@@ -137,8 +137,8 @@ export class MeustrabalhosSystemPage implements OnInit {
     this.modeloService.inserir(this.modelo).subscribe(
       retorno => {
         this.instituicaoService.exibirToast(retorno.mensagem, "success");
+        this.atualizarListaModelos();
       }
     );
-    this.atualizarListaModelos();
   }
 }
