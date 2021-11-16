@@ -16,7 +16,7 @@
       <ion-list *ngIf="listaMembros | async as usuario;">
         <ion-item *ngFor="let usu of usuario">
           <ion-label>{{usu.nome}}</ion-label><ion-label>({{usu.email}})</ion-label>
-            
+
         </ion-item>
       </ion-list>
       <div>
@@ -24,7 +24,7 @@
         <p>Data de Publicação: {{trabalho.dtPublicacao | date: 'shortDate'}}</p>
       </div>
       <p *ngIf="listaTag | async as tag">
-        <ion-chip (click)="inserirExcluirTag(tag.codigo)" outline color="white" *ngFor="let tag of tag">
+        <ion-chip  outline color="white" *ngFor="let tag of tag">
           {{tag.categoria}}
         </ion-chip>
       </p>
