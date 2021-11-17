@@ -71,7 +71,6 @@ export class ParticipantesTrabalhoPage implements OnInit {
     this.tituloModal = this.navParams.data.paramTitle;
     this.trabalho.codigo = Number(this.codigoModal);
     this.listaMembros = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(200));
-    console.log(this.listaMembros);
   }
 
   async closeModal() {
@@ -96,7 +95,6 @@ export class ParticipantesTrabalhoPage implements OnInit {
           handler:() => {
             this.desenvolveService.excluir(this.desenvolve).subscribe(
               (dados)=>{
-                console.log(dados);
                 this.listaMembros = this.desenvolveService.listarUsuariosTrabalho(this.trabalho).pipe(delay(200));
               }
             );

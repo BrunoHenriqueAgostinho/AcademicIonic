@@ -62,11 +62,9 @@ export class CadastroPage implements OnInit {
     if(ev.detail.value == 'usuario'){
       this.displayU='block';
       this.displayI='none';
-      console.log('Segment changed', ev);
     }else{
       this.displayU='none';
       this.displayI='block';
-      console.log('Segment changed', ev);
     }
   }
   
@@ -74,7 +72,6 @@ export class CadastroPage implements OnInit {
   cadastrarUsuario() { 
     if(this.validarCamposUsuario()){
       if(this.usuario.senha == this.confirmarSenhaUsuario){
-        console.log(this.usuario);
         this.usuarioService.inserir(this.usuario).subscribe( 
           retorno => { 
             this.usuarioService.exibirToast(retorno.mensagem,'medium');
@@ -90,7 +87,6 @@ export class CadastroPage implements OnInit {
   cadastrarInstituicao() { 
     if(this.validarCamposInstituicao()){
       if(this.instituicao.senha == this.confirmarSenhaInstituicao){
-        console.log(this.instituicao);
         this.instituicaoService.inserir(this.instituicao).subscribe( 
           retorno => { 
             this.instituicaoService.exibirToast(retorno.mensagem,'medium');

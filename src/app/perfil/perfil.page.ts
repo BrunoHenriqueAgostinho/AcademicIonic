@@ -109,7 +109,6 @@ export class PerfilPage implements OnInit {
   salvarAlteracoesUsuario() {
     this.usuario.telefoneCelular = String(this.usuario.telefoneCelular);
     this.usuario.telefoneFixo = String(this.usuario.telefoneFixo);
-    console.log(this.usuario);
     this.usuarioService.alterar(this.usuario).subscribe(
       retorno => {
         this.usuarioService.exibirToast(retorno.mensagem, "success");
@@ -120,7 +119,6 @@ export class PerfilPage implements OnInit {
   salvarAlteracoesInstituicao() {
     this.instituicao.telefoneCelular = String(this.instituicao.telefoneCelular);
     this.instituicao.telefoneFixo = String(this.instituicao.telefoneFixo);
-    console.log(this.instituicao);
     this.instituicaoService.alterar(this.instituicao).subscribe(
       retorno => {
         this.usuarioService.exibirToast(retorno.mensagem, "success");

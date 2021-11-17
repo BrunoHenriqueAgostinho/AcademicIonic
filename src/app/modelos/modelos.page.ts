@@ -143,7 +143,6 @@ export class ModelosPage implements OnInit {
     this.modeloService.consultar(this.modelo).subscribe( 
       retorno => {
         this.modelo = retorno;
-        console.log(this.modelo);
         this.trabalho.descricao = this.modelo.descricao;
         this.trabalho.arquivo = this.modelo.arquivo;
         this.trabalho.margemDireita = this.modelo.margemDireita;
@@ -154,7 +153,6 @@ export class ModelosPage implements OnInit {
         this.trabalhoService.inserir(this.trabalho).subscribe(
           retorno => {
             this.desenvolveUsuarioTrabalho.codigo = retorno.codigo;
-            console.log(this.desenvolveUsuarioTrabalho);
             this.desenvolve.inserir(this.desenvolveUsuarioTrabalho).subscribe(
               retorno => this.desenvolve.exibirToast('Trabalho criado com sucesso.','medium')
             );

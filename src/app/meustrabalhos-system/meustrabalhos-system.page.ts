@@ -127,8 +127,6 @@ export class MeustrabalhosSystemPage implements OnInit {
   }
 
   atualizarListaModelos(){
-    console.log(this.instituicao);
-    this.instituicao.cnpj
     this.listaModelos = this.modeloService.listarPorCnpj(this.instituicao).pipe(delay(0));
   }
 

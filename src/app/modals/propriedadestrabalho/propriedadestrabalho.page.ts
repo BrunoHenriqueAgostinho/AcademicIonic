@@ -87,7 +87,6 @@ export class PropriedadestrabalhoPage implements OnInit {
   inserirExcluirTag(tag){
     this.tag.tag = tag;
     this.tag.codigo = this.trabalho.codigo;
-    console.log(this.tag);
     this.apresentaTagService.inserirExcluir(this.tag).subscribe(
       retorno => {
         this.apresentaTagService.exibirToast(retorno.mensagem, "success");

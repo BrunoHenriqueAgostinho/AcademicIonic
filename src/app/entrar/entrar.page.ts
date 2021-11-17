@@ -31,7 +31,6 @@ export class EntrarPage implements OnInit {
   //Login
   entrar(){
     if (this.validarCampos()){
-      console.log(this.login);
       this.loginService.consultar(this.login).subscribe( 
         async retorno => {
           await this.storage.create();

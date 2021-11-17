@@ -33,7 +33,6 @@ export class FolderPage implements OnInit {
 
   pesquisar(){
     this.listaTrabalho = this.trabalhoService.pesquisar(this.pesquisa).pipe(delay(200));
-    console.log(this.listaTrabalho);
   }
 
   async openModal(id) {

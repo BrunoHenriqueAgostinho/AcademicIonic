@@ -218,7 +218,6 @@ export class EdicaotrabalhoSystemPage implements OnInit {
                 this.modelo.descricao = retorno.descricao;
                 this.modelo.dtCriacao = retorno.dtCriacao;
                 this.mudarModelo();
-                console.log(this.modelo);
               }
             );
           }
@@ -232,21 +231,13 @@ export class EdicaotrabalhoSystemPage implements OnInit {
   salvarTrabalho() {
     this.trabalho.arquivo = window.frames['textField'].document.body.innerHTML;
     this.testeArquivoTrabalho();
-    this.trabalhoService.alterar(this.trabalho).subscribe(
-      retorno => {
-        console.log(retorno);
-      }
-    );
+    this.trabalhoService.alterar(this.trabalho).pipe(delay(0));
   }
 
   salvarModelo() {
     this.modelo.arquivo = window.frames['textField'].document.body.innerHTML;
     this.testeArquivoModelo();
-    this.modeloService.alterar(this.modelo).subscribe(
-      retorno => {
-        console.log(retorno);
-      }
-    );
+    this.modeloService.alterar(this.modelo).pipe(delay(0));
   }
 
   async deletarTrabalho() {
@@ -290,7 +281,6 @@ export class EdicaotrabalhoSystemPage implements OnInit {
         {
           text:'Deletar',
           handler:() => {
-            console.log(this.modelo.codigo);
             this.modeloService.excluir(this.modelo).subscribe(
               retorno => {
                 this.modeloService.exibirToast(retorno.mensagem, "success");
