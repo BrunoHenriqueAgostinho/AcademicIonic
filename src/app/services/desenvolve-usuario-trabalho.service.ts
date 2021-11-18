@@ -14,7 +14,9 @@ import { IUsuario } from '../model/IUsuario.model';
 export class DesenvolveUsuarioTrabalhoService {
 
   //Variáveis
-  URL: string = 'http://localhost/apiTCC/api_academic/desenvolve_usuario_trabalho';
+  //URL: string = 'http://localhost/apiTCC/api_academic/desenvolve_usuario_trabalho';
+  URL: string = 'https://academicapitcc.herokuapp.com/apiTCC/api_academic/desenvolve_usuario_trabalho';
+
 
   constructor(
     private http: HttpClient,
@@ -25,7 +27,7 @@ export class DesenvolveUsuarioTrabalhoService {
   inserir(desenvolve): Observable<any> {
     return this.http.post(this.URL + "/inserir_desenvolve.php", desenvolve).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
@@ -63,17 +65,17 @@ export class DesenvolveUsuarioTrabalhoService {
     );
   }
 
-  async exibirToast(mensagem, cor) { 
-    const toast = await this.toastController.create( 
-      { 
-        message: mensagem, 
-        duration: 2000, 
-        color: cor, 
+  async exibirToast(mensagem, cor) {
+    const toast = await this.toastController.create(
+      {
+        message: mensagem,
+        duration: 2000,
+        color: cor,
         position: 'bottom'
-      } 
-    ); 
-    toast.present(); 
-  } 
+      }
+    );
+    toast.present();
+  }
 
   exibeErro(erro): Observable<any> {
     console.log(erro);

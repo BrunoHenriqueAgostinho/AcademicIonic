@@ -11,8 +11,10 @@ import { ILogin } from '../model/ILogin.model';
 export class LoginService {
 
   //Variáveis
-  URL: string = 'http://localhost/apiTCC/api_academic/login/login.php';
-  
+  //URL: string = 'http://localhost/apiTCC/api_academic/login/login.php';
+  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/login/login.php';
+
+
   constructor(
     private http: HttpClient,
     private toastController: ToastController,
@@ -23,21 +25,21 @@ export class LoginService {
   consultar(login): Observable<any> {
     return this.http.post(this.URL, login).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibirToast(erro.error.erro, 'danger')) 
+      catchError(erro => this.exibirToast(erro.error.erro, 'danger'))
     );
   }
 
-  async exibirToast(mensagem, cor) { 
-    const toast = await this.toastController.create( 
-      { 
-        message: mensagem, 
-        duration: 2000, 
-        color: cor, 
+  async exibirToast(mensagem, cor) {
+    const toast = await this.toastController.create(
+      {
+        message: mensagem,
+        duration: 2000,
+        color: cor,
         position: 'bottom'
-      } 
-    ); 
-    toast.present(); 
-  } 
+      }
+    );
+    toast.present();
+  }
 
   exibeErro(erro): Observable<any> {
     console.log("Erro",erro);

@@ -11,7 +11,8 @@ import { IAdicionausuariousuario } from '../model/IAdicionausuariousuario.model'
 export class AdicionaUsuarioUsuarioService {
 
 //Variáveis
-URL: string = 'http://localhost/apiTCC/api_academic/adiciona_usuario_usuario';
+//URL: string = 'http://localhost/apiTCC/api_academic/adiciona_usuario_usuario';
+URL: string = 'https://academicapitcc.herokuapp.com/api_academic/adiciona_usuario_usuario';
 
 constructor(
     private http: HttpClient,
@@ -40,17 +41,17 @@ constructor(
     );
   }
 
-  async exibirToast(mensagem, cor) { 
-    const toast = await this.toastController.create( 
-      { 
-        message: mensagem, 
-        duration: 2000, 
-        color: cor, 
+  async exibirToast(mensagem, cor) {
+    const toast = await this.toastController.create(
+      {
+        message: mensagem,
+        duration: 2000,
+        color: cor,
         position: 'bottom'
-      } 
-    ); 
-    toast.present(); 
-  } 
+      }
+    );
+    toast.present();
+  }
 
   exibeErro(erro): Observable<any> {
     console.log(erro);

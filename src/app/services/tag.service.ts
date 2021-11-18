@@ -11,7 +11,9 @@ import { ITag } from '../model/ITag.model';
 export class TagService {
 
   //Variáveis
-  URL: string = 'http://localhost/apiTCC/api_academic/tb_tag';
+  //URL: string = 'http://localhost/apiTCC/api_academic/tb_tag';
+  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_tag';
+
 
   constructor(
     private http: HttpClient,
@@ -29,20 +31,20 @@ export class TagService {
       return this.http.post(this.URL + "/consultar_tag.php", trabalho).pipe(
         map(retorno => retorno),
         catchError(erro => this.exibeErro(erro))
-      ); 
+      );
     }
 
-  async exibirToast(mensagem, cor) { 
-    const toast = await this.toastController.create( 
-      { 
-        message: mensagem, 
-        duration: 2000, 
-        color: cor, 
+  async exibirToast(mensagem, cor) {
+    const toast = await this.toastController.create(
+      {
+        message: mensagem,
+        duration: 2000,
+        color: cor,
         position: 'bottom'
-      } 
-    ); 
-    toast.present(); 
-  } 
+      }
+    );
+    toast.present();
+  }
 
   exibeErro(erro): Observable<any> {
     console.log("Erro",erro);

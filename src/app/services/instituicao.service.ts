@@ -10,14 +10,16 @@ import { IInstituicao } from '../model/IInstituicao.model';
 })
 export class InstituicaoService {
   //Variáveis
-  URL: string = 'http://localhost/apiTCC/api_academic/tb_instituicao';
+  //URL: string = 'http://localhost/apiTCC/api_academic/tb_instituicao';
+  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_instituicao';
+
 
   constructor(
     private http: HttpClient,
     private toastController: ToastController,
     private alertController: AlertController
   ) { }
-  
+
   //CRUD e outros métodos
   consultar(instituicao): Observable<any> {
     return this.http.post(this.URL + '/consultar_instituicao.php', instituicao).pipe(
@@ -29,7 +31,7 @@ export class InstituicaoService {
   inserir(instituicao): Observable<any> {
     return this.http.post(this.URL + "/inserirCad_instituicao.php", instituicao).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibirToast(erro.error.erro, "danger")) 
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
@@ -40,17 +42,17 @@ export class InstituicaoService {
     );
   }
 
-  async exibirToast(mensagem, cor) { 
-    const toast = await this.toastController.create( 
-      { 
-        message: mensagem, 
-        duration: 2000, 
-        color: cor, 
+  async exibirToast(mensagem, cor) {
+    const toast = await this.toastController.create(
+      {
+        message: mensagem,
+        duration: 2000,
+        color: cor,
         position: 'bottom'
-      } 
-    ); 
-    toast.present(); 
-  } 
+      }
+    );
+    toast.present();
+  }
 
   exibeErro(erro): Observable<any> {
     console.log(erro);
