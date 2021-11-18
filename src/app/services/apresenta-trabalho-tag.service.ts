@@ -22,7 +22,7 @@ export class ApresentaTrabalhoTagService {
   inserirExcluir(apresentatrabalhotag): Observable<any> {
     return this.http.post(this.URL + "/inserirDeletar_trabalhotag.php", apresentatrabalhotag).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 

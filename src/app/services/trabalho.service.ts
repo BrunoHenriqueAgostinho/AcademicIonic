@@ -27,14 +27,14 @@ export class TrabalhoService {
   inserir(trabalho): Observable<any> {
     return this.http.post(this.URL + "/inserir_trabalho.php", trabalho).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
   alterar(trabalho): Observable<any> {
     return this.http.put(this.URL + "/alterar_trabalho.php", trabalho).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
@@ -48,28 +48,28 @@ export class TrabalhoService {
   listar(): Observable<ITrabalho[]> {
     return this.http.get<ITrabalho[]>(this.URL+ '/listar_trabalho.php').pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
   listar_meusTrabalhos(): Observable<ITrabalho[]> {
     return this.http.get<ITrabalho[]>(this.URL+ '/listar_meutrabalho.php').pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
   pesquisar(pesquisa): Observable<ITrabalho[]> {
     return this.http.post<ITrabalho[]>(this.URL+ '/pesquisar_trabalho.php', pesquisa).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
   excluir(trabalho): Observable<any> {
     return this.http.post(this.URL + "/deletar_trabalho.php", trabalho).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
@@ -83,6 +83,7 @@ export class TrabalhoService {
       }
     );
     toast.present();
+    return null;
   }
 
   exibeErro(erro): Observable<any> {

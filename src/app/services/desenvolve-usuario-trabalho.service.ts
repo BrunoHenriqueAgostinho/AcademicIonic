@@ -41,27 +41,27 @@ export class DesenvolveUsuarioTrabalhoService {
   listar(usuario): Observable<ITrabalho[]> {
     return this.http.post<ITrabalho[]>(this.URL + "/listar_desenvolve.php", usuario).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
   listarUsuariosTrabalho(trabalho): Observable<IDesenvolve[]> {
     return this.http.post<IDesenvolve[]>(this.URL + "/listar_usuario.php", trabalho).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
   alterar(desenvolve): Observable<any> {
     return this.http.put(this.URL + "/alterar_desenvolve.php", desenvolve).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
   excluir(desenvolve): Observable<IDesenvolveusuariotrabalho> {
     return this.http.post<IDesenvolveusuariotrabalho>(this.URL + "/deletar_desenvolve.php", desenvolve).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
@@ -75,6 +75,7 @@ export class DesenvolveUsuarioTrabalhoService {
       }
     );
     toast.present();
+    return null;
   }
 
   exibeErro(erro): Observable<any> {

@@ -37,7 +37,7 @@ constructor(
   listar_seguidos(usuario): Observable<IAdicionausuariousuario[]> {
     return this.http.post(this.URL + "/listar_seguidos.php", usuario).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
@@ -51,6 +51,7 @@ constructor(
       }
     );
     toast.present();
+    return null;
   }
 
   exibeErro(erro): Observable<any> {

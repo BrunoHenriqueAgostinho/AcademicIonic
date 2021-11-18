@@ -23,14 +23,14 @@ export class TagService {
     listar(): Observable<ITag[]> {
       return this.http.get<ITag[]>(this.URL + "/listar_tag.php").pipe(
         map(retorno => retorno),
-        catchError(erro => this.exibeErro(erro))
+        catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
       );
     }
 
     consultar(trabalho): Observable<any> {
       return this.http.post(this.URL + "/consultar_tag.php", trabalho).pipe(
         map(retorno => retorno),
-        catchError(erro => this.exibeErro(erro))
+        catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
       );
     }
 
@@ -44,6 +44,7 @@ export class TagService {
       }
     );
     toast.present();
+    return null;
   }
 
   exibeErro(erro): Observable<any> {

@@ -24,7 +24,7 @@ export class InstituicaoService {
   consultar(instituicao): Observable<any> {
     return this.http.post(this.URL + '/consultar_instituicao.php', instituicao).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
     );
   }
 

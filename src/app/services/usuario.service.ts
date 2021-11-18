@@ -23,7 +23,7 @@ export class UsuarioService {
   consultar(usuario): Observable<IUsuario> {
     return this.http.post<IUsuario>(this.URL + "/consultar_usuario.php", usuario).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
@@ -37,7 +37,7 @@ export class UsuarioService {
   listar(pesquisa): Observable<IUsuario[]> {
     return this.http.post<IUsuario[]>( this.URL + "/listar_usuario.php", pesquisa).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibeErro(erro))
+      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
     );
   }
 
@@ -58,6 +58,7 @@ export class UsuarioService {
       }
     );
     toast.present();
+    return null;
   }
 
   exibeErro(erro): Observable<any> {
