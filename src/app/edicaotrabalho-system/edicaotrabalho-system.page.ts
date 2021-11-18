@@ -237,7 +237,11 @@ export class EdicaotrabalhoSystemPage implements OnInit {
   salvarModelo() {
     this.modelo.arquivo = window.frames['textField'].document.body.innerHTML;
     this.testeArquivoModelo();
-    this.modeloService.alterar(this.modelo).pipe(delay(0));
+    this.modeloService.alterar(this.modelo).subscribe(
+      retorno => {
+        this.modeloService.exibirToast(retorno.mensagem, "success");
+      }
+    );
   }
 
   async deletarTrabalho() {
