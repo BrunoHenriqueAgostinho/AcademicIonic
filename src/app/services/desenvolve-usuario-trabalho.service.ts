@@ -15,7 +15,7 @@ export class DesenvolveUsuarioTrabalhoService {
 
   //Variáveis
   //URL: string = 'http://localhost/apiTCC/api_academic/desenvolve_usuario_trabalho';
-  URL: string = 'https://academicapitcc.herokuapp.com/apiTCC/api_academic/desenvolve_usuario_trabalho';
+  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/desenvolve_usuario_trabalho';
 
 
   constructor(
