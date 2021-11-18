@@ -45,7 +45,7 @@ export class EntrarPage implements OnInit {
           await this.storage.set('tipo', this.tipo);
           
           this.router.navigate(['/homepage-system']);
-          this.loginService.exibirToast("Acesso realizado com sucesso.", "medium");
+          this.loginService.exibirToast("Acesso realizado com sucesso.", "success");
         } 
       );
     }

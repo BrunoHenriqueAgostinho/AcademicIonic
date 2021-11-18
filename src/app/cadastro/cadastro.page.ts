@@ -74,7 +74,7 @@ export class CadastroPage implements OnInit {
       if(this.usuario.senha == this.confirmarSenhaUsuario){
         this.usuarioService.inserir(this.usuario).subscribe( 
           retorno => { 
-            this.usuarioService.exibirToast(retorno.mensagem,'medium');
+            this.usuarioService.exibirToast(retorno.mensagem,'success');
           } 
         ); 
       } else {
@@ -89,7 +89,7 @@ export class CadastroPage implements OnInit {
       if(this.instituicao.senha == this.confirmarSenhaInstituicao){
         this.instituicaoService.inserir(this.instituicao).subscribe( 
           retorno => { 
-            this.instituicaoService.exibirToast(retorno.mensagem,'medium');
+            this.instituicaoService.exibirToast(retorno.mensagem,'success');
           } 
         ); 
       } else {
