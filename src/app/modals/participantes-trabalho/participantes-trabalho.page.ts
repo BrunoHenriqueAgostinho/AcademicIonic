@@ -40,7 +40,7 @@ export class ParticipantesTrabalhoPage implements OnInit {
 
   trabalho: ITrabalho = {
     codigo: null,
-    nome: 'novo trabalho',
+    nome: '',
     descricao: '',
     arquivo: '',
     margemDireita: '',

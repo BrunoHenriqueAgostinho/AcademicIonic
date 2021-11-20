@@ -37,7 +37,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ng-template #carregando>
+<ng-template #info>
   <section id="instituicoes">
     <div id="desenho"><img src="../assets/Formando - Instituições.svg"></div>
     <div id="texto">
@@ -75,24 +75,10 @@
         <p class="p_mobile">Olá, usuário! Fique à vontade para pesquisar por trabalhos em nossa plataforma e desenvolver seus projetos.</p>
         <ion-searchbar class="p_desk" placeholder="Pesquise por trabalhos científicos" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
         <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
-
-        <!--<ion-chip>
-          <ion-label>Exatas</ion-label>
-        </ion-chip>
-        <ion-chip>
-          <ion-label>Humanas</ion-label>
-        </ion-chip>
-        <ion-chip>
-          <ion-label>Biológicas</ion-label>
-        </ion-chip>
-        <ion-chip>
-          <ion-label>Linguagens</ion-label>
-        </ion-chip>-->
-
       </div>
     </ion-text>
   </section>
-  <ion-grid *ngIf="listaTrabalho | async as trabalho; else carregando">
+  <ion-grid *ngIf="listaTrabalho | async as trabalho; else info">
     <ion-row>
       <ion-col size="3" *ngFor="let trab of trabalho">
         <ion-card (click)="openModal(trab.codigo)">

@@ -48,21 +48,21 @@ export class TrabalhoService {
   listar(): Observable<ITrabalho[]> {
     return this.http.get<ITrabalho[]>(this.URL+ '/listar_trabalho.php').pipe(
       map(retorno => retorno),
-      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
+      catchError(erro => this.exibeErro(erro))
     );
   }
 
   listar_meusTrabalhos(): Observable<ITrabalho[]> {
     return this.http.get<ITrabalho[]>(this.URL+ '/listar_meutrabalho.php').pipe(
       map(retorno => retorno),
-      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
+      catchError(erro => this.exibeErro(erro))
     );
   }
 
   pesquisar(pesquisa): Observable<ITrabalho[]> {
     return this.http.post<ITrabalho[]>(this.URL+ '/pesquisar_trabalho.php', pesquisa).pipe(
       map(retorno => retorno),
-      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
+      catchError(erro => this.exibeErro(erro))
     );
   }
 
@@ -83,7 +83,6 @@ export class TrabalhoService {
       }
     );
     toast.present();
-    return null;
   }
 
   exibeErro(erro): Observable<any> {

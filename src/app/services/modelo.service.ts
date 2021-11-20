@@ -38,14 +38,14 @@ export class ModeloService {
   listar(pesquisa): Observable<any[]> {
     return this.http.post<any[]>(this.URL+ '/listar_modelo.php', pesquisa).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibirToast(erro.error.erro, "danger"))
+      catchError(erro => this.exibeErro(erro))
     );
   }
 
   listarPorCnpj(instituicao): Observable<any[]> {
     return this.http.post<any[]>(this.URL+ '/listarPorCnpj_modelo.php', instituicao).pipe(
       map(retorno => retorno),
-      catchError(erro =>  this.exibirToast(erro.error.erro, "danger"))
+      catchError(erro => this.exibeErro(erro))
     );
   }
 
@@ -81,7 +81,6 @@ export class ModeloService {
       }
     );
     toast.present();
-    return null;
   }
 
   exibeErro(erro): Observable<any> {

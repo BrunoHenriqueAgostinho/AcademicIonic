@@ -128,7 +128,8 @@ export class PerfilPage implements OnInit {
 
   async sair(){
     await this.storage.create();
+    this.trabalhoService.exibirToast("Saída realizada com sucesso.", "success");
     this.storage.clear();
-    this.router.navigate(["/folder"]);
+    location.reload();
   }
 }

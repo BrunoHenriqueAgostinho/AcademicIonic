@@ -6,6 +6,7 @@ import { ITrabalho } from '../model/ITrabalho.model';
 import { TrabalhoService } from '../services/trabalho.service';
 import { ModalController } from '@ionic/angular';
 import { VisualizartrabalhoPage } from '../visualizartrabalho/visualizartrabalho.page';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-folder',
@@ -21,14 +22,22 @@ export class FolderPage implements OnInit {
   };
 
   dataReturned: any;
+  tipo = '';
 
   constructor(
     private trabalhoService: TrabalhoService,
     private router: Router,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private storage: Storage
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    //Autenticação de acesso à página
+    await this.storage.create();
+    this.tipo = await this.storage.get('tipo');
+    if (this.tipo == 'cpf' || this.tipo == 'cnpj'){
+      this.router.navigate(['/homepage-system']);
+    }
   }
 
   pesquisar(){

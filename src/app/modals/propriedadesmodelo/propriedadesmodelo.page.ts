@@ -16,7 +16,7 @@ export class PropriedadesmodeloPage implements OnInit {
 
   modelo: IModelo = {
     codigo: null,
-    nome: 'novo trabalho',
+    nome: '',
     arquivo: '',
     margemDireita: '0cm',
     margemEsquerda: '0cm',

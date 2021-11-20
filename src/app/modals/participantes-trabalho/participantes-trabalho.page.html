@@ -38,7 +38,7 @@
   <ion-list *ngIf="listaUsuarios | async as usuario; else carregando">
     <ion-item *ngFor="let usu of usuario"> 
       <ion-avatar slot="start">
-        <img src="https://veja.abril.com.br/wp-content/uploads/2017/07/pessoa-neurocc81tica.jpg?quality=70&strip=info&resize=680,453">
+        <img src="https://avatars.githubusercontent.com/u/51271634?s=400&v=4">
       </ion-avatar>
       <ion-label>{{usu.nome}}<br><ion-note>{{usu.email}}</ion-note></ion-label>
       <ion-icon slot="end" size="large" name="add-circle-sharp" color="success" (click)="adicionarUsuarioTrabalho(usu.cpf)"></ion-icon>
