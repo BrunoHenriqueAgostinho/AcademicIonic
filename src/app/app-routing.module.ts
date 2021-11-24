@@ -77,6 +77,14 @@ const routes: Routes = [
   {
     path: 'propriedadesmodelo',
     loadChildren: () => import('./modals/propriedadesmodelo/propriedadesmodelo.module').then( m => m.PropriedadesmodeloPageModule)
+  },
+  {
+    path: 'para-estudantes',
+    loadChildren: () => import('./para-estudantes/para-estudantes.module').then( m => m.ParaEstudantesPageModule)
+  },
+  {
+    path: 'para-instituicoes',
+    loadChildren: () => import('./para-instituicoes/para-instituicoes.module').then( m => m.ParaInstituicoesPageModule)
   }
 
 

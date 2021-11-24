@@ -11,13 +11,13 @@ import { DesenvolveUsuarioTrabalhoService } from '../services/desenvolve-usuario
 import { IDesenvolveusuariotrabalho } from '../model/IDesenvolveusuariotrabalho.model';
 import { IUsuario } from '../model/IUsuario.model';
 import { IInstituicao } from '../model/IInstituicao.model';
-import { Storage } from '@ionic/storage-angular';
 import { UsuarioService } from '../services/usuario.service';
 import { InstituicaoService } from '../services/instituicao.service';
 import { IModelo } from '../model/IModelo.model';
 import { ModeloService } from '../services/modelo.service';
 import { PropriedadestrabalhoPage } from '../modals/propriedadestrabalho/propriedadestrabalho.page';
 import { PropriedadesmodeloPage } from '../modals/propriedadesmodelo/propriedadesmodelo.page';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edicaotrabalho-system',
@@ -130,7 +130,6 @@ export class EdicaotrabalhoSystemPage implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private storage: Storage,
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService,
     private trabalhoService: TrabalhoService,
@@ -142,11 +141,10 @@ export class EdicaotrabalhoSystemPage implements OnInit {
 
   async ngOnInit() {
     //Autenticação de acesso à página
-    await this.storage.create();
-    this.tipo = await this.storage.get('tipo');
+    this.tipo = environment.tipo;
     if (this.tipo == 'cpf'){
-      this.usuario.cpf = String(await this.storage.get('codigo'));
-      this.usuario.senha = await this.storage.get('senha');
+      this.usuario.cpf = environment.codigo;
+      this.usuario.senha = environment.senha;
       this.usuarioService.consultar(this.usuario).subscribe(
         retorno => {
           this.usuario = retorno;
@@ -190,8 +188,8 @@ export class EdicaotrabalhoSystemPage implements OnInit {
         }
       );
     } else if (this.tipo == 'cnpj') {
-      this.instituicao.cnpj = String(await this.storage.get('codigo'));
-      this.instituicao.senha = await this.storage.get('senha');
+      this.instituicao.cnpj = environment.codigo;
+      this.instituicao.senha = environment.senha;
       this.instituicaoService.consultar(this.instituicao).subscribe(
         retorno => {
           this.instituicao = retorno;

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ITrabalho } from './../model/ITrabalho.model';
-import { Storage } from '@ionic/storage-angular';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { DesenvolveUsuarioTrabalhoService } from '../services/desenvolve-usuario-trabalho.service';
@@ -11,6 +10,7 @@ import { InstituicaoService } from '../services/instituicao.service';
 import { IInstituicao } from '../model/IInstituicao.model';
 import { IModelo } from '../model/IModelo.model';
 import { ModeloService } from '../services/modelo.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-meustrabalhos-system',
@@ -73,17 +73,15 @@ export class MeustrabalhosSystemPage implements OnInit {
     private instituicaoService: InstituicaoService,
     private desenvolveService: DesenvolveUsuarioTrabalhoService,
     private modeloService: ModeloService,
-    private storage: Storage,
     private router: Router
   ) { }
 
-  async ngOnInit() {
+  ngOnInit() {
     //Autenticação de acesso à página
-    await this.storage.create();
-    this.tipo = await this.storage.get('tipo');
+    this.tipo = environment.tipo;
     if (this.tipo == 'cpf'){
-      this.usuario.cpf = String(await this.storage.get('codigo'));
-      this.usuario.senha = await this.storage.get('senha');
+      this.usuario.cpf = String(environment.codigo);
+      this.usuario.senha = environment.senha;
       this.usuarioService.consultar(this.usuario).subscribe(
         retorno => {
           this.usuario = retorno;
@@ -92,8 +90,8 @@ export class MeustrabalhosSystemPage implements OnInit {
       this.booleanUsuario = true;
       this.atualizarListaTrabalho();
     } else if (this.tipo == 'cnpj') {
-      this.instituicao.cnpj = String(await this.storage.get('codigo'));
-      this.instituicao.senha = await this.storage.get('senha');
+      this.instituicao.cnpj = String(environment.codigo);
+      this.instituicao.senha = environment.senha;
       this.instituicaoService.consultar(this.instituicao).subscribe(
         retorno => {
           this.instituicao = retorno;
@@ -112,12 +110,12 @@ export class MeustrabalhosSystemPage implements OnInit {
     } else if (this.tipo == "cnpj"){
       this.atualizarListaModelos();
     }
-
   }
 
   abrirTrabalho(codigoTrabalho) {
     this.router.navigate(["/edicaotrabalho-system/" + codigoTrabalho]);
   }
+  
   abrirModelo(codigoModelo) {
     this.router.navigate(["/edicaomodelo-system/" + codigoModelo]);
   }

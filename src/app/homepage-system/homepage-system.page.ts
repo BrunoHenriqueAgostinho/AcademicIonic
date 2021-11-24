@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITrabalho } from './../model/ITrabalho.model';
 import { TrabalhoService } from './../services/trabalho.service';
-import { Storage } from '@ionic/storage-angular';
+
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { UsuarioService } from '../services/usuario.service';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { IInstituicao } from '../model/IInstituicao.model';
 import { ModalController } from '@ionic/angular';
 import { VisualizartrabalhoPage } from '../visualizartrabalho/visualizartrabalho.page';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-homepage-system',
@@ -62,18 +63,16 @@ export class HomepageSystemPage implements OnInit {
     private trabalhoService: TrabalhoService,
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService,
-    private storage: Storage,
     private router: Router,
     private modalController: ModalController
   ) { }
 
-  async ngOnInit() {
+  ngOnInit() {
     //Autenticação de acesso à página
-    await this.storage.create();
-    this.tipo = await this.storage.get('tipo');
+    this.tipo = environment.tipo;
     if (this.tipo == 'cpf'){
-      this.usuario.cpf = String(await this.storage.get('codigo'));
-      this.usuario.senha = await this.storage.get('senha');
+      this.usuario.cpf = String(environment.codigo);
+      this.usuario.senha = environment.senha;
       this.usuarioService.consultar(this.usuario).subscribe(
         retorno => {
           this.usuario = retorno;
@@ -81,8 +80,8 @@ export class HomepageSystemPage implements OnInit {
       );
       this.booleanUsuario = true;
     } else if (this.tipo == 'cnpj') {
-      this.instituicao.cnpj = String(await this.storage.get('codigo'));
-      this.instituicao.senha = await this.storage.get('senha');
+      this.instituicao.cnpj = String(environment.codigo);
+      this.instituicao.senha = environment.senha;
       this.instituicaoService.consultar(this.instituicao).subscribe(
         retorno => {
           this.instituicao = retorno;

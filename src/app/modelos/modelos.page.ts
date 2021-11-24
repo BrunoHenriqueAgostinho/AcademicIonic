@@ -5,7 +5,6 @@ import { IModelo } from '../model/IModelo.model';
 import { ITrabalho } from '../model/ITrabalho.model';
 import { ModeloService } from '../services/modelo.service';
 import { TrabalhoService } from '../services/trabalho.service';
-import { Storage } from '@ionic/storage-angular';
 import { DesenvolveUsuarioTrabalhoService } from '../services/desenvolve-usuario-trabalho.service';
 import { Observable } from 'rxjs';
 import { IPesquisa } from '../model/IPesquisa.model';
@@ -14,6 +13,7 @@ import { IInstituicao } from '../model/IInstituicao.model';
 import { IUsuario } from '../model/IUsuario.model';
 import { UsuarioService } from '../services/usuario.service';
 import { InstituicaoService } from '../services/instituicao.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-modelos',
@@ -103,19 +103,17 @@ export class ModelosPage implements OnInit {
     private trabalhoService: TrabalhoService,
     private modeloService: ModeloService,
     private desenvolve: DesenvolveUsuarioTrabalhoService,
-    private router: Router,
-    private storage: Storage
+    private router: Router
   ) {
     this.pesquisar();
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     //Autenticação de acesso à página
-    await this.storage.create();
-    this.tipo = await this.storage.get('tipo');
+    this.tipo = environment.tipo;
     if (this.tipo == 'cpf'){
-      this.usuario.cpf = String(await this.storage.get('codigo'));
-      this.usuario.senha = await this.storage.get('senha');
+      this.usuario.cpf = environment.codigo;
+      this.usuario.senha = environment.senha;
       this.usuarioService.consultar(this.usuario).subscribe(
         retorno => {
           this.usuario = retorno;
@@ -123,8 +121,8 @@ export class ModelosPage implements OnInit {
       );
       this.booleanUsuario = true;
     } else if (this.tipo == 'cnpj') {
-      this.instituicao.cnpj = String(await this.storage.get('codigo'));
-      this.instituicao.senha = await this.storage.get('senha');
+      this.instituicao.cnpj = environment.codigo;
+      this.instituicao.senha = environment.senha;
       this.instituicaoService.consultar(this.instituicao).subscribe(
         retorno => {
           this.instituicao = retorno;
@@ -135,7 +133,7 @@ export class ModelosPage implements OnInit {
       this.router.navigate(['/folder']);
     }
 
-    this.desenvolveUsuarioTrabalho.cpf = String(await this.storage.get('codigo'));
+    this.desenvolveUsuarioTrabalho.cpf = String(environment.codigo);
   }
 
   criarTrabalho(codigo: number){
@@ -154,7 +152,9 @@ export class ModelosPage implements OnInit {
           retorno => {
             this.desenvolveUsuarioTrabalho.codigo = retorno.codigo;
             this.desenvolve.inserir(this.desenvolveUsuarioTrabalho).subscribe(
-              retorno => this.desenvolve.exibirToast('Trabalho criado com sucesso.','medium')
+              retorno => {
+                this.desenvolve.exibirToast('Trabalho criado com sucesso.','success');
+              }
             );
           }
         );

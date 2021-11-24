@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Storage } from '@ionic/storage-angular';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { IAdicionausuariousuario } from '../model/IAdicionausuariousuario.model';
 import { IInstituicao } from '../model/IInstituicao.model';
 import { IUsuario } from '../model/IUsuario.model';
@@ -58,7 +58,6 @@ export class PerfilPage implements OnInit {
   contaStatus: String = '';
 
   constructor(
-    private storage: Storage,
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService,
     private trabalhoService: TrabalhoService,
@@ -68,11 +67,10 @@ export class PerfilPage implements OnInit {
 
   async ngOnInit() {
     //Autenticação de acesso à página
-    await this.storage.create();
-    this.tipo = await this.storage.get('tipo');
+    this.tipo = environment.tipo;
     if (this.tipo == 'cpf'){
-      this.usuario.cpf = String(await this.storage.get('codigo'));
-      this.usuario.senha = await this.storage.get('senha');
+      this.usuario.cpf = environment.codigo;
+      this.usuario.senha = environment.senha;
       this.usuarioService.consultar(this.usuario).subscribe(
         retorno => {
           this.usuario = retorno;
@@ -93,8 +91,8 @@ export class PerfilPage implements OnInit {
         }
       );
     } else if (this.tipo == 'cnpj') {
-      this.instituicao.cnpj = String(await this.storage.get('codigo'));
-      this.instituicao.senha = await this.storage.get('senha');
+      this.instituicao.cnpj = environment.codigo;
+      this.instituicao.senha = environment.senha;
       this.instituicaoService.consultar(this.instituicao).subscribe(
         retorno => {
           this.instituicao = retorno;
@@ -127,9 +125,10 @@ export class PerfilPage implements OnInit {
   }
 
   async sair(){
-    await this.storage.create();
     this.trabalhoService.exibirToast("Saída realizada com sucesso.", "success");
-    this.storage.clear();
-    location.reload();
+    environment.codigo = null;
+    environment.senha = null;
+    environment.tipo = null;
+    this.router.navigate(['/folder']);
   }
 }

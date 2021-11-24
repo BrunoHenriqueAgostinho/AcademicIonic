@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar id="barraDeFerramentas">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons class="opcoes" slot="end">
+      <ion-item lines="none">
+        <ion-label>Para Instituições</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Para Estudantes</ion-label>
+      </ion-item>
+      <div style="border-left:1px solid #000;height:35px"></div>
+      <ion-item [routerLink]="['/cadastro']" lines="none">
+        <ion-label>Cadastrar</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="['/entrar']" lines="none">
+        <ion-label>Entrar</ion-label>
+      </ion-item>
+    </ion-buttons>
+    <ion-buttons class="opcoesIcones" slot="end">
+      <ion-item lines="none">
+        <ion-icon id="icone" [ios]="'storefront-outline'" [md]="'storefront-sharp'"></ion-icon>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon id="icone" [ios]="'book-outline'" [md]="'book-sharp'"></ion-icon>
+      </ion-item>
+      <div style="border-left:1px solid #000;height:35px"></div>
+      <ion-item [routerLink]="['/cadastro']" lines="none">
+        <ion-icon id="icone" [ios]="'key-outline'" [md]="'key-sharp'"></ion-icon>
+      </ion-item>
+      <ion-item [routerLink]="['/entrar']" lines="none">
+        <ion-icon id="icone" [ios]="'log-in-outline'" [md]="'log-in-sharp'"></ion-icon>
+      </ion-item>
+    </ion-buttons>
+    <ion-title [routerLink]="['/folder']">Academic</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ng-template #info>
+  
+</ng-template>
+
+<ion-content [fullscreen]="true">
+  <section id="cabecalho">
+    <ion-text>
+      <h1>Para Estudantes</h1>
+    </ion-text>
+  </section>
+  <section id="instituicoes">
+    <ion-text>
+      <h1>Introdução</h1>
+      <p>O Academic é uma plataforma desenvolvida com a finalidade de auxiliar estudantes e instituições no desenvolvimento e divulgação de trabalhos de cunho acadêmico. Nesse contexto, os usuários cadastrados poderão desenvolver trabalhos com bases nos modelos das instituições.</p>
+      <p>Em nossa plataforma, trabalhos científicos podem ser desenvolvidos indivivualmente ou em grupo. Depois que o trabalho for concluído, basta publicar e outras pessoas poderam acessar o trabalho por meio da barra de pesquisas.</p>
+      <h1>Como acessar as funcionalidades do usuário?</h1>
+      <p>Para ter acesso as funcionalidades do usuário basta realizar o cadastro na plataforma e efetuar a conexão com a conta criada. Após isso, basta acessar a página Meus Trabalhos, criar e editar o trabalho. Os usuários também terão acesso a outras páginas, como Perfil, Propriedades do Trabalho, Participantes do Trabalho e Visualizar Trabalho.</p>
+      <h1>Como gerenciar participantes dos trabalhos?</h1>
+      <p>Após acessar a página de Edição de Trabalhos, você deverá clicar no ícone <ion-icon name="people-circle-sharp"></ion-icon>. Isso levará você até uma página onde será possível adicionar, deletar e alterar o cargo dos participantes.</p>
+      <h1>Como modificar as informações do trabalho?</h1>
+      <p>Para modificar informações como título, descrição e categorias do trabalho você deverá clicar no ícone <ion-icon name="brush-sharp"></ion-icon>. Isso levará você até uma página onde será possível modificar essas informações do trabalho.</p>
+      <h1>Como publicar o trabalho?</h1>
+      <p>A publicação de um trabalho pode ser efetuado ao clicar no ícone <ion-icon name="eye-off-sharp"></ion-icon> e selecionar a opção Publicar. Lembre-se que após isso, qualquer pessoa poderá pesquisar pelo seu trabalho na plataforma.</p>
+    </ion-text>
+  </section>
+</ion-content>

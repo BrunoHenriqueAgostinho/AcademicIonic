@@ -6,7 +6,7 @@ import { ITrabalho } from '../model/ITrabalho.model';
 import { TrabalhoService } from '../services/trabalho.service';
 import { ModalController } from '@ionic/angular';
 import { VisualizartrabalhoPage } from '../visualizartrabalho/visualizartrabalho.page';
-import { Storage } from '@ionic/storage-angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-folder',
@@ -27,14 +27,12 @@ export class FolderPage implements OnInit {
   constructor(
     private trabalhoService: TrabalhoService,
     private router: Router,
-    private modalController: ModalController,
-    private storage: Storage
+    private modalController: ModalController
   ) { }
 
-  async ngOnInit() {
+  ngOnInit() {
     //Autenticação de acesso à página
-    await this.storage.create();
-    this.tipo = await this.storage.get('tipo');
+    this.tipo = environment.tipo;
     if (this.tipo == 'cpf' || this.tipo == 'cnpj'){
       this.router.navigate(['/homepage-system']);
     }

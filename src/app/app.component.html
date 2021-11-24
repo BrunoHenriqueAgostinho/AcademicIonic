@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane contentId="main-content" when="(min-width:2000px)">
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu contentId="main-content" type="reveal" (ionWillOpen)="alterarMenu()">
       <ion-content>
         <ion-list id="inbox-list">
           <ion-list-header *ngIf="booleanUsuario">{{usuario.nome}}</ion-list-header><ion-list-header *ngIf="booleanInstituicao">{{instituicao.nome}}</ion-list-header><ion-list-header *ngIf="booleanAnonimo">Academic</ion-list-header>

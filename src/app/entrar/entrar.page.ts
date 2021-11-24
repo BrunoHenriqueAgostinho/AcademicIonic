@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ILogin } from './../model/ILogin.model';
 import { LoginService } from './../services/login.service';
-import { Storage } from '@ionic/storage-angular';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-entrar',
@@ -21,16 +21,12 @@ export class EntrarPage implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private storage: Storage,
-    private router: Router
+    private router: Router,
     ) { }
 
-  async ngOnInit() {
-    await this.storage.create();
-    this.tipo = await this.storage.get('tipo');
-    if (this.tipo == 'cpf'){
-      this.router.navigate(['/homepage-system']);
-    } else if (this.tipo == 'cnpj') {
+  ngOnInit() {
+    this.tipo = environment.tipo;
+    if (this.tipo == 'cpf' || this.tipo == 'cnpj'){
       this.router.navigate(['/homepage-system']);
     }
   }
@@ -39,19 +35,23 @@ export class EntrarPage implements OnInit {
   entrar(){
     if (this.validarCampos()){
       this.loginService.consultar(this.login).subscribe( 
-        async retorno => {
-          await this.storage.create();
-          await this.storage.clear();
+        retorno => {
+          environment.codigo = null;
+          environment.senha = null;
+          environment.tipo = null;
           if (retorno.codigo.length == 11) {
             this.tipo = 'cpf';
           } else if (retorno.codigo.length == 14) {
             this.tipo = 'cnpj';
           }
-          await this.storage.set('codigo', retorno.codigo);
-          await this.storage.set('senha', this.login.senha);
-          await this.storage.set('tipo', this.tipo);
+
+          environment.codigo = retorno.codigo;
+          environment.senha = this.login.senha;
+          environment.tipo = this.tipo;
           this.loginService.exibirToast("Acesso realizado com sucesso.", "success");
-          location.reload();
+          //location.reload();
+          //
+          this.router.navigate(['/homepage-system']);
         } 
       );
     }
