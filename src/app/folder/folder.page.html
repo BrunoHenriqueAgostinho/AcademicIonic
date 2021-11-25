@@ -1,108 +1,109 @@
 <ion-header [translucent]="true">
-  <ion-toolbar id="barraDeFerramentas">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons class="opcoes" slot="end">
-      <ion-item [routerLink]="['/para-instituicoes']" lines="none">
-        <ion-label>Para Instituições</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/para-estudantes']" lines="none">
-        <ion-label>Para Estudantes</ion-label>
-      </ion-item>
-      <div style="border-left:1px solid #000;height:35px"></div>
-      <ion-item [routerLink]="['/cadastro']" lines="none">
-        <ion-label>Cadastrar</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/entrar']" lines="none">
-        <ion-label>Entrar</ion-label>
-      </ion-item>
-    </ion-buttons>
-    <ion-buttons class="opcoesIcones" slot="end">
-      <ion-item [routerLink]="['/para-instituicoes']" lines="none">
-        <ion-icon id="icone" [ios]="'storefront-outline'" [md]="'storefront-sharp'"></ion-icon>
-      </ion-item>
-      <ion-item [routerLink]="['/para-estudantes']" lines="none">
-        <ion-icon id="icone" [ios]="'book-outline'" [md]="'book-sharp'"></ion-icon>
-      </ion-item>
-      <div style="border-left:1px solid #000;height:35px"></div>
-      <ion-item [routerLink]="['/cadastro']" lines="none">
-        <ion-icon id="icone" [ios]="'key-outline'" [md]="'key-sharp'"></ion-icon>
-      </ion-item>
-      <ion-item [routerLink]="['/entrar']" lines="none">
-        <ion-icon id="icone" [ios]="'log-in-outline'" [md]="'log-in-sharp'"></ion-icon>
-      </ion-item>
-    </ion-buttons>
-    <ion-title [routerLink]="['/folder']">Academic</ion-title>
-  </ion-toolbar>
+    <ion-toolbar id="barraDeFerramentas">
+
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons class="opcoes" slot="end">
+            <ion-item [routerLink]="['/para-instituicoes']" lines="none">
+                <ion-label>Para Instituições</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/para-estudantes']" lines="none">
+                <ion-label>Para Estudantes</ion-label>
+            </ion-item>
+            <div style="border-left:1px solid #000;height:35px"></div>
+            <ion-item [routerLink]="['/cadastro']" lines="none">
+                <ion-label>Cadastrar</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/entrar']" lines="none">
+                <ion-label>Entrar</ion-label>
+            </ion-item>
+        </ion-buttons>
+        <ion-buttons class="opcoesIcones" slot="end">
+            <ion-item [routerLink]="['/para-instituicoes']" lines="none">
+                <ion-icon id="icone" [ios]="'storefront-outline'" [md]="'storefront-sharp'"></ion-icon>
+            </ion-item>
+            <ion-item [routerLink]="['/para-estudantes']" lines="none">
+                <ion-icon id="icone" [ios]="'book-outline'" [md]="'book-sharp'"></ion-icon>
+            </ion-item>
+            <div style="border-left:1px solid #000;height:35px"></div>
+            <ion-item [routerLink]="['/cadastro']" lines="none">
+                <ion-icon id="icone" [ios]="'key-outline'" [md]="'key-sharp'"></ion-icon>
+            </ion-item>
+            <ion-item [routerLink]="['/entrar']" lines="none">
+                <ion-icon id="icone" [ios]="'log-in-outline'" [md]="'log-in-sharp'"></ion-icon>
+            </ion-item>
+        </ion-buttons>
+        <ion-title [routerLink]="['/folder']">Academic</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ng-template #info>
-  <section id="instituicoes">
-    <div id="desenho"><img src="../assets/Formando - Instituições.svg"></div>
-    <div id="texto">
-      <div>
-        <ion-text>
-          <h1>Instituições</h1>
-        </ion-text>
-        <ion-text>
-          <p>Instituções podem mostrar seus potenciais em produções acadêmicas. Certifique trabalhos acadêmicos feitos no âmbito da instituição e dê maior visibilidade para estudantes.</p>
-        </ion-text>
-      </div>
-    </div>
-  </section>
-  <section id="estudantes">
-    <div id="texto">
-      <div>
-        <ion-text>
-          <h1>Estudantes</h1>
-        </ion-text>
-        <ion-text>
-          <p>Produza e compatilhe seus TCCs, dissertações, artigos e outros tipos de trabalhos escritos.</p>
-        </ion-text>
-      </div>
-    </div>
-    <div id="desenho"><img src="../assets/Livro - Estudantes.svg"></div>
-  </section>
+    <section id="instituicoes">
+        <div id="desenho"><img src="../assets/Formando - Instituições.svg"></div>
+        <div id="texto">
+            <div>
+                <ion-text>
+                    <h1>Instituições</h1>
+                </ion-text>
+                <ion-text>
+                    <p>Instituções podem mostrar seus potenciais em produções acadêmicas. Certifique trabalhos acadêmicos feitos no âmbito da instituição e dê maior visibilidade para estudantes.</p>
+                </ion-text>
+            </div>
+        </div>
+    </section>
+    <section id="estudantes">
+        <div id="texto">
+            <div>
+                <ion-text>
+                    <h1>Estudantes</h1>
+                </ion-text>
+                <ion-text>
+                    <p>Produza e compatilhe seus TCCs, dissertações, artigos e outros tipos de trabalhos escritos.</p>
+                </ion-text>
+            </div>
+        </div>
+        <div id="desenho"><img src="../assets/Livro - Estudantes.svg"></div>
+    </section>
 </ng-template>
 
 <ion-content [fullscreen]="true">
-  <section id="cabecalho">
-    <ion-text>
-      <h1>Bem-vindo ao Academic!</h1>
-      <div>
-        <p class="p_desk">Olá, usuário! O Academic é uma plataforma online que possibilita a pesquisa e desenvolvimento de trabalhos de cunho científico. Aqui você poderá pesquisar por trabalhos já postados e desenvolver por meio do nosso editor seus próprios trabalhos.</p>
-        <p class="p_mobile">Olá, usuário! Fique à vontade para pesquisar por trabalhos em nossa plataforma e desenvolver seus projetos.</p>
-        <ion-searchbar class="p_desk" placeholder="Pesquise por trabalhos científicos" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
-        <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250"  inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
-      </div>
-    </ion-text>
-  </section>
-  <ion-grid *ngIf="listaTrabalho | async as trabalho; else info">
-    <ion-row>
-      <ion-col size="3" *ngFor="let trab of trabalho">
-        <ion-card (click)="openModal(trab.codigo)">
-          <ion-card-header>
-            <ion-card-title>{{trab.nome}}</ion-card-title>
-          </ion-card-header>
-
-          <ion-card-content>
-            <ion-card-title>
-              {{trab.descricao}}
-            </ion-card-title>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <section id="rodape">
-    <div id="barra01"></div>
-    <div id="barra02">
-      <div>
+    <section id="cabecalho">
         <ion-text>
-          <h1>Academic</h1>
+            <h1>Bem-vindo ao Academic!</h1>
+            <div>
+                <p class="p_desk">Olá, usuário! O Academic é uma plataforma online que possibilita a pesquisa e desenvolvimento de trabalhos de cunho científico. Aqui você poderá pesquisar por trabalhos já postados e desenvolver por meio do nosso editor seus próprios trabalhos.</p>
+                <p class="p_mobile">Olá, usuário! Fique à vontade para pesquisar por trabalhos em nossa plataforma e desenvolver seus projetos.</p>
+                <ion-searchbar class="p_desk" placeholder="Pesquise por trabalhos científicos" searchIcon="search-sharp" [debounce]="250" inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
+                <ion-searchbar class="p_mobile" placeholder="Pesquisar" searchIcon="search-sharp" [debounce]="250" inputMode="text" (ionChange)="pesquisar()" [(ngModel)]="pesquisa.pesquisa"></ion-searchbar>
+            </div>
         </ion-text>
-      </div>
-    </div>
-  </section>
+    </section>
+    <ion-grid *ngIf="listaTrabalho | async as trabalho; else info">
+        <ion-row>
+            <ion-col size="3" *ngFor="let trab of trabalho">
+                <ion-card (click)="openModal(trab.codigo)">
+                    <ion-card-header>
+                        <ion-card-title>{{trab.nome}}</ion-card-title>
+                    </ion-card-header>
+
+                    <ion-card-content>
+                        <ion-card-title>
+                            {{trab.descricao}}
+                        </ion-card-title>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <section id="rodape">
+        <div id="barra01"></div>
+        <div id="barra02">
+            <div>
+                <ion-text>
+                    <h1>Academic</h1>
+                </ion-text>
+            </div>
+        </div>
+    </section>
 </ion-content>

@@ -1,346 +1,330 @@
 // Barra de Ferramentas
-#barraDeFerramentas{
-  --background: white;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.250);
-  width: 100%;
-  padding: 0% 12% 0% 12%;
+#barraDeFerramentas {
+    --background: white;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.250);
+    width: 100%;
+    padding: 0% 12% 0% 12%;
 }
 
 ion-menu-button {
-  color: #2F77FF;
-  display: none;
+    color: #2F77FF;
+    display: none;
 }
 
 #barraDeFerramentas ion-title {
-  color: #2F77FF;
-  font-weight: 900;
-  font-style:italic;
-  font-size: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #2F77FF;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #barraDeFerramentas ion-item {
-  color: #344057;
-  font-size: 16px;
-  box-shadow: none;
-  --background: white;
-  --color-hover: gray;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #344057;
+    font-size: 16px;
+    box-shadow: none;
+    --background: white;
+    --color-hover: gray;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#barraDeFerramentas .opcoesIcones{
-  display: none;
+#barraDeFerramentas .opcoesIcones {
+    display: none;
 }
 
 //Fundo da página
 ion-content {
-  --background: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --background: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 // Cabeçalho
 #cabecalho {
-  width: 100%;
-  padding: 5% 12%;
-  background-color: #2F77FF;
-  color: white;
-  text-align: center;
+    width: 100%;
+    padding: 5% 12%;
+    background-color: #2F77FF;
+    color: white;
+    text-align: center;
 }
 
 #cabecalho ion-text h1 {
-  font-size: 70px;
-  font-weight: 900;
-  padding-bottom: 2%;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 70px;
+    font-weight: 900;
+    padding-bottom: 2%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #cabecalho ion-text div {
-  max-width: 700px;
-  margin: auto;
-  padding: 0;
+    max-width: 700px;
+    margin: auto;
+    padding: 0;
 }
 
 #cabecalho ion-text div p {
-  font-size: 16px;
-  font-weight: 250;
-  text-align: justify;
+    font-size: 16px;
+    font-weight: 250;
+    text-align: justify;
 }
 
-#cabecalho ion-text div .p_desk{
-  display: block;
+#cabecalho ion-text div .p_desk {
+    display: block;
 }
 
-#cabecalho ion-text div .p_mobile{
-  display: none;
+#cabecalho ion-text div .p_mobile {
+    display: none;
 }
 
 #cabecalho ion-text div ion-searchbar {
-  --background: white;
-  --border-radius: 5px;
-  --box-shadow: none;
-  --icon-color: #2F77FF;
-  --cancel-button-color: #2F77FF;
-  --clear-button-color: #2F77FF;
-  text-align: left;
-  --color: #344057;
-  --placeholder-color: #989fac;
-  --placeholder-opacity: 100%;
-  --placeholder-font-weight: 300;
-  padding: 0;
-  margin: 0 0 2% 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --background: white;
+    --border-radius: 5px;
+    --box-shadow: none;
+    --icon-color: #2F77FF;
+    --cancel-button-color: #2F77FF;
+    --clear-button-color: #2F77FF;
+    text-align: left;
+    --color: #344057;
+    --placeholder-color: #989fac;
+    --placeholder-opacity: 100%;
+    --placeholder-font-weight: 300;
+    padding: 0;
+    margin: 0 0 2% 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 ion-chip {
-  --background: white;
-  --color: #344057;
-  font-weight: 300;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --background: white;
+    --color: #344057;
+    font-weight: 300;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 //instituições
 #instituicoes {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  margin: 2% 0 2% 0;
-  text-align: center;
-  color: #344057;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 2% 0 2% 0;
+    text-align: center;
+    color: #344057;
 }
 
 #instituicoes #desenho {
-  width: 50%;
-  max-height: 500px;
-  background-color: #0FCCBF;
-  border-radius:0px 10px 10px 0px;
+    width: 50%;
+    max-height: 500px;
+    background-color: #0FCCBF;
+    border-radius: 0px 10px 10px 0px;
 }
 
 //estudantes
 #estudantes {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  margin: 2% 0 2% 0;
-  text-align: center;
-  color: #344057;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 2% 0 2% 0;
+    text-align: center;
+    color: #344057;
 }
 
 #estudantes #desenho {
-  width: 50%;
-  max-height: 500px;
-  background-color: #344057;
-  border-radius:10px 0px 0px 10px;
+    width: 50%;
+    max-height: 500px;
+    background-color: #344057;
+    border-radius: 10px 0px 0px 10px;
 }
 
 #texto {
-  width: 50%;
-  max-height: 500px;
-  padding: 0% 6%;
-  display: table;
+    width: 50%;
+    max-height: 500px;
+    padding: 0% 6%;
+    display: table;
 }
 
 #texto div {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 
 #texto ion-text h1 {
-  font-size: 40px;
-  font-weight: 900;
+    font-size: 40px;
+    font-weight: 900;
 }
 
 #texto ion-text p {
-  font-size: 16px;
-  font-weight: 300;
-  text-align: justify;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: justify;
 }
 
 //Imagem
-#desenho img{
-  //margin-top: 10%;
-  width: 90%;
-  height: 90%;
-  margin: 5%;
+#desenho img {
+    //margin-top: 10%;
+    width: 90%;
+    height: 90%;
+    margin: 5%;
 }
 
 //Rodape
-#rodape{
-  width: 100%;
-  color: white;
-  padding: 0;
+#rodape {
+    width: 100%;
+    color: white;
+    padding: 0;
 }
 
-#rodape #barra01{
-  width: 100%;
-  height: 100px;
-  float: left;
-  background-color: #0FCCBF;
-  margin: 0;
-  padding: 0;
+#rodape #barra01 {
+    width: 100%;
+    height: 100px;
+    float: left;
+    background-color: #0FCCBF;
+    margin: 0;
+    padding: 0;
 }
 
-#rodape #barra02{
-  width: 100%;
-  height: 50px;
-  float: left;
-  background-color: #33323A;
-  margin: 0;
-  padding: 0;
+#rodape #barra02 {
+    width: 100%;
+    height: 50px;
+    float: left;
+    background-color: #33323A;
+    margin: 0;
+    padding: 0;
 }
 
-#barra02 ion-text h1{
-  font-size: 20px;
-  font-weight: 900;
-  font-style:italic;
-  margin: 15px 15px;
+#barra02 ion-text h1 {
+    font-size: 20px;
+    font-weight: 900;
+    font-style: italic;
+    margin: 15px 15px;
 }
 
 //trabalho
 ion-card {
-  height: 350px;
-  width: 500px;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  --background: white;
+    height: 350px;
+    width: 500px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    --background: white;
 }
 
 ion-card-header ion-card-title {
-  text-align: center;
-  --color: #344057;
-  font-size: 20px;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    --color: #344057;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-ion-card-content ion-card-title{
-  text-align: center;
-  --color: #344057;
-  font-size: 16px;
-  font-weight: 300;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ion-card-content ion-card-title {
+    text-align: center;
+    --color: #344057;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 @media screen and (max-width: 1030px) {
-  ion-col{
-    --ion-grid-columns: 6;
-  }
+    ion-col {
+        --ion-grid-columns: 6;
+    }
 }
 
 @media screen and (max-width: 850px) {
-  #barraDeFerramentas .opcoes{
-    display: none;
-  }
-  #barraDeFerramentas .opcoesIcones{
-    display: flex;
-  }
-  #icone {
-    color: #2F77FF;
-  }
+    #barraDeFerramentas .opcoes {
+        display: none;
+    }
+    #barraDeFerramentas .opcoesIcones {
+        display: flex;
+    }
+    #icone {
+        color: #2F77FF;
+    }
 }
 
 @media screen and (max-width: 750px) {
-  #instituicoes {
-    flex-direction: column;
-    margin: 0;
-    height: auto;
-  }
-
-  #instituicoes #desenho {
-    width: 100%;
-    height: auto;
-    border-radius:0px 0px 0px 0px;
-  }
-
-  #estudantes {
-    flex-direction: column-reverse;
-    margin: 0;
-    height: auto;
-  }
-
-  #estudantes #desenho {
-    width: 100%;
-    height: auto;
-    border-radius:0px 0px 0px 0px;
-  }
-
-  #desenho img{
-    width: 40%;
-    margin-top: 5%;
-  }
-
-  #texto {
-    width: 100%;
-    height: auto;
-  }
+    #instituicoes {
+        flex-direction: column;
+        margin: 0;
+        height: auto;
+    }
+    #instituicoes #desenho {
+        width: 100%;
+        height: auto;
+        border-radius: 0px 0px 0px 0px;
+    }
+    #estudantes {
+        flex-direction: column-reverse;
+        margin: 0;
+        height: auto;
+    }
+    #estudantes #desenho {
+        width: 100%;
+        height: auto;
+        border-radius: 0px 0px 0px 0px;
+    }
+    #desenho img {
+        width: 40%;
+        margin-top: 5%;
+    }
+    #texto {
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media screen and (max-width: 500px) {
-  #barraDeFerramentas{
-    padding: 0% 0% 0% 0%;
-  }
-  
-  ion-menu-button {
-    display: block;
-  }
-
-  #barraDeFerramentas .opcoes{
-    display: none;
-  }
-  #barraDeFerramentas .opcoesIcones{
-    display: none;
-  }
-
-  #barraDeFerramentas ion-title {
-    font-size: 18px;
-  }
-
-  #cabecalho ion-text h1 {
-    font-size: 30px;
-    font-weight: 900;
-    padding-top: 4%;
-  }
-
-  #cabecalho ion-text div .p_desk{
-    display: none;
-  }
-  
-  #cabecalho ion-text div .p_mobile{
-    display: block;
-    font-size: 16px;
-  }
-
-  #texto ion-text h1 {
-    font-size: 20px;
-  }
-  
-  #texto ion-text p {
-    font-size: 16px;
-  }
-
-  #rodape{
-    margin-top: 20px
-  }
-
-  #rodape #barra01{
-    height: 40px;
-    display: none;
-  }
-  
-  #rodape #barra02{
-    height: 40px;
-  }
-
-  #barra02 ion-text h1{
-    font-size: 20px;
-    margin: 10px 0px 0 30px;
-  }
-  ion-col{
-    --ion-grid-columns: 3;
-  }
+    #barraDeFerramentas {
+        padding: 6% 0% 0% 0%;
+    }
+    ion-menu-button {
+        display: block;
+    }
+    #barraDeFerramentas .opcoes {
+        display: none;
+    }
+    #barraDeFerramentas .opcoesIcones {
+        display: none;
+    }
+    #barraDeFerramentas ion-title {
+        font-size: 18px;
+    }
+    #cabecalho ion-text h1 {
+        font-size: 30px;
+        font-weight: 900;
+        padding-top: 4%;
+    }
+    #cabecalho ion-text div .p_desk {
+        display: none;
+    }
+    #cabecalho ion-text div .p_mobile {
+        display: block;
+        font-size: 16px;
+    }
+    #texto ion-text h1 {
+        font-size: 20px;
+    }
+    #texto ion-text p {
+        font-size: 16px;
+    }
+    #rodape {
+        margin-top: 20px
+    }
+    #rodape #barra01 {
+        height: 40px;
+        display: none;
+    }
+    #rodape #barra02 {
+        height: 40px;
+    }
+    #barra02 ion-text h1 {
+        font-size: 20px;
+        margin: 10px 0px 0 30px;
+    }
+    ion-col {
+        --ion-grid-columns: 3;
+    }
 }
+
 
 /*#container {
   text-align: center;

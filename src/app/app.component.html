@@ -1,34 +1,38 @@
 <ion-app>
-  <ion-split-pane contentId="main-content" when="(min-width:2000px)">
-    <ion-menu contentId="main-content" type="reveal" (ionWillOpen)="alterarMenu()">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header *ngIf="booleanUsuario">{{usuario.nome}}</ion-list-header><ion-list-header *ngIf="booleanInstituicao">{{instituicao.nome}}</ion-list-header><ion-list-header *ngIf="booleanAnonimo">Academic</ion-list-header>
-          <ion-note *ngIf="booleanUsuario">{{usuario.email}}</ion-note><ion-note *ngIf="booleanInstituicao">{{instituicao.email}}</ion-note><ion-note *ngIf="booleanAnonimo">Cadastre-se para utilizar mais funcionalidade!!!</ion-note>
+    <ion-split-pane contentId="main-content" when="(min-width:2000px)">
+        <ion-menu contentId="main-content" type="reveal" (ionWillOpen)="alterarMenu()">
+            <ion-content>
+                <ion-list id="inbox-list">
+                    <ion-list-header *ngIf="booleanUsuario">{{usuario.nome}}</ion-list-header>
+                    <ion-list-header *ngIf="booleanInstituicao">{{instituicao.nome}}</ion-list-header>
+                    <ion-list-header *ngIf="booleanAnonimo">Academic</ion-list-header>
+                    <ion-note *ngIf="booleanUsuario">{{usuario.email}}</ion-note>
+                    <ion-note *ngIf="booleanInstituicao">{{instituicao.email}}</ion-note>
+                    <ion-note *ngIf="booleanAnonimo">Cadastre-se para utilizar mais funcionalidade!!!</ion-note>
 
-          <ion-menu-toggle auto-hide="false" *ngIf="booleanAnonimo">
-            <ion-item *ngFor="let p of paginasAnonimo; let i = index" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false" *ngIf="booleanAnonimo">
+                        <ion-item *ngFor="let p of paginasAnonimo; let i = index" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                            <ion-label>{{ p.title }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
 
-          <ion-menu-toggle auto-hide="false" *ngIf="booleanUsuario">
-            <ion-item *ngFor="let p of paginasUsuario; let i = index" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+                    <ion-menu-toggle auto-hide="false" *ngIf="booleanUsuario">
+                        <ion-item *ngFor="let p of paginasUsuario; let i = index" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                            <ion-label>{{ p.title }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
 
-          <ion-menu-toggle auto-hide="false" *ngIf="booleanInstituicao">
-            <ion-item *ngFor="let p of paginasInstituicao; let i = index" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
+                    <ion-menu-toggle auto-hide="false" *ngIf="booleanInstituicao">
+                        <ion-item *ngFor="let p of paginasInstituicao; let i = index" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                            <ion-label>{{ p.title }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
 
-        <!--<ion-list id="labels-list">
+                <!--<ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
 
           <ion-item *ngFor="let label of labels" lines="none">
@@ -36,8 +40,8 @@
             <ion-label>{{ label }}</ion-label>
           </ion-item>
         </ion-list>-->
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
 </ion-app>

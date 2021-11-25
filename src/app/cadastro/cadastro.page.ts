@@ -15,8 +15,11 @@ export class CadastroPage implements OnInit {
   corUsuario = "white";
   corInstituicao = "white";
 
-  displayU = 'none'
-  displayI = 'block'
+  displayU = 'block';
+  displayI = 'none';
+  
+  confirmarSenhaUsuario: string = '';
+  confirmarSenhaInstituicao: string = '';
 
   usuario: IUsuario = {
     cpf: null,
@@ -46,9 +49,6 @@ export class CadastroPage implements OnInit {
     cidade: ''
   } 
 
-  confirmarSenhaUsuario: string = '';
-  confirmarSenhaInstituicao: string = '';
-
   constructor(
     private usuarioService: UsuarioService,
     private instituicaoService: InstituicaoService
@@ -67,7 +67,7 @@ export class CadastroPage implements OnInit {
       this.displayI='block';
     }
   }
-  
+
   //CadastrarUsuario
   cadastrarUsuario() { 
     if(this.validarCamposUsuario()){
