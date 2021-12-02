@@ -122,9 +122,9 @@ export class CadastroPage implements OnInit {
   corSenhaUsuario(){
     if(this.usuario.senha != '' && this.confirmarSenhaUsuario != ''){
       if(this.usuario.senha == this.confirmarSenhaUsuario){
-        this.corUsuario = "#2F77FF";
+        this.corUsuario = "#87CEFA";
       } else {
-        this.corUsuario = "red";
+        this.corUsuario = "#ffcccb";
       }
     } else {
       this.corUsuario = "white";

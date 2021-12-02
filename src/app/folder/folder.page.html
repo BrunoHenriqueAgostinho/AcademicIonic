@@ -40,10 +40,10 @@
 
 <ng-template #info>
     <section id="instituicoes">
-        <div id="desenho"><img src="../assets/Formando - Instituições.svg"></div>
+        <div id="desenho" [routerLink]="['/para-instituicoes']"><img src="../assets/Formando - Instituições.svg"></div>
         <div id="texto">
             <div>
-                <ion-text>
+                <ion-text [routerLink]="['/para-instituicoes']">
                     <h1>Instituições</h1>
                 </ion-text>
                 <ion-text>
@@ -55,7 +55,7 @@
     <section id="estudantes">
         <div id="texto">
             <div>
-                <ion-text>
+                <ion-text [routerLink]="['/para-estudantes']">
                     <h1>Estudantes</h1>
                 </ion-text>
                 <ion-text>
@@ -63,7 +63,7 @@
                 </ion-text>
             </div>
         </div>
-        <div id="desenho"><img src="../assets/Livro - Estudantes.svg"></div>
+        <div id="desenho" [routerLink]="['/para-estudantes']"><img src="../assets/Livro - Estudantes.svg"></div>
     </section>
 </ng-template>
 
