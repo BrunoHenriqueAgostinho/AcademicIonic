@@ -11,8 +11,8 @@ import { ITag } from '../model/ITag.model';
 export class TagService {
 
   //Variáveis
-  //URL: string = 'http://localhost/apiTCC/api_academic/tb_tag';
-  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_tag';
+  URL: string = 'http://localhost/apiTCC/api_academic/tb_tag';
+  // URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_tag';
 
 
   constructor(

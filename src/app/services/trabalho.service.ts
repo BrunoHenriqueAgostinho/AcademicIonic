@@ -10,8 +10,8 @@ import { ToastController } from '@ionic/angular';
 })
 export class TrabalhoService {
 
-  //URL: string = 'http://localhost/apiTCC/api_academic/tb_trabalho/';
-  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_trabalho';
+  URL: string = 'http://localhost/apiTCC/api_academic/tb_trabalho/';
+  // URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_trabalho';
   constructor(
     private http: HttpClient,
     private toastController: ToastController

@@ -10,8 +10,8 @@ import { IUsuario } from '../model/IUsuario.model';
 })
 export class UsuarioService {
   //Variáveis
-  //URL: string = 'http://localhost/apiTCC/api_academic/tb_usuario';
-  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_usuario';
+  URL: string = 'http://localhost/apiTCC/api_academic/tb_usuario';
+  // URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_usuario';
 
   constructor(
     private http: HttpClient,

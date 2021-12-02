@@ -9,8 +9,8 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class ApresentaTrabalhoTagService {
 
-  //URL: string = 'http://localhost/apiTCC/api_academic/apresenta_trabalho_tag';
-  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/apresenta_trabalho_tag';
+  URL: string = 'http://localhost/apiTCC/api_academic/apresenta_trabalho_tag';
+  // URL: string = 'https://academicapitcc.herokuapp.com/api_academic/apresenta_trabalho_tag';
 
 
   constructor(

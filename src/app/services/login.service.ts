@@ -11,8 +11,8 @@ import { ILogin } from '../model/ILogin.model';
 export class LoginService {
 
   //Variáveis
-  //URL: string = 'http://localhost/apiTCC/api_academic/login/login.php';
-  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/login/login.php';
+  URL: string = 'http://localhost/apiTCC/api_academic/login/login.php';
+  // URL: string = 'https://academicapitcc.herokuapp.com/api_academic/login/login.php';
 
 
   constructor(

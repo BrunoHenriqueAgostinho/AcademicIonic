@@ -6,12 +6,12 @@
         width: 100%;
         padding: 0% 12% 0% 12%;
     }
-    
+
     ion-menu-button {
         color: #2F77FF;
         display: none;
     }
-    
+
     #barraDeFerramentas ion-title {
         color: #2F77FF;
         font-weight: 900;
@@ -19,11 +19,11 @@
         font-size: 20px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    
+
     #barraDeFerramentas a {
         text-decoration: none;
     }
-    
+
     #barraDeFerramentas ion-item {
         color: #344057;
         font-size: 16px;
@@ -32,28 +32,28 @@
         --color-hover: gray;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    
+
     #barraDeFerramentas .opcoesIcones {
         display: none;
     }
-    
+
     //Fundo da página
     ion-content {
         --background: white;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    
+
     //ion-segment
     ion-segment {
         --background: #344057;
     }
-    
+
     ion-segment ion-label {
         color: white;
         font-size: 16px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    
+
     // Sessão de dados - Cadastro
     #card_cadastro {
         display: flex;
@@ -67,7 +67,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    
+
     #card_cadastro #item_cadastro {
         display: flex;
         width: 50%;
@@ -82,20 +82,20 @@
         --padding-start: 0;
         --padding-top: 0;
     }
-    
+
     #item_cadastro h1 {
         font-weight: bold;
         font-size: 70px;
         text-align: center;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    
+
     #item_cadastro p {
         font-size: 16px;
         text-align: center;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    
+
     #card_cadastro #item_cadastro .cad_usuario .itemDoInput {
         margin: 10px 0;
         --border-radius: 5px;
@@ -104,13 +104,13 @@
         --inner-padding-start: 0;
         --inner-padding-top: 0;
     }
-    
+
     #card_cadastro form {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    
+
     #card_cadastro #item_cadastro ion-button {
         width: 90%;
         height: 40px;
@@ -119,7 +119,7 @@
         border-radius: 5px;
         --background: #2F77FF;
     }
-    
+
     #card_cadastro ion-input {
         width: 90%;
         --placeholder-color: #989fac;
@@ -135,11 +135,11 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         --placeholder-font-weight: 300;
     }
-    
+
     #card_cadastro #item_cadastro .geral {
         margin: auto;
     }
-    
+
     // Sessão de imagem - Cadastro
     #itemIMG {
         width: 50%;
@@ -150,12 +150,12 @@
         --inner-padding-start: 0;
         --inner-padding-top: 0;
     }
-    
+
     .img_cadastro {
         width: 100%;
-        height: 76vh;
+        height: 100vh;
     }
-    
+
     @media screen and (max-width: 1030px) {
         #card_cadastro #item_cadastro {
             width: 100%;
@@ -167,7 +167,7 @@
             display: none;
         }
     }
-    
+
     @media screen and (max-width: 850px) {
         #barraDeFerramentas .opcoes {
             display: none;
@@ -179,7 +179,7 @@
             color: #2F77FF;
         }
     }
-    
+
     @media screen and (max-width: 500px) {
         #barraDeFerramentas {
             padding: 6% 0% 0% 0%;

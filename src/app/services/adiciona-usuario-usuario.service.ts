@@ -11,8 +11,8 @@ import { IAdicionausuariousuario } from '../model/IAdicionausuariousuario.model'
 export class AdicionaUsuarioUsuarioService {
 
 //Variáveis
-//URL: string = 'http://localhost/apiTCC/api_academic/adiciona_usuario_usuario';
-URL: string = 'https://academicapitcc.herokuapp.com/api_academic/adiciona_usuario_usuario';
+URL: string = 'http://localhost/apiTCC/api_academic/adiciona_usuario_usuario';
+// URL: string = 'https://academicapitcc.herokuapp.com/api_academic/adiciona_usuario_usuario';
 
 constructor(
     private http: HttpClient,

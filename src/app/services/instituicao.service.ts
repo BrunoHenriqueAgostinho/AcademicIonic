@@ -10,8 +10,8 @@ import { IInstituicao } from '../model/IInstituicao.model';
 })
 export class InstituicaoService {
   //Variáveis
-  //URL: string = 'http://localhost/apiTCC/api_academic/tb_instituicao';
-  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_instituicao';
+  URL: string = 'http://localhost/apiTCC/api_academic/tb_instituicao';
+  // URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_instituicao';
 
 
   constructor(

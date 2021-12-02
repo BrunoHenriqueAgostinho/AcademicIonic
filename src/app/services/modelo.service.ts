@@ -11,8 +11,8 @@ import { IModelo } from '../model/IModelo.model';
 export class ModeloService {
 
   //Variáveis
-  //URL: string = 'http://localhost/apiTCC/api_academic/tb_modelo';
-  URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_modelo';
+  URL: string = 'http://localhost/apiTCC/api_academic/tb_modelo';
+  // URL: string = 'https://academicapitcc.herokuapp.com/api_academic/tb_modelo';
 
 
   constructor(
